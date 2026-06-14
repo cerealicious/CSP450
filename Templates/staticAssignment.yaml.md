@@ -12,5 +12,4 @@ network:
     # ens37 tracks the point-to-point physical WAN link on VMnet7 facing Core Switch Port 1/1/4
     ens37:
       dhcp4: false
-      addresses:
-        - 192.168.3.158/30             # ----> Your Linux Router WAN interface (Last Usable IP)
+      addresses: [192.168.3.158/30]             # ----> Your Linux Router WAN interface (Last Usable IP)
