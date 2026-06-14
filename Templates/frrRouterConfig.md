@@ -1,8 +1,6 @@
----
-
 ### File: `frrRouterConfig.md`
 
-```markdown
+```
 # Linux Router OSPF Routing Daemon Configuration
 **Platform Execution Engine:** Free Range Routing interactive terminal utility via `sudo vtysh`.
 
