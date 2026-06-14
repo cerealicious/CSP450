@@ -1,8 +1,5 @@
----
+### File:`Templates/NFtablesRulesNAT.md`
 
-### File 6: `Templates/NFtablesRulesNAT.md`
-
-```markdown
 # Cleaned NFTables Security & NAT Outbound Layer
 **Target Profile Path:** `/etc/nftables.conf` on the **Ubuntu Router VM**[cite: 88].
 
