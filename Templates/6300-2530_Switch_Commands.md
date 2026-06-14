@@ -16,7 +16,7 @@ vlan 231
   name catalan-vlan
 interface vlan 231
   no shutdown
-  ip address 172.16.57.193/26          # ----> Your Core SVI Gateway (First Usable IP)
+  ip address 172.16.57.193/26          # ----> Your Core SVI Gateway (Your First Usable IP)
   ip ospf 1 area 0                     # ----> Links your local LAN to backbone OSPF
   y
   y
@@ -28,7 +28,7 @@ vlan 217
   name jmalaqui-vlan
 interface vlan 217
   no shutdown
-  ip address 172.16.54.65/26           # ----> Partner Core SVI Gateway (First Usable IP)
+  ip address 172.16.54.65/26           # ----> Partner Core SVI Gateway (Your Partner's First Usable IP)
   ip ospf 1 area 0                     # ----> Links partner LAN to backbone OSPF
   exit
 
@@ -44,7 +44,7 @@ interface 1/1/3
 interface 1/1/4 
   no shutdown
   routing
-  ip address 192.168.3.157/30          # ----> Switch-side Transit IP (First Usable IP)
+  ip address 192.168.3.157/30          # ----> Switch-side Transit IP (Your Router's First Usable IP)
   ip ospf 1 area 0                     # ----> Exposes your Router link to OSPF fabric
   exit
 
@@ -52,7 +52,7 @@ interface 1/1/4
 interface 1/1/5
   no shutdown
   routing
-  ip address 192.168.3.101/30          # ----> Partner Switch-side Transit IP (First Usable IP)
+  ip address 192.168.3.101/30          # ----> Partner Switch-side Transit IP (Your Partner's Router First Usable IP)
   ip ospf 1 area 0                     # ----> Exposes partner Router link to OSPF fabric
   exit
 
@@ -62,23 +62,23 @@ dhcp-server vrf default
   # Your Subnet Allocation Pool & Server Static Reservation
   pool vlan231
     range 172.16.57.194 172.16.57.253 prefix-len 26 
-    default-router 172.16.57.193      # ----> Points local clients to your Core Gateway
-    static-bind ip 172.16.57.254 mac xx:xx:xx:xx:xx:xx # ----> Binds last usable address to your Server VM
+    default-router 172.16.57.193      # ----> Points local clients to your Core Gateway (Your First Usable IP)
+    static-bind ip 172.16.57.254 mac xx:xx:xx:xx:xx:xx # ----> Binds last usable address to your Server VM (Your Last Usable IP + Server VM MAC Address)
     dns-server 192.168.3.158          # ----> Points local clients to your Edge Linux Router IP
     exit
 
   # Your Partner's Subnet Allocation Pool & Server Static Reservation
   pool vlan217
     range 172.16.54.66 172.16.54.125 prefix-len 26
-    default-router 172.16.54.65       # ----> Points partner clients to partner Core Gateway
-    static-bind ip 172.16.54.126 mac xx:xx:xx:xx:xx:xx # ----> Binds last usable address to partner Server VM
-    dns-server 192.168.3.102          # ----> Points partner clients to partner Edge Linux Router IP
+    default-router 172.16.54.65       # ----> Points partner clients to partner Core Gateway (Your Partner's Router First Usable IP)
+    static-bind ip 172.16.54.126 mac xx:xx:xx:xx:xx:xx # ----> Binds last usable address to partner Server VM (Your Partner Last Usable IP + Partner's Server VM MAC Address)
+    dns-server 192.168.3.102          # ----> Points partner clients to partner Edge Linux Router IP (Your Partners Router Last Usable IP)
     exit
 
 # Dynamic OSPF Backbone Identity Configuration
 enable
 router ospf 1
-  router-id 231.217.231.217           # ----> Combined UID Pod Identifier Matrix
+  router-id 231.217.231.217           # ----> Combined UIDs
   exit
 
 # Outbound Gateway Traversal Static Paths
@@ -104,7 +104,7 @@ spanning-tree
 # Map Local Workspace Isolation Rules for Your Office Floor
 vlan 231
   name "catalan-vlan"
-  ip address 172.16.57.194/26          # ----> Access Switch Unique SVI IP (Your Subnet)
+  ip address 172.16.57.194/26          # ----> Access Switch Unique SVI IP (Your Subnet - Second Usable IP)
   untagged 1                           # ----> Maps physical port 1 strictly to Your desk drop
   tagged 3                             # ----> Shunts Your data tags up the trunk line to Core
   exit
@@ -112,7 +112,7 @@ vlan 231
 # Map Local Workspace Isolation Rules for Your Partner's Floor
 vlan 217
   name "jmalaqui-vlan"
-  ip address 172.16.54.66/26           # ----> Access Switch Unique SVI IP (Partner Subnet)
+  ip address 172.16.54.66/26           # ----> Access Switch Unique SVI IP (Partner Subnet - Partners Second Usable IP)
   untagged 2                           # ----> Maps physical port 2 strictly to Partner desk drop
   tagged 3                             # ----> Shunts Partner data tags up the trunk line to Core
   exit
