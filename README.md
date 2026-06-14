@@ -21,13 +21,13 @@ Open VMware Workstation Virtual Network Editor as an Administrator. Delete any s
  
   **o	VMnet7** --> Change type to **Bridged**, and set "Bridged to:" explicitly to your secondary **Ethernet Family Controller #2** card (this physical port handles your external OSPF WAN link to the switch).
 
-◾ Task 1.2: Correct Router Virtual Hardware Mapping
+**◾ Task 1.2: Correct Router Virtual Hardware Mapping**
 Right-click your Router VM settings (Ensure the VM is powered OFF). Verify that your network adapters are bound to the correct VMnets so that Linux aligns them with the proper internal names (ens33 and ens37):
 
  **o	Network Adapter 1**: Must be set to **Custom**: **VMnet6** (Faces the Internet).
  **o	Network Adapter 2**: Must be set to **Custom**: **VMnet7** (Faces the Switch).
 
-◾ Task 1.3: Map Workstation Virtual Hardware
+**◾ Task 1.3: Map Workstation Virtual Hardware**
 Right-click your Client VM and Server VM settings. Set their Network Adapters strictly to Custom: VMnet5 (Faces the local office LAN switch ports).
 
 
