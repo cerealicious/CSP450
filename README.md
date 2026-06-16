@@ -213,9 +213,9 @@ Before verifying, make sure all dynamic VMware internet backdoors on the Client 
     ```
     *Verify that your Client captures a dynamic IP in your pool range (e.g., `172.16.57.194` to `.253`).*
 
-#### Required 📸SCREENSHOTs for Report
-* [ ] **📸📸SCREENSHOT #1:** Client terminal displaying the successful dynamic IP acquisition after running `dhclient -v`.
-* [ ] **S📸CREENSHOT #2:** A successful ping and network route tracking test from the Client terminal out to the open web:
+#### Required SCREENSHOTs for Report
+* [ ] **📸SCREENSHOT #1:** Client terminal displaying the successful dynamic IP acquisition after running `dhclient -v`.
+* [ ] **📸SCREENSHOT #2:** A successful ping and network route tracking test from the Client terminal out to the open web:
     ```bash
     ping -c 4 www.google.ca
     traceroute youtube.com
@@ -234,8 +234,8 @@ Your server relies on the switch's DHCP service matching its unique hardware MAC
     ```
     *Verify that the server is allocated its fixed reservation address (e.g., `172.16.57.254`).*
 
-#### Required 📸SCREENSHOTs for Report
-* [ ] **📸📸SCREENSHOT #3:** Server terminal showing `ip a` or a successful `dhclient` renewal reflecting its exact allocated reservation IP.
+#### Required SCREENSHOTs for Report
+* [ ] **📸SCREENSHOT #3:** Server terminal showing `ip a` or a successful `dhclient` renewal reflecting its exact allocated reservation IP.
 * [ ] **📸SCREENSHOT #4:** Verification showing that internet access is fully functional from the Server:
     ```bash
     ping -c 4 www.google.ca
@@ -260,7 +260,7 @@ The Linux Router is the core firewall engine and dynamic gateway of your branch 
     sudo nft list ruleset | less
     ```
 
-#### Required 📸SCREENSHOTs for Report
+#### Required SCREENSHOTs for Report
 * [ ] **📸SCREENSHOT #5:** The live Netfilter security profile matching your configured ruleset (`nft list ruleset`).
 * [ ] **📸SCREENSHOT #6:** The OSPF status overview window displaying active neighborhood adjacency tables (`show ip ospf neighbor`).
 * [ ] **📸SCREENSHOT #7:** The full kernel routing table (`show ip route`) displaying dynamically learned paths (`O`) from your partner's pod and the rest of the classroom network.
