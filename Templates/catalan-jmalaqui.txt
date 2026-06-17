@@ -100,12 +100,12 @@ en
 conf t
 
 ip default-gateway 172.16.57.193
-hostname "catalan-2530"
+hostname "jmalaqui-2530"
 spanning-tree
 
 
 vlan 231
-name "jmalaqui-vlan"
+name "catalan-vlan"
 ip address 172.16.57.194/26
 untagged 1
 tagged 3
