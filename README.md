@@ -121,9 +121,9 @@ These cables connect the Core 6300 switch directly to your Ubuntu Router VMs so 
 | Connection Source (From Device) | Port / Interface | Target Destination (To Device / Location) | Subnet / Network Domain | Purpose / Traffic Type |
 | :--- | :--- | :--- | :--- | :--- |
 | **Aruba 6300 Core Switch** | `1/1/3` | **Aruba 2530 Access Switch** Port `3` | Tagged VLANs 231 & 217 | Inter-Switch 802.1Q Trunk Pipe |
-| **Aruba 6300 Core Switch** | `1/1/4` | **Your Router WAN** (`ens37` via Desk Block Panel) | `192.168.3.156/30` | Your Point-to-Point Routing Interface |
+| **Aruba 6300 Core Switch** | `1/1/4` | **Your Router WAN** (`ens37` via Desk Block Panel /vmnet 6 -- Intel® Ethernet Connection (Seneca Network)) | `192.168.3.156/30` | Your Point-to-Point Routing Interface |
 | **Aruba 6300 Core Switch** | `1/1/5` | **Partner Router WAN** (via Partner Desk Block Panel) | `192.168.3.100/30` | Partner's Point-to-Point Routing Interface |
-| **Aruba 2530 Access Switch** | `1` | **Your Desk Node Block** (Maps to VMnet5) | `172.16.57.192/26` | Your Private Office LAN (Client & Server) |
+| **Aruba 2530 Access Switch** | `1` | **Your Desk Node Block** (Maps to VMnet5/ens33/vmnet5 – Family Controller) | `172.16.57.192/26` | Your Private Office LAN (Client & Server) |
 | **Aruba 2530 Access Switch** | `2` | **Partner Desk Node Block** (Maps to Partner VMnet5) | `172.16.54.64/26` | Partner's Private Office LAN (Client & Server) |
 
 ---
