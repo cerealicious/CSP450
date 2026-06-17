@@ -59,7 +59,7 @@ dhcp-server vrf default
 pool vlan231
 range 172.16.57.194 172.16.57.253 prefix-len 26
 default-router 172.16.57.193
-static-bind ip 172.16.57.254 mac xx:xx:xx:xx:xx
+static-bind ip 172.16.57.254 mac 00:0C:29:05:00:B6
 dns-server 192.168.3.158
 exit
 
@@ -69,7 +69,7 @@ exit
 pool vlan217
 range 172.16.54.66 172.16.54.125 prefix-len 26
 default-router 172.16.54.65
-static-bind ip 172.16.54.126 mac xx:xx:xx:xx:xx
+static-bind ip 172.16.54.126 mac 00:0C:29:47:FE:85
 dns-server 192.168.3.102
 exit
 
