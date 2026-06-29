@@ -289,6 +289,7 @@ ssh-server authorized-key student ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOYPmLnudb
 exit
 ```
 5. Verify if all the keys are working
+<BR>
 Open a fresh one on your Client VM, and run these tests. You should log into all of them instantly without being prompted for a password:
 ```bash
 ssh catalan@172.16.57.254
