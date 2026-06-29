@@ -20,12 +20,12 @@ Welcome to the master documentation repository for my CSP450 project. The explic
 
 | Stage | Status | Description | Link |
 | :--- | :--- | :--- | :--- |
-| **Stage Two** | ✅ **Completed** | Production dual-tenant VLAN configuration, trunk isolation routing, and Linux edge NAT firewall provisioning. | [View Stage Two Folder](./StageTwo/) |
-| **Stage Three** | ⏳ *Pending* | <!-- Multi-vendor final integration, end-to-end stress validation, and deep architecture alignment testing. --> | <!-- [View Stage Three Folder](./StageThree/) --> |
+| **Stage Two** | ✅ **Completed** | Build the network infrastructure layer (OSPF, routing pools, VLAN segmentation, and edge NAT firewalls | [View Stage Two Folder](./StageTwo/) |
+| **Stage Three** | 🚧 **In Progress** | Enterprise MariaDB integration, schema deployment, and PHP frontend connectivity. | [View Stage Three Folder](./StageThree/) |
 
 ## 📖 Documentation
 For detailed, step-by-step instructions on how the network layer was planned and executed, please refer to the specific stage documentation folder:
-* **[Stage Two README](./StageTwo/README.md)**: Contains the full math calculations matrix, infrastructure prerequisite packages, and physical topology blueprints.
+* **[Stage Two README](./StageTwo/README.md)**: Contains the full matrix, infrastructure prerequisite packages, and physical topology blueprints.
 
 ## 📁 Additional Resources
 * **[Templates](./Templates/)**: Configuration files used during the project deployment pipeline.
