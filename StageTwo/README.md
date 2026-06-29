@@ -17,7 +17,7 @@ Before deploying any configuration logic files across your target Linux virtual 
 #### Update repository index and install networking/routing diagnostic utilities
 ```bash
 sudo apt update
-sudo apt install dhclient traceroute net-tools iputils-ping -y
+sudo apt install isc-dhcp-client traceroute net-tools iputils-ping -y
 ```
 ### Router VM
 #### Update repository index and install the FRRouting engine and Netfilter hooks
@@ -285,7 +285,19 @@ cat ~/.ssh/id_ed25519.pub
 2. Copy the entire resulting line starts with `ssh-ed25519`.
 3. SSH into your switch 'ssh student@172.16.57.193', enter configuration mode `en` then `conf t`, and tie the key directly to your switch admin profile:
 ```bash
-user student ssh-key public-key ssh-ed25519 PASTE_YOUR_COPIED_PUBLIC_KEY_STRING_HERE
+ssh-server authorized-key student ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOYPmLnudbsXK2jELT9h3vezI3zqkYX+8ihUbUUEPcFA catalan@catalan-Client
+exit
+```
+5. Verify if all the keys are working
+Open a fresh one on your Client VM, and run these tests. You should log into all of them instantly without being prompted for a password:
+```bash
+ssh catalan@172.16.57.254
+exit
+
+ssh catalan@192.168.3.158
+exit
+
+ssh student@172.16.57.193
 exit
 ```
 
