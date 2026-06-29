@@ -1,5 +1,4 @@
-# CSP450-PodC
-CSP450 Stage Two Setup and Configurations
+# CSP450 Stage Two Setup and Configurations
 
 ## Pre-Flight Requirements Before Beginning
 1. **Your UID / VLAN ID:** `231`
