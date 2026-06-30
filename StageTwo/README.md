@@ -279,7 +279,7 @@ The Linux Router VM handles your secure firewall boundary rules, dynamic NAT pac
 
 #### Required SCREENSHOTs for Report
 * [ ] **📸SCREENSHOT #7 (`show vlan`):** Run this command to verify that your branch domain (VLAN 231) and your partner `jmalaquis`'s branch domain (VLAN 217) are successfully mapped and operational on the core switch fabric.
-* [ ] **📸SCREENSHOT #8 (`show ip route`):** Run this to verify your backbone routing pathways. [cite_start]Ensure your fallback static default paths point straight to your Linux Router's switch-facing IP interface address (`192.168.3.158`)
+* [ ] **📸SCREENSHOT #8 (`show ip route`):** Run this to verify your backbone routing pathways. Ensure your fallback static default paths point straight to your Linux Router's switch-facing IP interface address (`192.168.3.158`)
 * [ ] **📸SCREENSHOT #9 (`show ip interface brief`):** Run this to verify that your virtual SVI gateways (`vlan231` and `vlan217`) and the physical routing uplink ports (`1/1/4` and `1/1/5`) are reading fully as `up/up`.
 * [ ] **📸SCREENSHOT #10 (`show dhcp-server vrf default`):** Run this to display your dynamic subnet allocation counters and prove your server's hardware MAC address reservation profile is active.
 * [ ] **📸SCREENSHOT #11 (`show running-config`):** Run this and scroll down to verify that all dual-tenant scopes, OSPF routing zones, and configuration lines are securely saved to non-volatile memory.
