@@ -52,6 +52,7 @@ Right-click your Router VM settings (**Ensure the VM is powered OFF**). Verify t
 ### [ ] Task 1.3: Map Workstation Virtual Hardware
 Right-click your Client VM and Server VM settings. Set their Network Adapters strictly to **Custom: VMnet5** (Faces the local office LAN switch ports via interface `ens33`).
 
+---
 
 ## PHASE 2: PHYSICAL MANAGEMENT LAYER CUTOVER
 **Goal:** Establish direct communications from your desk to the console of the physical hardware switches.
@@ -73,6 +74,8 @@ Back at your desk, open **View Network Connections** in Windows. Right-click the
 Open the Windows Command Prompt and test the physical line: `ping [Your Switch Management IP]`.
 
 Once you receive stable replies, open PuTTY, choose **SSH**, type the **Switch Management IP**, and log in using `"student"`.
+
+---
 
 ## PHASE 3: SWITCH ARCHITECTURE PROVISIONING & PHYSICAL CABLING
 **Goal:** Load custom routing configurations into the bare-metal hardware and complete physical production wiring.
@@ -105,6 +108,7 @@ Once both switch configurations are done, return to the back rack room. Unplug y
 | **Aruba 2530 Access Switch** | `1` | **Your Desk Node Block** (Maps to VMnet5 / `ens33` / Family Controller) | `172.16.57.192/26` | Your Private Office LAN (Client & Server) |
 | **Aruba 2530 Access Switch** | `2` | **Partner Desk Node Block** (Maps to Partner VMnet5) | `172.16.54.64/26` | Partner's Private Office LAN (Client & Server) |
 
+---
 
 ## PHASE 4: ENDPOINT ACTIVATION & INTER-BRANCH CONNECTIVITY
 **Goal:** Boot up your local business infrastructure nodes and check foundational local area connectivity.
@@ -120,7 +124,10 @@ Boot your Ubuntu Server VM on VMnet5. Ensure its netplan is configured to look f
 Boot your Ubuntu Client VM on VMnet5. Verify that it automatically pulls a dynamic IP address from your switch's configured lease range (`172.16.57.194` to `172.16.57.253`).
 
 ### [ ] Task 4.3: Validate Local Network Fabric
-Open a terminal screen on your Client VM and execute a continuous ping directly to your Server VM: `ping 172.16.57.254`. Ensure this paths successfully with zero dropped packets.
+Open a terminal screen on your Client VM and execute a continuous ping directly to your Server VM: `ping 172.16.57.254`. Ensure this routes successfully with zero dropped packets.
+
+
+---
 
 ## PHASE 5: LINUX GATEWAY PROVISIONING & OSPF NEIGHBORHOOD IGNITION
 **Goal:** Transform your Ubuntu Router into an advanced multi-vendor gateway and join the core routing fabric.
@@ -146,6 +153,8 @@ Open the Free Range Routing daemon settings file (`sudo nano /etc/frr/daemons`) 
 
 ### [ ] Task 5.4: Broadcast Local Subnet Routes
 Enter the interactive routing suite engine by typing `sudo vtysh`. Enter configuration mode (`conf t`), configure your `router ospf` environment, assign your unique router-id `231.1.1.2`, and use network command strings to advertise both your Point-to-Point WAN link and your private local subnet out to Area 0.
+
+---
 
 ## PHASE 6: FIREWALL SECURITY & FINAL VERIFICATION
 **Goal:** Apply security isolation masks and record verification metric milestones.
@@ -174,91 +183,122 @@ This section outlines the exact verification commands required for the visual in
 
 ---
 
-### 1. Client VM Verification
+### 1. Client VM Verification & Visual Inspection
 Before verifying, make sure all dynamic VMware internet backdoors on the Client are disabled. All traffic must travel explicitly through the physical switch to your custom Linux Router.
 
 #### Live Commands to Run
-* **Renew DHCP Lease:**
+* **Renew DHCP Lease & Verify Dynamic Scope Allocation:**
     ```bash
     sudo dhclient -r && sudo dhclient -v
     ```
     *Verify that your Client captures a dynamic IP in your pool range (`172.16.57.194` to `172.16.57.253`).*
 
-#### Required SCREENSHOTs for Report
-* [ ] **📸SCREENSHOT #1:** Client terminal displaying the successful dynamic IP acquisition after running `dhclient -v`.
-* [ ] **📸SCREENSHOT #2:** A successful ping and network route tracking test from the Client terminal out to the open web:
+* **Execute Network Path Tracking Checks:**
     ```bash
-    ping -c 4 www.google.ca
+    # Test 1: Verify your local default gateway hop paths
+    traceroute 192.168.3.158
+
+    # Test 2: Verify name resolution and end-to-end internet route traversal
     traceroute youtube.com
     ```
-    *(Note: Your traceroute will show the packet bouncing to your Router IP first, then hitting the college infrastructure, and finally arriving at YouTube).*
+
+#### Required SCREENSHOTs for Report
+* [ ] **📸SCREENSHOT #1:** The complete terminal output window showing a successful traceroute path tracking matrix straight from the client to your own router gateway interface.
+* [ ] **📸SCREENSHOT #2:** The complete terminal output window showing a successful traceroute path tracking matrix from the client to YouTube.
 
 ---
-
-### 2. Server VM Verification
-Your server relies on the switch's DHCP service matching its unique hardware MAC fingerprint to deliver its dedicated static profile address.
+### 2. Server VM Verification & Hardening Inspection
+Your production server relies on the Aruba core switch's DHCP service matching its physical interface MAC address layout to map its dedicated static reservation profile. It must also have its password entry backdoors permanently locked down for the audit user.
 
 #### Live Commands to Run
-* **Renew Statically Bound Lease:**
+* **Renew Statically Bound IP Lease Mapping:**
     ```bash
     sudo dhclient -r && sudo dhclient -v
     ```
-    *Verify that the server is allocated its fixed reservation address (`172.16.57.254`).*
+    *Verify that the server adapter captures its exact reservation address layout (`172.16.57.254`).*
 
-#### Required SCREENSHOTs for Report
-* [ ] **📸SCREENSHOT #3:** Server terminal showing `ip a` or a successful `dhclient` renewal reflecting its exact allocated reservation IP.
-* [ ] **📸SCREENSHOT #4:** Verification showing that internet access is fully functional from the Server:
+* **Initialize the Audit User Profile & Disable Password Authentication:**
+    ```bash
+    # Create the mandatory laboratory user
+    sudo adduser SSHtest
+
+    # Lock the password field to completely disable password-based logins
+    sudo passwd -l SSHtest
+    ```
+    *(Note: This forces the account to only accept secure, pre-authorized cryptographic key handshakes).*
+
+* **Verify Outbound Internet Edge Routing:**
     ```bash
     ping -c 4 www.google.ca
     ```
 
----
+#### Required SCREENSHOTs for Report
+* [ ] **📸SCREENSHOT #3:** Verification showing that internet access is fully functional from the Server by pinging www.google.ca with 0% packet loss.
 
-### 3. Linux Router VM Verification
-The Linux Router is the core firewall engine and dynamic gateway of your branch infrastructure.
+
+---
+### 3. Linux Router VM Verification & Routing Fabric Inspection
+The Linux Router VM handles your secure firewall boundary rules, dynamic NAT packet masquerading, and internal OSPF fabric convergence advertisements with neighboring classroom pods.
 
 #### Live Commands to Run
-* **Check Active Routing Tables & OSPF Neighbors:**
+* **Inspect Active Firewall Rule Arrays:**
+    ```bash
+    sudo nft list ruleset | less
+    ```
+    *(Verify that your NAT prerouting redirects internal local corporate DNS lookups to your gateway, and postrouting masquerades outbound interface `ens33` traffic).*
+
+* **Verify Active Multi-Vendor OSPF Neighbor Status:**
     ```bash
     sudo vtysh
-    # Run these two commands inside the FRR routing shell:
-    show ip ospf neighbor
-    show ip route
-    exit
     ```
-* **Check Live Firewall Engine Layout:**
-    ```bash
-    sudo nft list ruleset
+    Inside the interactive `vtysh` routing terminal suite, execute the following diagnostic checks:
+    ```text
+    # Check overall engine operational state and area layout
+    show ip ospf
+
+    # Display active neighborhood adjacency handshakes with other student pods
+    show ip ospf neighbor
+
+    # Display the current live kernel routing map tables
+    show ip route
     ```
 
 #### Required SCREENSHOTs for Report
-* [ ] **📸SCREENSHOT #5:** The live Netfilter security profile matching your configured ruleset (`nft list ruleset`).
-* [ ] **📸SCREENSHOT #6:** The OSPF status overview window displaying active neighborhood adjacency tables (`show ip ospf neighbor`).
-* [ ] **📸SCREENSHOT #7:** The full kernel routing table (`show ip route`) displaying dynamically learned paths (`O`) from your partner's pod and the rest of the classroom network.
+* [ ] **📸SCREENSHOT #4:** The full terminal output window of your `nft list ruleset` capture, displaying your live firewall and NAT rules.
+* [ ] **📸SCREENSHOT #5:** Your interactive routing console displaying the comprehensive metrics from running your OSPF process verification check (`show ip ospf`).
+* [ ] **📸SCREENSHOT #6:** The complete kernel routing table matrix (`show ip route`) highlighting the dynamically learned paths (`O`) generated by your partner's pod and other classmate subnets.
 
 ---
 
 ### 4. Aruba Hardware Switch Verification (In-Band Terminal Steps)
-*Note: Because your host PC's physical line is re-patched into the production network, you can no longer use a management port line. You must run these commands by opening an in-band SSH session right from your Client VM terminal.*
+*Note: Because your host PC's physical line is re-patched into the production network, you can no longer use a management port line. You must run these verification commands by opening an in-band SSH session right from your Client VM terminal.*
 
 1. Open a terminal window on your **Client VM**.
 2. SSH directly into your Core Switch's network gateway interface: `ssh student@172.16.57.193`
 3. Enter execution mode: `en`
 
-* [ ] **📸SCREENSHOT #8 (`show vlan`):** Run this command to verify that your branch domain (VLAN 231) and your partner's branch domain (VLAN 217) are successfully mapped and operational.
-* [ ] **📸SCREENSHOT #9 (`show ip interface brief`):** Run this to verify that your virtual SVI gateways and the physical routing ports (`1/1/4` and `1/1/5`) read as `up/up`.
-* [ ] **📸SCREENSHOT #10 (`show ip route`):** Run this to verify your backbone routing pathways. Ensure your default static paths point straight to your Linux Router's switch-facing IP address (`192.168.3.158`).
-* [ ] **📸SCREENSHOT #11 (`show dhcp-server vrf default`):** Run this to display your dynamic subnet allocation counters and prove your server's MAC address reservation is active.
-* [ ] **📸SCREENSHOT #12 (`show running-config`):** Run this and scroll down to verify that all configurations are securely committed to non-volatile memory.
+#### Required SCREENSHOTs for Report
+* [ ] **📸SCREENSHOT #7 (`show vlan`):** Run this command to verify that your branch domain (VLAN 231) and your partner `jmalaquis`'s branch domain (VLAN 217) are successfully mapped and operational on the core switch fabric.
+* [ ] **📸SCREENSHOT #8 (`show ip route`):** Run this to verify your backbone routing pathways. [cite_start]Ensure your fallback static default paths point straight to your Linux Router's switch-facing IP interface address (`192.168.3.158`)
+* [ ] **📸SCREENSHOT #9 (`show ip interface brief`):** Run this to verify that your virtual SVI gateways (`vlan231` and `vlan217`) and the physical routing uplink ports (`1/1/4` and `1/1/5`) are reading fully as `up/up`.
+* [ ] **📸SCREENSHOT #10 (`show dhcp-server vrf default`):** Run this to display your dynamic subnet allocation counters and prove your server's hardware MAC address reservation profile is active.
+* [ ] **📸SCREENSHOT #11 (`show running-config`):** Run this and scroll down to verify that all dual-tenant scopes, OSPF routing zones, and configuration lines are securely saved to non-volatile memory.
+
 
 #### Aruba 2500/2530 Access Switch Commands
-1. While still inside your Core switch session, jump across the trunk line to the Access switch: `ssh student@172.16.57.194`
-* [ ] **📸SCREENSHOT #13 (`show vlan`):** Run this to confirm Port 1 is untagged for your network and Port 2 is untagged for your partner.
-* [ ] **📸SCREENSHOT #14 (`show vlans ports 3`):** *Do not run 'show trunks' as it will throw a syntax error on this model.* Run this command instead to capture your inter-switch trunk pipeline. Verify that Port 3 shows up as explicitly **Tagged** for both VLANs 231 and 217.
+1. While still inside your Core switch session, jump across the inter-switch trunk pipeline link straight to the Access switch management node: 
+   ```bash
+   ssh student@172.16.57.194
+   ```
+[ ] **📸SCREENSHOT #12 (`show vlan`)**: Run this to confirm Port 1 is untagged for your network (VLAN 231) and Port 2 is untagged for your partner (VLAN 217).
+
+[ ] **📸SCREENSHOT #13 (`show vlans ports 3`)**: Do not run 'show trunks' as it will throw a syntax error on this specific hardware model. Run `show vlans ports 3` instead to capture your inter-switch trunk pipeline. Verify that Port 3 shows up as explicitly Tagged for both VLAN 231 and VLAN 217.
 
 ---
 
-### 5. Key Exchange Deployment Guide (Click-by-Click)
+## 🔐 PHASE 7: KEY EXCHANGE DEPLOYMENT & ADDITIONAL CHECKS
+
+This section outlines the generation, propagation, and validation of passwordless cryptographic identities across your target multi-vendor infrastructure.
 
 #### Step A: Generate the Key Pair on your Client VM
 1. Open a terminal on your **Client VM**.
@@ -266,31 +306,38 @@ The Linux Router is the core firewall engine and dynamic gateway of your branch 
 3. Press **Enter** to accept the default file path. Press **Enter** twice more to leave the passphrase completely blank (this allows passwordless authentication).
 
 #### Step B: Distribute the Key to your Linux Nodes
-From your Client VM terminal, execute the automated transmission tool to inject your public signature into your destination systems (replace `your-mySenecaID` with your actual Linux user account profile name):
+From your Client VM terminal, execute the automated transmission tool to inject your public signature into your destination systems (replace `catalan` with your actual Linux user account profile name):
 
 ```bash
 #Push key to your Ubuntu Router
-ssh-copy-id your-mySenecaID@192.168.3.158
+ssh-copy-id catalan@192.168.3.158
 
 #Push key to your Ubuntu Server
-ssh-copy-id your-mySenecaID@172.16.57.254
+ssh-copy-id catalan@172.16.57.254
 ```
+*(Note: Type "yes" when prompted to accept the host authenticity, then enter your user's password to complete the transmission).*
 
 #### Step C: Manually Inject Key into the Aruba 6300 Core Switch
-1. View and highlight your public key text string on your Client terminal:
+1. View and highlight your public key text string on your **Client VM terminal**:
 ```bash
 cat ~/.ssh/id_ed25519.pub
 ```
 
 2. Copy the entire resulting line starts with `ssh-ed25519`.
-3. SSH into your switch `ssh student@172.16.57.193`, enter configuration mode `en` then `conf t`, and tie the key directly to your switch admin profile:
+3. SSH into your switch `ssh student@172.16.57.193`, enter configuration mode and tie the key directly to your switch admin profile:
+
 ```bash
-ssh-server authorized-key student ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOYPmLnudbsXK2jELT9h3vezI3zqkYX+8ihUbUUEPcFA catalan@catalan-Client
-exit
+catalan-6300# conf t
+catalan-6300(config)# ssh-server authorized-key student ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOYPmLnudbsXK2jELT9h3vezI3zqkYX+8ihUbUUEPcFA catalan@catalan-Client
+catalan-6300(config)# exit
+catalan-6300# write memory
 ```
-5. Verify if all the keys are working
-<br>
-Open a fresh one on your Client VM, and run these tests. You should log into all of them instantly without being prompted for a password:
+*make sure to use your own GENERATED KEY*
+
+
+#### Step D: Verify if all the keys are working.
+Open a new TERMINAL on your **Client VM**, and run these tests. You should log into all of them instantly without being prompted for a password:
+
 ```bash
 ssh catalan@172.16.57.254
 exit
@@ -300,50 +347,85 @@ exit
 
 ssh student@172.16.57.193
 exit
+
 ```
 
+### Additional Routing Verification Checks
+#### Execute Network Path Tracking Checks:
+Open a new TERMINAL on your **Client VM** and execute the final path-validation traces:
+```bash
+traceroute 192.168.3.158
+```
 
-## Wireshark Trace Captures
+**[ ] 📸SCREENSHOT #14:** The complete terminal output window showing a successful `traceroute` path tracking matrix straight from the client to your Ubuntu router interface (`192.168.3.158`).
+
+On your **Client VM** terminal run:
+```bash
+traceroute youtube.com
+```
+
+**[ ] 📸SCREENSHOT #15:** The complete terminal output window showing a successful traceroute path tracking matrix from the client out to YouTube, confirming outbound edge traversal.
+
+To prove that passwordless key delegation is working cleanly without just dropping into an interactive shell, you must execute a remote validation command string directly from your Client terminal.
+
+
+ 
+#### Step E: Executing the Remote `SSHtest`
+
+To prove that passwordless key delegation is working cle
+
+
+### Part A: Wireshark Packet Capture & Trimming Guide
+This procedure outlines how to capture, filter, and export only the required transaction packets to keep your submission file clean. 
+### A1: Initialize the Wireshark Capture Engine
 1. Boot your Client VM and open terminal and run `sudo wireshark`.
-2. Double-click your primary network adapter interface card (typically listed as ens33). A live, scrolling window of network packets will appear.
+2. Double-click your primary network adapter interface card (typically listed as `ens33`). A live, scrolling window of network packets will appear.
 3. Click **Capture** or the **Blue Fin**.
-4. Minimize the Wireshark application window and let it run silently in the background while you perform the generation triggers below.
+4. Minimize the Wireshark application window.
 
 
-### SCREENSHOT #15: SSH Key Handshake Transactions
-How to trigger the packets: Open a terminal window on your Client VM. Execute ssh your-mySenecaID@172.16.57.254. You should log directly into your server console without being asked for a password. Type exit. Now execute ssh your-mySenecaID@192.168.3.158, verify entry, and type exit.
-
-Wireshark Filter: Maximize Wireshark. In the green display filter bar at the top, type exactly:
-
+### A2: Execute the Traffic Trigger Sequence
+Execute these commands in sequence to generate the necessary packet traces:
 ```bash
-ssh || tcp.port == 22
-```
-What to expect & capture: Hit Enter. Look at the Info column for the handshake rows reading Client: Key Exchange Init and Server: Key Exchange Init. Capture this view to prove your passwordless cryptographic negotiation succeeded.
+# Trigger 1: SSH from Client to Server & response
+ssh catalan@172.16.57.254 'exit'
 
-### 📸 SCREENSHOT #16: DHCP Lease Exchange (4-Packet DORA Handshake)
-How to trigger the packets: Open a terminal window on your Client VM. Force a complete release and re-broadcast request to the switch DHCP server:
+# Trigger 2: SSH from Client to Router & response
+ssh catalan@192.168.3.158 'exit'
 
-```bash
+# Trigger 3: SSH from Client to the Aruba 6300 Core Switch & response
+ssh student@172.16.57.193 'exit'
+
+# Trigger 4: DHCP Release and Renew (Forces a 4-packet DORA Handshake)
 sudo dhclient -r && sudo dhclient -v
-````
-Wireshark Filter: Maximize Wireshark. Clear out your old filter string, type exactly:
 
-```bash
-dhcp || bootp
+# Trigger 5: DNS query for YouTube
+nslookup youtube.com
 ```
-What to expect & capture: Hit Enter. You will see exactly four consecutive packets in chronological order. Verify that your screenshot shows all 4 parts of the DORA cycle in the Info column: DHCP Discover, DHCP Offer, DHCP Request, and DHCP ACK.
 
-### 📸 SCREENSHOT #17: DNS Name Resolution
-How to trigger the packets: Open a terminal window on your Client VM. Query the domain translation system using:
 
+### A3: Filter and Extract Only the Target Packets
+1. Return to Wireshark and click the Red Square (Stop Capture) button.
+2. In the green Display Filter bar at the top, paste this exact consolidated filter string and hit **Enter**:
 ```bash
-nslookup google.ca
+(ssh && (ip.addr == 172.16.57.254 || ip.addr == 192.168.3.158 || ip.addr == 172.16.57.193)) || (bootp || dhcp) || (dns && dns.qry.name == "youtube.com")
 ```
-Wireshark Filter: Maximize Wireshark. Clear your filter bar, type exactly:
-```bash
-dns
-```
-What to expect & capture: Hit Enter. Look for your specific destination entry. You should see a query packet labeled Standard query A google.ca paired with an immediate response packet from your router gateway returning the web IP coordinates. Snapshot this window.
+
+3. Verify that your packet window displays only:
+* The SSH key exchange and initialization packets between the client and your three nodes (Server, Router, and Core Switch).
+* The four chronological DHCP packets (`DHCP Discover`, `DHCP Offer`, `DHCP Request`, and `DHCP ACK`).
+* The DNS query packet looking for youtube.com and its corresponding gateway reply.
+
+
+### A4: Export the Sub-Selected Capture File
+To avoid submitting unnecessary background noise (like ARP, STP, or SSDP traffic), follow these steps to save only the filtered packets:
+
+1.In the top menu bar, navigate to **File → Export Specified Packets...**
+
+2. In the file dialogue box:
+* Name your file: `stage_two_capture.pcapng`
+* Under **Packet Range**, ensure the radio button is set to **All packets** but verify that **All packets matching the display filter** is checked.
+3. Click *Save*. Open your new file in Wireshark to confirm it contains only the specific requested packets before uploading it to Blackboard.
 
 ---
 <BR><BR>
@@ -364,7 +446,7 @@ sudo nft -f /etc/nftables.conf
 ```Bash
 sudo systemctl restart frr
 ```
-Force Workstation DHCP Renewal: On both Client and Server VMs, force a fresh lease acquisition:
+4. Force Workstation DHCP Renewal: On both Client and Server VMs, force a fresh lease acquisition:
 ```Bash
 sudo dhclient -r && sudo dhclient -v
 ```
