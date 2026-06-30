@@ -5,7 +5,7 @@ Welcome to the master documentation repository for my CSP450 project. The explic
 ---
 
 ## ⚠️ CRITICAL WARNING FOR CLASSMATES / USERS
-> **🛑 DO NOT COPY THE IP ADDRESSES OR UIDs IN THIS REPO BLINDLY!**
+> **🛑 DO NOT COPY THE IP ADDRESSES OR UIDs IN THIS REPO AS THIS IS MY OWM CALCULATION BASED ON MY UID!**
 > 
 > This repository is a blueprint based on a specific lab pod configuration (**Pod C**, **UID 231**, and partner **UID 217**). If you paste these configurations into your switches or virtual machines without modifying them, **your network will break, your classmate's network will break, and you will cause IP conflicts across the rack room.**
 >
@@ -28,8 +28,8 @@ For detailed, step-by-step instructions on how the network layer was planned and
 * **[Stage Two README](./StageTwo/README.md)**: Contains the full matrix, infrastructure prerequisite packages, and physical topology blueprints.
 
 ## 📁 Additional Resources
-* **[Templates](./Templates/)**: Configuration files used during the project deployment pipeline.
-* **[VM Screenshots](./VM%20SS/)**: Visual metric captures and packet verification logs used for laboratory report compliance.
+* **[Templates](./StageTwo/Templates/)**: Configuration files used during the project deployment pipeline.
+* ~~**My Personal Screenshots**: Visual metric captures and packet verification logs used for laboratory report compliance.~~
 
 ---
-*Last Updated: June 29, 2026*
+*Last Updated: June 30, 2026*
