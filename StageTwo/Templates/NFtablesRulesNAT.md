@@ -3,7 +3,7 @@
 # Cleaned NFTables Security & NAT Outbound Layer
 **Target Profile Path:** `/etc/nftables.conf` on the **Ubuntu Router VM**.
 
-Run `sudo nft -f /etc/nftables.conf` to push the security policy live. This stripped configuration securely passes user traffic out to external webs, blocks unexpected ingress network exploration scans, and automatically intercepts and proxies local enterprise host name lookup targets to the campus central domain engine (`10.101.100.21`).
+Run `sudo nft -f /etc/nftables.conf` to push the security policy live. This stripped configuration securely passes user traffic out to external webs, blocks unexpected ingress network exploration scans, and automatically intercepts and proxies local enterprise host name lookup targets to the Seneca Network (`10.x.x.x`).
 
 ```text
 flush ruleset
