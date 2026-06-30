@@ -4,11 +4,11 @@
 This repository contains the deployment phase for Stage 3 of our Enterprise Infrastructure Lab. Having established an OSPF-routed network architecture with secure VLAN segmentation in Stage Two, Stage Three scales an online relational database management system (**MariaDB**) coupled to a dynamic web application frontend (**Apache/PHP**).
 
 ## 🗺️ System Parameters (Profile: catalan)
-* **VLAN ID:** 231
-* **Server Hostname:** catalan-Server
-* **Server Production IP:** 172.16.57.254
-* **Database Target Engine:** MariaDB 10.x
-* **Application Stack:** Apache2, PHP 8.x, PDO-MySQL Driver
+* **VLAN ID:** `231`
+* **Server Hostname:** `catalan-Server`
+* **Server Production IP:** `172.16.57.254`
+* **Database Target Engine:** `MariaDB 10.x`
+* **Application Stack:** `Apache2, PHP 8.x, PDO-MySQL Driver`
 
 ## 📁 Repository Directory Structure
 * `/var/www/html/index.php` - Custom PHP Instrument Lookup Utility Front-End
