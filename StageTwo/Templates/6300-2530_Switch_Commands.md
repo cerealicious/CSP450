@@ -85,7 +85,7 @@ router ospf 1
 ip route 0.0.0.0 0.0.0.0 192.168.3.158 # ----> Primary default route out through Your Router WAN IP (Your Router's Last Usable IP)
 ip route 0.0.0.0 0.0.0.0 192.168.3.102 # ----> Backup default route out through Partner Router WAN IP (Your Partner Router's Last Usable IP)
 
-write memory
+write memory                          # ----> This command might not work
 ```
 
 ===============================================
@@ -117,4 +117,4 @@ vlan 217
   tagged 3                             # ----> Shunts Partner data tags up the trunk line to Core
   exit
 
-write memory
+write memory                           # ----> This command might not work
