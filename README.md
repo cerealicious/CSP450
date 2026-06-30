@@ -5,7 +5,7 @@ Welcome to the master documentation repository for my CSP450 project. The explic
 ---
 
 ## ⚠️ CRITICAL WARNING FOR CLASSMATES / USERS
-> **🛑 DO NOT COPY THE IP ADDRESSES OR UIDs IN THIS REPO AS THIS IS MY OWM CALCULATION BASED ON MY UID!**
+> **🛑 DO NOT COPY THE IP ADDRESSES OR UIDs IN THIS REPO AS THIS IS MY OWN CALCULATION BASED ON MY UID!**
 > 
 > This repository is a blueprint based on a specific lab pod configuration (**Pod C**, **UID 231**, and partner **UID 217**). If you paste these configurations into your switches or virtual machines without modifying them, **your network will break, your classmate's network will break, and you will cause IP conflicts across the rack room.**
 >
