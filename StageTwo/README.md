@@ -146,7 +146,7 @@ Open a terminal screen on your Client VM and execute a continuous ping directly 
 Boot your Ubuntu Router VM. Open your Netplan configuration file (`sudo nano /etc/netplan/staticAssignment.yaml`). Bind your tight point-to-point IP address profile directly to your switch-facing interface `ens37` with `dhcp4: false`. Run `sudo netplan apply` to lock it into place.
 
 ### [ ] Task 5.2: Activate Structural System Kernel Forwarding
-By default, Linux blocks data packets from traveling between different network cards. Enable system routing by opening the system control configuration architecture: `sudo sysctl -w net.ipv4.ip_forward=1`. *(To make this change permanent through restarts, uncomment the line `net.ipv4.ip_forward=1` inside the `/etc/sysctl.conf` file).*
+By default, Linux blocks data packets from traveling between different network cards. Enable system routing by opening the system control configuration architecture: `sudo sysctl -w net.ipv4.ip_forward=1`. *(To make this change permanent through restarts, uncomment the line `net.ipv4.ip_forward=1` inside the `/etc/sysctl.conf` file or `/etc/sysctl.d/99-custom.conf`).*
 
 ### [ ] Task 5.3: Ignite the OSPF Routing Daemon Engine
 Open the Free Range Routing daemon settings file (`sudo nano /etc/frr/daemons`) and change the line reading `ospfd=no` to `ospfd=yes`. Restart the routing system manager: `sudo systemctl restart frr`.
