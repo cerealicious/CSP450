@@ -509,3 +509,4 @@ If following the mandatory boot sequence does not resolve connectivity issues, u
 | **6. OSPF Route** | `vtysh -c "show ip route 0.0.0.0/0"` on Router | Shows default via `ens33` | If router has no default route, it cannot forward to Seneca network. Check `ip route 0.0.0.0 0.0.0.0 ens33`. |
 
 ---
+*Last Updated: July 01, 2026*
