@@ -196,7 +196,7 @@ sudo systemctl restart apache2
 
 
 ### Step 5.2: Test Your Custom Instrument Search
-- Verify that your database can fetch the custom entries we appended
+- Verify that your database can fetch the custom entries you appended
     - In the **Database Server** IP box, type your own server IP: `172.16.57.254`.
     - In the **Instrument Type** box, type: `Guitar`.
     - In the **Condition dropdown**, select: `New`.
