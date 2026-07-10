@@ -64,7 +64,7 @@ pool_214
 range 172.16.53.130 172.16.53.189
 default-router 172.16.53.129
 dns-server 10.101.100.21
-static-bind ip 172.16.53.190 mac [AKARKI5_SERVER_MAC_HERE]
+static-bind ip 172.16.53.190 mac 00:50:56:20:37:EB
 exit
 no shutdown
 
@@ -73,7 +73,7 @@ pool_206
 range 172.16.51.130 172.16.51.189
 default-router 172.16.51.129
 dns-server 10.101.100.21
-static-bind ip 172.16.51.190 mac [CAEMMANUEL_SERVER_MAC_HERE]
+static-bind ip 172.16.51.190 mac 00:50:56:2E:34:2C
 exit
 
 # --- OSPF Identity ---
