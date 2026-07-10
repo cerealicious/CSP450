@@ -9,7 +9,7 @@ Client and Server VLAN ID Number= VLAN 206
 IP subnet for address assignment: Starting reservation 172.16.0.0/16
 172.16.0.0/26 Subnet# 206
 
-Network ID== 172.16.51.128
+Network ID== 172.16.51.128 /26
 First IP== 172.16.51.129
 Last IP== 172.16.51.190
 Broadcast ID== 172.16.51.191
@@ -18,8 +18,8 @@ The Linux Server will be automatically allocated the last address in this subnet
 
 
 Router IP subnet for address assignment: 192.168.0.0/30
-Network ID== 192.168.3.104/30
-First IP== 192.168.3.105
-Last IP== 192.168.3.106
-Assign the first IP to the connected port on the Aruba 6300 switch: 192.168.3.105
-The Linux Router will be statically assigned the last address in this subnet: 192.168.3.106
+Network ID== 192.168.3.56 /30
+First IP== 192.168.3.57
+Last IP== 192.168.3.58
+Assign the first IP to the connected port on the Aruba 6300 switch: 192.168.3.57
+The Linux Router will be statically assigned the last address in this subnet: 192.168.3.58
