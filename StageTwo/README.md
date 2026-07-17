@@ -340,19 +340,13 @@ From your Client VM terminal, execute the automated transmission tool to inject 
 ```bash
 #Push key to your Ubuntu Router
 ssh-copy-id catalan@192.168.3.158
-
-#Push key to your Ubuntu Server
-ssh-copy-id catalan@172.16.57.254
 ```
 *(Note: Type "yes" when prompted to accept host authenticity, then enter your user's password one final time to authorize the transmission).*
 
-#### Step C: Verify if all the keys are working.
+#### Step C: Verify if the key is working.
 Open a new TERMINAL on your **Client VM**, and run these tests. You should log into all of them instantly without being prompted for a password:
 
 ```bash
-ssh catalan@172.16.57.254
-exit
-
 ssh catalan@192.168.3.158
 exit
 ```
