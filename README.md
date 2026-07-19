@@ -1,4 +1,4 @@
-# 🌐 CSP450 Capstone Project: Network & Infrastructure Blueprint
+# 🌐 CSP450 Project: Network & Infrastructure Blueprint
 
 > **Master Documentation Repository**  
 > A comprehensive architectural guide and implementation blueprint for the CSP450 Capstone Challenge. This repository systematically documents the progression of network infrastructure, database integration, and application deployment.
