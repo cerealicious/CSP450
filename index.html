@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Network Configuration Generator</title>
+    <title>CSP450 Stage Two - Network Configuration Generator</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -59,9 +59,10 @@
                     <p class="text-xs text-slate-400 font-medium">Stage Two Automated Multi-Vendor Deployment Planner</p>
                 </div>
             </div>
-            <div class="flex items-center gap-2 bg-slate-800/80 px-4 py-1.5 rounded-full border border-slate-700/60 text-xs font-semibold text-slate-300">
-                <i class="fa-solid fa-code-branch text-brand-gold"></i>
-                <span><a href="https://github.com/cerealicious">Made by Cerealicious | Github</a></span>
+            <div class="flex items-center gap-1 bg-slate-800/80 px-2 rounded-full border border-slate-700 text-xs font-semibold text-slate-300">
+                <span><a href="https://github.com/cerealicious" target="_blank" class="hover:text-brand-amber transition-colors hover:underline">Made by Cerealicious</a></span><a href="https://github.com/cerealicious/" target="_blank" class="hover:text-white transition-colors bg-slate-800 hover:bg-slate-700 p-1 rounded-full border border-slate-700/50 hover:border-slate-500 shadow-sm flex items-center justify-center">
+                    <img src="https://avatars.githubusercontent.com/u/5056960?v=4" alt="cerealicious profile" class="w-10 h-10 rounded-full">
+                </a>
             </div>
         </div>
     </header>
@@ -83,7 +84,7 @@
                         <div class="grid grid-cols-2 gap-3">
                             <div>
                                 <label class="block text-[10px] font-semibold text-slate-400 mb-1">MySenecaID</label>
-                                <input type="text" id="userID" value="CerilAnthony" placeholder="e.g. catalan" required
+                                <input type="text" id="userID" value="catalan" placeholder="e.g. catalan" required
                                     class="w-full px-3 py-2 text-sm rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-teal focus:border-transparent font-medium">
                             </div>
                             <div>
@@ -110,12 +111,12 @@
                         <div class="grid grid-cols-2 gap-3">
                             <div>
                                 <label class="block text-[10px] font-semibold text-slate-400 mb-1">Partner SenecaID</label>
-                                <input type="text" id="partnerID" value="Anthony" placeholder="e.g. srapted" required
+                                <input type="text" id="partnerID" value="jmalaqui" placeholder="e.g. srapted" required
                                     class="w-full px-3 py-2 text-sm rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-teal focus:border-transparent font-medium">
                             </div>
                             <div>
                                 <label class="block text-[10px] font-semibold text-slate-400 mb-1">Partner UID (0-1023)</label>
-                                <input type="number" id="partnerUID" value="7" min="0" max="1023" required
+                                <input type="number" id="partnerUID" value="217" min="0" max="1023" required
                                     class="w-full px-3 py-2 text-sm rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-teal focus:border-transparent font-medium font-mono">
                             </div>
                         </div>
@@ -168,11 +169,11 @@
                 </button>
                 <button onclick="switchTab('tab-user-files')" id="btn-user-files" class="tab-btn flex-1 py-2 px-3 text-xs font-bold rounded-lg transition-all text-slate-600 hover:text-slate-900 flex items-center justify-center gap-1.5">
                     <i class="fa-solid fa-laptop text-brand-teal"></i>
-                    <span>Your VM Files (User A)</span>
+                    <span id="tab-user-label">Your VM Files (User A)</span>
                 </button>
                 <button onclick="switchTab('tab-partner-files')" id="btn-partner-files" class="tab-btn flex-1 py-2 px-3 text-xs font-bold rounded-lg transition-all text-slate-600 hover:text-slate-900 flex items-center justify-center gap-1.5">
                     <i class="fa-solid fa-user-group text-sky-600"></i>
-                    <span>Partner VM Files (User B)</span>
+                    <span id="tab-partner-label">Partner VM Files (User B)</span>
                 </button>
                 <button onclick="switchTab('tab-switch-scripts')" id="btn-switch-scripts" class="tab-btn flex-1 py-2 px-3 text-xs font-bold rounded-lg transition-all text-slate-600 hover:text-slate-900 flex items-center justify-center gap-1.5">
                     <i class="fa-solid fa-server text-purple-600"></i>
@@ -239,7 +240,7 @@
                 <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6">
                     <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-slate-100 pb-4 mb-4">
                         <div>
-                            <h3 class="text-sm font-bold text-slate-900">Your Local Linux Configuration Files</h3>
+                            <h3 id="user-files-title" class="text-sm font-bold text-slate-900">Your Local Linux Configuration Files</h3>
                             <p class="text-xs text-slate-400">Copy these blocks directly into your corresponding Router and Server VMs</p>
                         </div>
                         <select id="userFileSelector" onchange="renderActiveFile('user')" class="px-3 py-1.5 text-xs font-bold text-slate-700 bg-slate-100 rounded-lg border border-slate-200 focus:outline-none">
@@ -270,7 +271,7 @@
                 <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6">
                     <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-slate-100 pb-4 mb-4">
                         <div>
-                            <h3 class="text-sm font-bold text-slate-900">Partner's Linux Configuration Files</h3>
+                            <h3 id="partner-files-title" class="text-sm font-bold text-slate-900">Partner's Linux Configuration Files</h3>
                             <p class="text-xs text-slate-400">Provide these configuration scripts to your lab partner to maintain identical system topologies</p>
                         </div>
                         <select id="partnerFileSelector" onchange="renderActiveFile('partner')" class="px-3 py-1.5 text-xs font-bold text-slate-700 bg-slate-100 rounded-lg border border-slate-200 focus:outline-none">
@@ -333,7 +334,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs">
             <!-- Left Side support text -->
             <div class="flex flex-wrap items-center justify-center md:justify-start gap-1.5 text-center md:text-left">
-                <span>If you find this project useful, you can support my work by buying me a</span>
+                <span>Support me or show me your appreciation. Buy me a</span>
                 <span class="inline-flex items-center gap-1 bg-amber-500/10 text-amber-500 px-2 py-0.5 rounded-md border border-amber-500/20 font-medium">
                     <i class="fa-solid fa-mug-hot"></i> coffee
                 </span>
@@ -341,7 +342,7 @@
                 <span class="inline-flex items-center gap-1 bg-yellow-500/10 text-yellow-500 px-2 py-0.5 rounded-md border border-yellow-500/20 font-medium">
                     <i class="fa-solid fa-stroopwafel"></i> waffle
                 </span>
-                <span>or an</span>
+                <span>or</span>
                 <span class="inline-flex items-center gap-1 bg-orange-500/10 text-orange-500 px-2 py-0.5 rounded-md border border-orange-500/20 font-medium">
                     <i class="fa-solid fa-cheese"></i> Ultimate Grilled Cheese
                 </span>
@@ -545,9 +546,17 @@
             generatedData.partnerMAC = partnerMAC;
             generatedData.topology = switchTopology;
 
-            // Render UI Headers
-            document.getElementById('userA-Title').textContent = `Your Prep Sheet (VLAN ${userUID})`;
-            document.getElementById('userB-Title').textContent = `Partner's Prep Sheet (VLAN ${partnerUID})`;
+            // Render UI Headers dynamically using the user Seneca IDs
+            document.getElementById('userA-Title').textContent = `${userSeneca}'s Prep Sheet (VLAN ${userUID})`;
+            document.getElementById('userB-Title').textContent = `${partnerSeneca}'s Prep Sheet (VLAN ${partnerUID})`;
+
+            // Render tab buttons dynamically using Seneca IDs and numeric UIDs
+            document.getElementById('tab-user-label').textContent = `${userSeneca} VM Files (UID ${userUID})`;
+            document.getElementById('tab-partner-label').textContent = `${partnerSeneca} VM Files (UID ${partnerUID})`;
+
+            // Render inner layout section titles
+            document.getElementById('user-files-title').textContent = `${userSeneca} Local Linux Configuration Files`;
+            document.getElementById('partner-files-title').textContent = `${partnerSeneca} Linux Configuration Files`;
 
             // Populate Prep Sheet Table A
             populateTable('userA-PrepBody', userMetrics, userMAC, "Core Switch Port 1/1/4");
@@ -566,22 +575,22 @@
         function populateTable(elementId, metrics, mac, portLabel) {
             const tbody = document.getElementById(elementId);
             tbody.innerHTML = `
-                <tr><td class="py-2.5 font-medium text-slate-500">Seneca Host Prefix</td><td class="py-2.5 text-right font-semibold text-slate-800">${metrics.senecaId}</td></tr>
-                <tr><td class="py-2.5 font-medium text-slate-500">VLAN ID Containment</td><td class="py-2.5 text-right font-semibold text-brand-teal font-mono">VLAN ${metrics.uid}</td></tr>
-                <tr class="bg-slate-50/50"><td class="py-2.5 font-bold text-slate-800 uppercase tracking-wider text-[9px]" colspan="2">LAN Subnet Parameters (${metrics.lanNetworkID}/26)</td></tr>
-                <tr><td class="py-2.5 font-medium text-slate-500">Network ID Space</td><td class="py-2.5 text-right font-semibold text-slate-800 font-mono">${metrics.lanNetworkID}</td></tr>
-                <tr><td class="py-2.5 font-medium text-slate-500">SVI Core Gateway IP</td><td class="py-2.5 text-right font-semibold text-slate-800 font-mono">${metrics.lanGateway}</td></tr>
-                <tr><td class="py-2.5 font-medium text-slate-500">Dynamic Lease Range</td><td class="py-2.5 text-right font-semibold text-slate-800 font-mono">${metrics.dhcpStart} - ${metrics.dhcpEnd}</td></tr>
-                <tr><td class="py-2.5 font-medium text-slate-500">Server Static Bound IP</td><td class="py-2.5 text-right font-semibold text-teal-600 font-bold font-mono">${metrics.serverStaticIP}</td></tr>
-                <tr><td class="py-2.5 font-medium text-slate-500">Broadcast Boundary</td><td class="py-2.5 text-right font-semibold text-slate-800 font-mono">${metrics.lanBroadcast}</td></tr>
-                <tr class="bg-slate-50/50"><td class="py-2.5 font-bold text-slate-800 uppercase tracking-wider text-[9px]" colspan="2">Point-to-Point WAN Subnet (${metrics.wanNetworkID}/30)</td></tr>
-                <tr><td class="py-2.5 font-medium text-slate-500">WAN Network ID</td><td class="py-2.5 text-right font-semibold text-slate-800 font-mono">${metrics.wanNetworkID}</td></tr>
-                <tr><td class="py-2.5 font-medium text-slate-500">Switch Facing IP</td><td class="py-2.5 text-right font-semibold text-slate-800 font-mono">${metrics.wanSwitchIP}</td></tr>
-                <tr><td class="py-2.5 font-medium text-slate-500">Router Facing IP</td><td class="py-2.5 text-right font-semibold text-brand-gold font-bold font-mono">${metrics.wanRouterIP}</td></tr>
-                <tr><td class="py-2.5 font-medium text-slate-500">Broadcast Boundary</td><td class="py-2.5 text-right font-semibold text-slate-800 font-mono">${metrics.wanBroadcast}</td></tr>
-                <tr class="bg-slate-50/50"><td class="py-2.5 font-bold text-slate-800 uppercase tracking-wider text-[9px]" colspan="2">OSPF Routing ID Configuration</td></tr>
-                <tr><td class="py-2.5 font-medium text-slate-500">Linux Router ID</td><td class="py-2.5 text-right font-semibold text-slate-800 font-mono">${metrics.ospfRouterID}</td></tr>
-                <tr><td class="py-2.5 font-medium text-slate-500">Core Switch OSPF ID</td><td class="py-2.5 text-right font-semibold text-slate-800 font-mono">${metrics.ospfSwitchID}</td></tr>
+                <tr><td class="py-2.5 font-medium text-slate-500 whitespace-nowrap">Seneca Host Prefix</td><td class="py-2.5 text-right font-semibold text-slate-800">${metrics.senecaId}</td></tr>
+                <tr><td class="py-2.5 font-medium text-slate-500 whitespace-nowrap">VLAN ID Containment</td><td class="py-2.5 text-right font-semibold text-brand-teal font-mono">VLAN ${metrics.uid}</td></tr>
+                <tr class="bg-slate-50/50"><td class="py-2.5 font-bold text-slate-800 uppercase tracking-wider text-[9px] whitespace-nowrap" colspan="2">LAN Subnet Parameters (${metrics.lanNetworkID}/26)</td></tr>
+                <tr><td class="py-2.5 font-medium text-slate-500 whitespace-nowrap">Network ID Space</td><td class="py-2.5 text-right font-semibold text-slate-800 font-mono">${metrics.lanNetworkID}</td></tr>
+                <tr><td class="py-2.5 font-medium text-slate-500 whitespace-nowrap">SVI Core Gateway IP</td><td class="py-2.5 text-right font-semibold text-slate-800 font-mono">${metrics.lanGateway}</td></tr>
+                <tr><td class="py-2.5 font-medium text-slate-500 whitespace-nowrap">Dynamic Lease Range</td><td class="py-2.5 text-right font-semibold text-slate-800 font-mono">${metrics.dhcpStart} - ${metrics.dhcpEnd}</td></tr>
+                <tr><td class="py-2.5 font-medium text-slate-500 whitespace-nowrap">Server Static Bound IP</td><td class="py-2.5 text-right font-semibold text-teal-600 font-bold font-mono">${metrics.serverStaticIP}</td></tr>
+                <tr><td class="py-2.5 font-medium text-slate-500 whitespace-nowrap">Broadcast Boundary</td><td class="py-2.5 text-right font-semibold text-slate-800 font-mono">${metrics.lanBroadcast}</td></tr>
+                <tr class="bg-slate-50/50"><td class="py-2.5 font-bold text-slate-800 uppercase tracking-wider text-[9px] whitespace-nowrap" colspan="2">Point-to-Point WAN Subnet (${metrics.wanNetworkID}/30)</td></tr>
+                <tr><td class="py-2.5 font-medium text-slate-500 whitespace-nowrap">WAN Network ID</td><td class="py-2.5 text-right font-semibold text-slate-800 font-mono">${metrics.wanNetworkID}</td></tr>
+                <tr><td class="py-2.5 font-medium text-slate-500 whitespace-nowrap">Switch Facing IP</td><td class="py-2.5 text-right font-semibold text-slate-800 font-mono">${metrics.wanSwitchIP}</td></tr>
+                <tr><td class="py-2.5 font-medium text-slate-500 whitespace-nowrap">Router Facing IP</td><td class="py-2.5 text-right font-semibold text-brand-gold font-bold font-mono">${metrics.wanRouterIP}</td></tr>
+                <tr><td class="py-2.5 font-medium text-slate-500 whitespace-nowrap">Broadcast Boundary</td><td class="py-2.5 text-right font-semibold text-slate-800 font-mono">${metrics.wanBroadcast}</td></tr>
+                <tr class="bg-slate-50/50"><td class="py-2.5 font-bold text-slate-800 uppercase tracking-wider text-[9px] whitespace-nowrap" colspan="2">OSPF Routing ID Configuration</td></tr>
+                <tr><td class="py-2.5 font-medium text-slate-500 whitespace-nowrap">Linux Router ID</td><td class="py-2.5 text-right font-semibold text-slate-800 font-mono">${metrics.ospfRouterID}</td></tr>
+                <tr><td class="py-2.5 font-medium text-slate-500 whitespace-nowrap">Core Switch OSPF ID</td><td class="py-2.5 text-right font-semibold text-slate-800 font-mono">${metrics.ospfSwitchID}</td></tr>
             `;
         }
 
@@ -735,15 +744,41 @@ table ip nat {
 }`;
             }
 
+            else if (fileType === 'sshHardening') {
+                targetCodeElement.textContent = `# Target host: ${metrics.serverHost} VM
+# Task 1: Create SSHtest Audit User and Lock Credential Database Field
+# Run these commands sequentially on the Server:
+sudo adduser SSHtest
+sudo passwd -l SSHtest
+
+# Task 2: Modify SSH Daemon Configuration File
+# Location: /etc/ssh/sshd_config
+# Remove the Comment '#' in PasswordAuthentication
+# Then Change PasswordAuthentication to 'no' to force key-only access:
+#
+# PasswordAuthentication no
+
+# Task 3: Restart SSH Daemon
+sudo systemctl restart ssh
+
+# Task 4: Verification Checks
+# Check local database lock status:
+sudo passwd -S SSHtest
+# Expected status: 'SSHtest L ...' (L = Locked)
+
+# Test remote passwordless lookup from Client VM:
+# ssh SSHtest@${metrics.wanRouterIP}
+# Expected status: Immediately drops with 'Permission denied (publickey)'`;
+            }
+
             else if (fileType === 'coreConfig') {
                 // Aruba 6300 Core Switch configuration script
                 const u = generatedData.user;
                 const p = generatedData.partner;
                 
-                targetCodeElement.textContent =
-`en
+                targetCodeElement.textContent =`enable
 configure terminal
-hostname ${u.senecaId}-6300
+hostname ${u.senecaId}-${p.senecaId}-6300
 
 # --- ${u.senecaId}'s VLAN (${u.uid}) ---
 vlan ${u.uid}
@@ -799,7 +834,7 @@ exit
 dhcp-server vrf default
 
 # ${u.uid}'s Pool
-pool ${u.uid}
+pool_${u.uid}
 range ${u.dhcpStart} ${u.dhcpEnd}
 default-router ${u.lanGateway}
 dns-server 10.101.100.21
@@ -807,7 +842,7 @@ static-bind ip ${u.serverStaticIP} mac ${generatedData.userMAC}
 exit
 
 # ${p.uid}'s Pool
-pool ${p.uid}
+pool_${p.uid}
 range ${p.dhcpStart} ${p.dhcpEnd}
 default-router ${p.lanGateway}
 dns-server 10.101.100.21
@@ -834,7 +869,7 @@ exit
 
                 if (generatedData.topology === '6300-2530') {
                     // Classic HP ProCurve syntax for Access Switch 2530
-                    targetCodeElement.textContent = `en
+                    targetCodeElement.textContent = `enable
 configure terminal
 ip default-gateway ${u.lanGateway}
 hostname "${u.senecaId}-${p.senecaId}-6300"
