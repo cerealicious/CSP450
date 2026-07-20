@@ -233,7 +233,8 @@ Your production server relies on the Aruba core switch's DHCP service matching i
    sudo nano /etc/ssh/sshd_config
    ```
    b.) Scroll down and find the line: `#PasswordAuthentication yes` (or `PasswordAuthentication yes`).
-   c.) Uncomment it (remove the `#`) and change it to:
+
+  c.) Uncomment it by removing the `#` and change it to:
    ```bash
    PasswordAuthentication no
    ```
