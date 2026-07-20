@@ -835,17 +835,17 @@ dhcp-server vrf default
 
 # ${u.senecaId}'s Pool
 pool ${u.uid}
-range ${u.dhcpStart} ${u.dhcpEnd}
+range ${u.dhcpStart} ${u.dhcpEnd} prefix-len 26
 default-router ${u.lanGateway}
-dns-server 10.101.100.21
+dns-server ${u.wanRouterIP}
 static-bind ip ${u.serverStaticIP} mac ${generatedData.userMAC}
 exit
 
 # ${p.senecaId}'s Pool
 pool ${p.uid}
-range ${p.dhcpStart} ${p.dhcpEnd}
+range ${p.dhcpStart} ${p.dhcpEnd} prefix-len 26
 default-router ${p.lanGateway}
-dns-server 10.101.100.21
+dns-server ${p.wanRouterIP}
 static-bind ip ${p.serverStaticIP} mac ${generatedData.partnerMAC}
 exit
 no shutdown
