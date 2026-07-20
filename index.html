@@ -833,16 +833,16 @@ exit
 # --- DHCP Server Pools ---
 dhcp-server vrf default
 
-# ${u.uid}'s Pool
-pool_${u.uid}
+# ${u.senecaId}'s Pool
+pool ${u.uid}
 range ${u.dhcpStart} ${u.dhcpEnd}
 default-router ${u.lanGateway}
 dns-server 10.101.100.21
 static-bind ip ${u.serverStaticIP} mac ${generatedData.userMAC}
 exit
 
-# ${p.uid}'s Pool
-pool_${p.uid}
+# ${p.senecaId}'s Pool
+pool ${p.uid}
 range ${p.dhcpStart} ${p.dhcpEnd}
 default-router ${p.lanGateway}
 dns-server 10.101.100.21
@@ -858,8 +858,6 @@ exit
 
 ip route 0.0.0.0 0.0.0.0 ${u.wanRouterIP}
 ip route 0.0.0.0 0.0.0.0 ${p.wanRouterIP}
-
-exit
 `;
             }
 
@@ -894,7 +892,7 @@ exit
 write memory`;
                 } else {
                     // Modern AOS-CX 6300 Syntax for Switch 1
-                    targetCodeElement.textContent = `en
+                    targetCodeElement.textContent = `enable
 configure terminal
 hostname "${p.senecaId}-6300"
 
