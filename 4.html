@@ -1169,21 +1169,21 @@ exit
 pool ${t2.uid}
 range ${t2.dhcpStart} ${t2.dhcpEnd} prefix-len 26
 default-router ${t2.virtualGateway}
-dns-server ${t2.routerWanIP} ${t1.routerWanIP} ${t3.routerWanIP} ${t4.routerWanIP}
+dns-server ${t1.routerWanIP} ${t2.routerWanIP} ${t3.routerWanIP} ${t4.routerWanIP}
 static-bind ip ${t2.serverStaticIP} mac ${t2.mac}
 exit
 
 pool ${t3.uid}
 range ${t3.dhcpStart} ${t3.dhcpEnd} prefix-len 26
 default-router ${t3.virtualGateway}
-dns-server ${t3.routerWanIP} ${t1.routerWanIP} ${t2.routerWanIP} ${t4.routerWanIP}
+dns-server ${t1.routerWanIP} ${t2.routerWanIP} ${t3.routerWanIP} ${t4.routerWanIP}
 static-bind ip ${t3.serverStaticIP} mac ${t3.mac}
 exit
 
 pool ${t4.uid}
 range ${t4.dhcpStart} ${t4.dhcpEnd} prefix-len 26
 default-router ${t4.virtualGateway}
-dns-server ${t4.routerWanIP} ${t1.routerWanIP} ${t2.routerWanIP} ${t3.routerWanIP}
+dns-server ${t1.routerWanIP} ${t2.routerWanIP} ${t3.routerWanIP} ${t4.routerWanIP}
 static-bind ip ${t4.serverStaticIP} mac ${t4.mac}
 exit
 no shutdown
@@ -1299,21 +1299,21 @@ exit
 pool ${t2.uid}
 range ${t2.dhcpStart} ${t2.dhcpEnd} prefix-len 26
 default-router ${t2.virtualGateway}
-dns-server ${t2.routerWanIP} ${t1.routerWanIP} ${t3.routerWanIP} ${t4.routerWanIP}
+dns-server ${t1.routerWanIP} ${t2.routerWanIP} ${t3.routerWanIP} ${t4.routerWanIP}
 static-bind ip ${t2.serverStaticIP} mac ${t2.mac}
 exit
 
 pool ${t3.uid}
 range ${t3.dhcpStart} ${t3.dhcpEnd} prefix-len 26
 default-router ${t3.virtualGateway}
-dns-server ${t3.routerWanIP} ${t1.routerWanIP} ${t2.routerWanIP} ${t4.routerWanIP}
+dns-server ${t1.routerWanIP} ${t2.routerWanIP} ${t3.routerWanIP} ${t4.routerWanIP}
 static-bind ip ${t3.serverStaticIP} mac ${t3.mac}
 exit
 
 pool ${t4.uid}
 range ${t4.dhcpStart} ${t4.dhcpEnd} prefix-len 26
 default-router ${t4.virtualGateway}
-dns-server ${t4.routerWanIP} ${t1.routerWanIP} ${t2.routerWanIP} ${t3.routerWanIP}
+dns-server ${t1.routerWanIP} ${t2.routerWanIP} ${t3.routerWanIP} ${t4.routerWanIP}
 static-bind ip ${t4.serverStaticIP} mac ${t4.mac}
 exit
 no shutdown
