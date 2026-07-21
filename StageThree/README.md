@@ -78,7 +78,7 @@ sudo ss -tulpn | grep 3306
 
 
 ### Step 1.6: Install MariaDB on Client-VM
-During visual inspection, we will be running MariaDB using the** Client-VM** to verify that we can log into our MariaDB database using the read-only user that we will create later.
+During visual inspection, we will be running MariaDB using the **Client-VM** to verify that we can log into our MariaDB database using the read-only user that we will create later.
 
 So on my Client-VM, I opened terminal and run these commands.
 ```bash
