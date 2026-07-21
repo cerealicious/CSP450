@@ -289,7 +289,7 @@
                 </div>
             </div>
 
-            <div class="flex items-center gap-1 bg-brand-slate/85 px-4 py-1.5 rounded-full border theme-border text-xs font-semibold text-slate-200 shadow-lg">
+            <div class="text-xs font-semibold text-slate-200 shadow-lg">
                 <span><a href="https://github.com/cerealicious" target="_blank" class="hover:text-brand-indigo transition-colors hover:underline flex items-center gap-2">
                     <span>Made by Cerealicious</span>
                     <img src="https://avatars.githubusercontent.com/u/5056960?v=4" alt="cerealicious profile" class="w-12 h-12 rounded-full border theme-border shadow-inner">
@@ -466,9 +466,9 @@
                         <div class="flex items-center justify-between border-b theme-border pb-3 mb-4">
                             <span class="flex items-center gap-2 font-bold theme-text-main">
                                 <i class="fa-solid fa-network-wired text-brand-indigo"></i>
-                                <span id="userA-Title">Branch 1 &amp; 2 VRRP Paths</span>
+                                <span id="userA-Title" class="text-[13px]">Branch 1 &amp; 2 VRRP Paths</span>
                             </span>
-                            <span class="px-2.5 py-0.5 bg-brand-indigo/10 text-brand-indigo border border-brand-indigo/20 rounded text-[10px] font-bold tracking-wider">CORE 1 PRIMARY</span>
+                            <span class="px-2.5 py-0.5 bg-brand-indigo/10 text-brand-indigo border border-brand-indigo/20 rounded text-[8px] font-bold tracking-wider">CORE 1 PRIMARY</span>
                         </div>
                         <div class="flex-grow">
                             <table class="w-full text-xs text-left theme-text-main border-collapse table-fixed font-sans">
@@ -484,9 +484,9 @@
                         <div class="flex items-center justify-between border-b theme-border pb-3 mb-4">
                             <span class="flex items-center gap-2 font-bold theme-text-main">
                                 <i class="fa-solid fa-network-wired text-brand-violet"></i>
-                                <span id="partnerB-Title">Branch 3 &amp; 4 VRRP Paths</span>
+                                <span id="partnerB-Title" class="text-[12px]">Branch 3 &amp; 4 VRRP Paths</span>
                             </span>
-                            <span class="px-2.5 py-0.5 bg-brand-violet/10 text-brand-violet border border-brand-violet/20 rounded text-[10px] font-bold tracking-wider">CORE 2 PRIMARY</span>
+                            <span class="px-2.5 py-0.5 bg-brand-violet/10 text-brand-indigo border border-brand-indigo/20 rounded text-[8px] font-bold tracking-wider">CORE 2 PRIMARY</span>
                         </div>
                         <div class="flex-grow">
                             <table class="w-full text-xs text-left theme-text-main border-collapse table-fixed font-sans">
@@ -508,7 +508,7 @@
                         <table class="w-full text-xs text-left theme-text-main border-collapse table-fixed min-w-[640px]">
                             <thead>
                                 <tr class="border-b theme-border theme-text- font-bold uppercase tracking-wider text-[13px]">
-                                    <th class="py-2.5 px-3 w-1/5">From Device</th>
+                                    <th class="py-2.5 px-3 w-36">From Device</th>
                                     <th class="py-2.5 px-3 w-16">Port</th>
                                     <th class="py-2.5 px-3 w-1/5">To Device</th>
                                     <th class="py-2.5 px-3 w-16">Port</th>
@@ -941,66 +941,66 @@
                     <td class="py-2 px-3 font-mono text-emerald-400">1/1/3</td>
                     <td class="py-2 px-3 font-bold theme-text-main">${t1.senecaId}-Router VM</td>
                     <td class="py-2 px-3 font-mono text-emerald-400">ens37</td>
-                    <td class="py-2 px-3 theme-text-muted">Branch 1 WAN link (${t1.wanNetworkID}/30) | Switch: ${t1.switchWanIP} / Router: ${t1.routerWanIP}</td>
+                    <td class="py-2 px-3 theme-text-muted">${t1.senecaId}'s WAN link (${t1.wanNetworkID}/30) | Switch: ${t1.switchWanIP} / Router: ${t1.routerWanIP}</td>
                 </tr>
                 <tr>
                     <td class="py-2 px-3 font-bold theme-text-main">Aruba 6300 Core 1</td>
                     <td class="py-2 px-3 font-mono text-emerald-400">1/1/4</td>
                     <td class="py-2 px-3 font-bold theme-text-main">${t2.senecaId}-Router VM</td>
                     <td class="py-2 px-3 font-mono text-emerald-400">ens37</td>
-                    <td class="py-2 px-3 theme-text-muted">Branch 2 WAN link (${t2.wanNetworkID}/30) | Switch: ${t2.switchWanIP} / Router: ${t2.routerWanIP}</td>
+                    <td class="py-2 px-3 theme-text-muted">${t2.senecaId}'s WAN link (${t2.wanNetworkID}/30) | Switch: ${t2.switchWanIP} / Router: ${t2.routerWanIP}</td>
                 </tr>
                 <tr>
                     <td class="py-2 px-3 font-bold theme-text-main">Aruba 6300 Core 2</td>
                     <td class="py-2 px-3 font-mono text-emerald-400">1/1/3</td>
                     <td class="py-2 px-3 font-bold theme-text-main">${t3.senecaId}-Router VM</td>
                     <td class="py-2 px-3 font-mono text-emerald-400">ens37</td>
-                    <td class="py-2 px-3 theme-text-muted">Branch 3 WAN link (${t3.wanNetworkID}/30) | Switch: ${t3.switchWanIP} / Router: ${t3.routerWanIP}</td>
+                    <td class="py-2 px-3 theme-text-muted">${t3.senecaId}'s WAN link (${t3.wanNetworkID}/30) | Switch: ${t3.switchWanIP} / Router: ${t3.routerWanIP}</td>
                 </tr>
                 <tr>
                     <td class="py-2 px-3 font-bold theme-text-main">Aruba 6300 Core 2</td>
                     <td class="py-2 px-3 font-mono text-emerald-400">1/1/4</td>
                     <td class="py-2 px-3 font-bold theme-text-main">${t4.senecaId}-Router VM</td>
                     <td class="py-2 px-3 font-mono text-emerald-400">ens37</td>
-                    <td class="py-2 px-3 theme-text-muted">Branch 4 WAN link (${t4.wanNetworkID}/30) | Switch: ${t4.switchWanIP} / Router: ${t4.routerWanIP}</td>
+                    <td class="py-2 px-3 theme-text-muted">${t4.senecaId}'s WAN link (${t4.wanNetworkID}/30) | Switch: ${t4.switchWanIP} / Router: ${t4.routerWanIP}</td>
                 </tr>
                 <tr>
-                    <td class="py-2 px-3 font-bold theme-text-main">Aruba 2530 Access 1</td>
+                    <td class="py-2 px-3 font-bold theme-text-main">2530 Access 1</td>
                     <td class="py-2 px-3 font-mono text-sky-400">Port 1 <span class="text-[10px] text-slate-400 font-sans block">(6300: 1/1/3)</span></td>
                     <td class="py-2 px-3 font-bold theme-text-main">${t1.senecaId} Client/Server</td>
                     <td class="py-2 px-3 font-mono text-sky-400">ens33</td>
                     <td class="py-2 px-3 theme-text-muted">Private LAN Untagged VLAN ${t1.uid} | Gateway: ${t1.virtualGateway}</td>
                 </tr>
                 <tr>
-                    <td class="py-2 px-3 font-bold theme-text-main">Aruba 2530 Access 1</td>
+                    <td class="py-2 px-3 font-bold theme-text-main">2530 Access 1</td>
                     <td class="py-2 px-3 font-mono text-sky-400">Port 2 <span class="text-[10px] text-slate-400 font-sans block">(6300: 1/1/4)</span></td>
                     <td class="py-2 px-3 font-bold theme-text-main">${t2.senecaId} Client/Server</td>
                     <td class="py-2 px-3 font-mono text-sky-400">ens33</td>
                     <td class="py-2 px-3 theme-text-muted">Private LAN Untagged VLAN ${t2.uid} | Gateway: ${t2.virtualGateway}</td>
                 </tr>
                 <tr>
-                    <td class="py-2 px-3 font-bold theme-text-main">Aruba 2530 Access 2</td>
+                    <td class="py-2 px-3 font-bold theme-text-main">2530 Access 2</td>
                     <td class="py-2 px-3 font-mono text-sky-400">Port 1 <span class="text-[10px] text-slate-400 font-sans block">(6300: 1/1/3)</span></td>
                     <td class="py-2 px-3 font-bold theme-text-main">${t3.senecaId} Client/Server</td>
                     <td class="py-2 px-3 font-mono text-sky-400">ens33</td>
                     <td class="py-2 px-3 theme-text-muted">Private LAN Untagged VLAN ${t3.uid} | Gateway: ${t3.virtualGateway}</td>
                 </tr>
                 <tr>
-                    <td class="py-2 px-3 font-bold theme-text-main">Aruba 2530 Access 2</td>
+                    <td class="py-2 px-3 font-bold theme-text-main">2530 Access 2</td>
                     <td class="py-2 px-3 font-mono text-sky-400">Port 2 <span class="text-[10px] text-slate-400 font-sans block">(6300: 1/1/4)</span></td>
                     <td class="py-2 px-3 font-bold theme-text-main">${t4.senecaId} Client/Server</td>
                     <td class="py-2 px-3 font-mono text-sky-400">ens33</td>
                     <td class="py-2 px-3 theme-text-muted">Private LAN Untagged VLAN ${t4.uid} | Gateway: ${t4.virtualGateway}</td>
                 </tr>
                 <tr>
-                    <td class="py-2 px-3 font-bold theme-text-main">Aruba 2530 Access 1</td>
+                    <td class="py-2 px-3 font-bold theme-text-main">2530 Access 1</td>
                     <td class="py-2 px-3 font-mono text-pink-500">Port 3 <span class="text-[10px] text-slate-400 font-sans block">(6300: 1/1/5)</span></td>
                     <td class="py-2 px-3 font-bold theme-text-main">Aruba 6300 Core 1</td>
                     <td class="py-2 px-3 font-mono text-pink-500">1/1/11</td>
                     <td class="py-2 px-3 theme-text-muted">Uplink 802.1Q trunk carrying Tagged VLANs (${t1.uid}, ${t2.uid}, ${t3.uid}, ${t4.uid})</td>
                 </tr>
                 <tr>
-                    <td class="py-2 px-3 font-bold theme-text-main">Aruba 2530 Access 2</td>
+                    <td class="py-2 px-3 font-bold theme-text-main">2530 Access 2</td>
                     <td class="py-2 px-3 font-mono text-pink-500">Port 3 <span class="text-[10px] text-slate-400 font-sans block">(6300: 1/1/5)</span></td>
                     <td class="py-2 px-3 font-bold theme-text-main">Aruba 6300 Core 2</td>
                     <td class="py-2 px-3 font-mono text-pink-500">1/1/11</td>
@@ -1055,7 +1055,7 @@
             if (mode === 'core1') {
                 codeBox.textContent = `enable
 configure terminal
-hostname Pod-Core-6300-1
+hostname Aruba-Core1-6300
 vlan 1,${t1.uid},${t2.uid},${t3.uid},${t4.uid}
 spanning-tree
 
@@ -1185,7 +1185,7 @@ exit`;
             } else {
                 codeBox.textContent = `enable
 configure terminal
-hostname Pod-Core-6300-2
+hostname Aruba-Core2-6300
 vlan 1,${t1.uid},${t2.uid},${t3.uid},${t4.uid}
 spanning-tree
 
@@ -1328,7 +1328,7 @@ router vrrp enable
                 // Aruba 2530/2540 Access Switch 1 (ProCurve OS Syntax)
                 codeBox.textContent = `enable
 configure terminal
-hostname Pod-Access-2530-1
+hostname Access-Switch1-2530
 spanning-tree
 
 vlan 1,${t1.uid},${t2.uid},${t3.uid},${t4.uid}
@@ -1359,7 +1359,7 @@ write memory`;
                 // Aruba 2530/2540 Access Switch 2 (ProCurve OS Syntax)
                 codeBox.textContent = `enable
 configure terminal
-hostname Pod-Access-2530-2
+hostname Access-Switch2-2530
 spanning-tree
 
 vlan 1,${t1.uid},${t2.uid},${t3.uid},${t4.uid}
@@ -1388,9 +1388,9 @@ exit
 write memory`;
             } else if (mode === 'access1_6300') {
                 // Aruba 6300 Access Switch 1 (ArubaOS-CX Syntax)
-                codeBox.textContent = `en
-conf t
-hostname ${t1.senecaId}-6300-1
+                codeBox.textContent = `enable
+conf terminal
+hostname Aruba-Core1-6300
 vlan 1,${t1.uid},${t2.uid},${t3.uid},${t4.uid}
 spanning-tree
 
@@ -1432,14 +1432,12 @@ interface 1/1/5
 no routing
 no shutdown
 vlan trunk allowed ${t1.uid},${t2.uid},${t3.uid},${t4.uid}
-exit
-
-write memory`;
+exit`;
             } else if (mode === 'access2_6300') {
                 // Aruba 6300 Access Switch 2 (ArubaOS-CX Syntax)
-                codeBox.textContent = `en
-conf t
-hostname ${t3.senecaId}-6300-2
+                codeBox.textContent = `enable
+conf terminal
+hostname Aruba-Core2-6300
 vlan 1,${t1.uid},${t2.uid},${t3.uid},${t4.uid}
 spanning-tree
 
@@ -1481,9 +1479,7 @@ interface 1/1/5
 no routing
 no shutdown
 vlan trunk allowed ${t1.uid},${t2.uid},${t3.uid},${t4.uid}
-exit
-
-write memory`;
+exit`;
             }
         }
 
@@ -1578,6 +1574,7 @@ table inet filter {
 table ip nat {
   chain prerouting {
     type nat hook prerouting priority -100; policy accept;
+    # Forward DNS requests seamlessly to school DNS server
     iifname "ens37" udp dport 53 dnat to 10.101.100.21
     iifname "ens37" tcp dport 53 dnat to 10.101.100.21
   }
@@ -1593,7 +1590,7 @@ table ip nat {
   chain postrouting {
     type nat hook postrouting priority 100; policy accept;
     oifname "ens33" masquerade
-    }
+  }
 }
 `;
             }
@@ -1601,9 +1598,9 @@ table ip nat {
 
         function downloadCoreFile() {
             const mode = document.getElementById('coreSwitchSelector').value;
-            let filename = "6300_Master.txt";
+            let filename = "Aruba6300_Master.txt";
             if (mode === 'core2') {
-                filename = "6300_Backup.txt";
+                filename = "Aruba6300_Backup.txt";
             }
             const codeText = document.getElementById('core-code').textContent;
             const fileBlob = new Blob([codeText], { type: 'text/plain' });
@@ -1649,9 +1646,9 @@ table ip nat {
             let filename = "LinuxConfig.txt";
 
             if (fileType === 'dhcpAssignment') {
-                filename = `${senecaID}-dhcpAssignment.yaml`;
+                filename = `${senecaID}-dhcpAssignment.yaml.txt`;
             } else if (fileType === 'staticAssignment') {
-                filename = `${senecaID}-StaticAssignment.yaml`;
+                filename = `${senecaID}-StaticAssignment.yaml.txt`;
             } else if (fileType === 'frrRouterConfig') {
                 filename = `${senecaID}-FRRConfig.txt`;
             } else if (fileType === 'NFtablesRulesNAT') {
@@ -1659,7 +1656,7 @@ table ip nat {
             }
 
             const codeText = document.getElementById('vm-code').textContent;
-            const fileBlob = newBlob([codeText], { type: 'text/plain' });
+            const fileBlob = new Blob([codeText], { type: 'text/plain' });
             const element = document.createElement('a');
             element.href = URL.createObjectURL(fileBlob);
             element.download = filename;
