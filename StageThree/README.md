@@ -353,7 +353,7 @@ EXIT;
 ---
 
 ## 📋 Submission Requirements
-Ensure the following files are ready for upload to GitHub:
+Ensure the following files are ready for upload to BlackBoard:
 - ✅ `index.php` (Your edited frontend script - mariaDBfrontEnd.php)
 - ✅`populatedTable.csv` (The CSV with 10 unique custom entries)
 
