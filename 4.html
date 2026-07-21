@@ -33,7 +33,7 @@
     </script>
     <style>
         :root {
-            /* 1. Calm Cobalt (Dark Theme - Default) - Highly legible slate blue, safe for Deuteranopes */
+            /* 1. Calm Cobalt (Dark Theme - Default) */
             --bg-base: #0B132B;
             --bg-card: rgba(28, 37, 65, 0.65);
             --bg-input: #1C2541;
@@ -58,7 +58,6 @@
         }
 
         .theme-amber-dark {
-            /* 2. Warm Amber Obsidian (Dark Theme) - Very low contrast eye-strain, soft amber tones */
             --bg-base: #141311;
             --bg-card: rgba(30, 28, 25, 0.7);
             --bg-input: #23201C;
@@ -74,7 +73,6 @@
             --brand-slate: #23201C;
             --brand-accent: #E0A96D;
 
-            /* Tab Interaction Variables */
             --tab-active-bg: linear-gradient(135deg, #E0A96D, #C68B59);
             --tab-active-text: #141311;
             --tab-inactive-text: #A89F95;
@@ -83,7 +81,6 @@
         }
 
         .theme-plum-dark {
-            /* 3. Muted Amethyst (Dark Theme) - Tritanopia-friendly soft plum/lavender colors */
             --bg-base: #140F1F;
             --bg-card: rgba(32, 24, 48, 0.65);
             --bg-input: #221A35;
@@ -99,7 +96,6 @@
             --brand-slate: #221A35;
             --brand-accent: #E09F3E;
 
-            /* Tab Interaction Variables */
             --tab-active-bg: linear-gradient(135deg, #B5838D, #8338EC);
             --tab-active-text: #F4EFFA;
             --tab-inactive-text: #B3A4C9;
@@ -108,7 +104,6 @@
         }
 
         .theme-slate-light {
-            /* 4. Slate Contrast Blue (Light Theme) - High contrast daylight mode, fixed gradient text visibility */
             --bg-base: #F8FAFC;
             --bg-card: #FFFFFF;
             --bg-input: #F1F5F9;
@@ -124,7 +119,6 @@
             --brand-slate: #F1F5F9;
             --brand-accent: #2563EB;
 
-            /* Tab Interaction Variables */
             --tab-active-bg: linear-gradient(135deg, #4F46E5, #3B82F6);
             --tab-active-text: #FFFFFF;
             --tab-inactive-text: #64748B;
@@ -133,7 +127,6 @@
         }
 
         .theme-sand-light {
-            /* 5. Warm Ochre Sand (Light Theme) - Glare reduced sepia tones */
             --bg-base: #FDFBF7;
             --bg-card: #FFFFFF;
             --bg-input: #F4F1EA;
@@ -149,7 +142,6 @@
             --brand-slate: #F4F1EA;
             --brand-accent: #9C6644;
 
-            /* Tab Interaction Variables */
             --tab-active-bg: linear-gradient(135deg, #7F5539, #9C6644);
             --tab-active-text: #FFFFFF;
             --tab-inactive-text: #7A6953;
@@ -158,7 +150,6 @@
         }
 
         .theme-teal-light {
-            /* 6. Soft Sky Teal (Light Theme) - Mint/sage soft contrast visual comfort */
             --bg-base: #F0F7F7;
             --bg-card: #FFFFFF;
             --bg-input: #E0EEEE;
@@ -174,7 +165,6 @@
             --brand-slate: #E0EEEE;
             --brand-accent: #134074;
 
-            /* Tab Interaction Variables */
             --tab-active-bg: linear-gradient(135deg, #134074, #007F5F);
             --tab-active-text: #FFFFFF;
             --tab-inactive-text: #537777;
@@ -221,7 +211,7 @@
             opacity: 0.7;
         }
 
-        /* PREMIUM TAB INTERACTION STYLES */
+        /* TAB INTERACTION STYLES */
         .tab-btn {
             transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
             transform: scale(1);
@@ -302,7 +292,7 @@
             <div class="flex items-center gap-1 bg-brand-slate/85 px-4 py-1.5 rounded-full border theme-border text-xs font-semibold text-slate-200 shadow-lg">
                 <span><a href="https://github.com/cerealicious" target="_blank" class="hover:text-brand-indigo transition-colors hover:underline flex items-center gap-2">
                     <span>Made by Cerealicious</span>
-                    <img src="https://avatars.githubusercontent.com/u/5056960?v=4" alt="cerealicious profile" class="w-10 h-10 rounded-full border theme-border shadow-inner">
+                    <img src="https://avatars.githubusercontent.com/u/5056960?v=4" alt="cerealicious profile" class="w-6 h-6 rounded-full border theme-border shadow-inner">
                 </a></span>
             </div>
         </div>
@@ -453,7 +443,6 @@
 
             <!-- Tab 1: Prep Sheets Side by Side -->
             <div id="tab-prepsheets" class="tab-content space-y-6">
-                <!-- Mathematical Formula Callout card with fully dynamic 4-tenant information grid -->
                 <div class="theme-card border p-5 rounded-2xl flex flex-col gap-3 shadow-md">
                     <div class="flex items-center gap-4">
                         <div class="text-brand-amber text-2xl bg-brand-amber/10 p-3 rounded-xl border border-brand-amber/20">
@@ -467,7 +456,7 @@
                         </div>
                     </div>
                     <div id="vrrp-formula-desc" class="pt-2 border-t theme-border">
-                        <!-- Dynamically filled with Tenant SVI gateway listings on calculation -->
+                        <!-- Dynamically filled with SVI gateway listings on calculation -->
                     </div>
                 </div>
 
@@ -518,16 +507,16 @@
                     <div class="overflow-x-auto custom-scrollbar">
                         <table class="w-full text-xs text-left theme-text-main border-collapse table-fixed min-w-[640px]">
                             <thead>
-                                <tr class="border-b theme-border theme-text-muted font-bold uppercase tracking-wider text-[10px]">
+                                <tr class="border-b theme-border theme-text- font-bold uppercase tracking-wider text-[13px]">
                                     <th class="py-2.5 px-3 w-1/5">From Device</th>
-                                    <th class="py-2.5 px-3 w-12">Port</th>
+                                    <th class="py-2.5 px-3 w-16">Port</th>
                                     <th class="py-2.5 px-3 w-1/5">To Device</th>
                                     <th class="py-2.5 px-3 w-16">Port</th>
                                     <th class="py-2.5 px-3 w-[45%]">Purpose / Configuration Reference</th>
                                 </tr>
                             </thead>
                             <tbody id="cable-matrix-body" class="divide-y theme-border whitespace-normal">
-                                <!-- Dynamic rows populated via JS -->
+                                <!-- Dynamic rows -->
                             </tbody>
                         </table>
                     </div>
@@ -571,9 +560,10 @@
                             <h3 class="text-sm font-bold theme-text-main">Access Switch Configuration Panel</h3>
                             <p class="text-xs theme-text-muted">Deploy these setups across your physical client-facing edge access nodes</p>
                         </div>
+                        <!-- EXACT REQUESTED DROPDOWN ORDER -->
                         <select id="accessSwitchSelector" onchange="renderAccessSwitchConfig()" class="px-3 py-1.5 text-xs font-bold theme-text-main theme-input rounded-lg border focus:outline-none">
-                            <option value="access1_2530">Access Switch 1: (HP 2530 - ProCurve Syntax)</option>
-                            <option value="access2_2530">Access Switch 2: (HP 2530 - ProCurve Syntax)</option>
+                            <option value="access1_2530" selected>Access Switch 1: (Aruba 2530/2540 - ProCurve Syntax)</option>
+                            <option value="access2_2530">Access Switch 2: (Aruba 2530/2540 - ProCurve Syntax)</option>
                             <option value="access1_6300">Access Switch 1: (Aruba 6300 - AOS-CX Syntax)</option>
                             <option value="access2_6300">Access Switch 2: (Aruba 6300 - AOS-CX Syntax)</option>
                         </select>
@@ -688,7 +678,6 @@
         // Global variables holding calculated data
         let userCalculatedData = {};
 
-        // CRITICAL: Fully interactive theme-aware switch tabs handler using CSS variables
         function switchTab(tabId) {
             document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
             document.querySelectorAll('.tab-btn').forEach(el => {
@@ -709,7 +698,6 @@
             }
         }
 
-        // Theme controller functions supporting colorblind-friendly modes
         function setTheme(themeName) {
             const bodyEl = document.body;
             bodyEl.classList.remove('theme-amber-dark', 'theme-plum-dark', 'theme-slate-light', 'theme-sand-light', 'theme-teal-light');
@@ -725,14 +713,12 @@
             }
         }
 
-        // Run theme init and auto-calc on mount
         window.onload = function() {
             const savedTheme = localStorage.getItem('workspace-theme') || 'default';
             setTheme(savedTheme);
             generateStageFourConfigs();
         };
 
-        // Custom Modal controller
         function showCustomModal(title, msg, type = 'info') {
             const modal = document.getElementById('customModal');
             const titleEl = document.getElementById('modalTitle');
@@ -859,7 +845,6 @@
             const t3 = userCalculatedData.t3;
             const t4 = userCalculatedData.t4;
 
-            // Generate the rotated DNS Server parameters specifically for the Switch DHCP pools
             t1.dnsList = `${t1.routerWanIP} ${t2.routerWanIP} ${t3.routerWanIP} ${t4.routerWanIP}`;
             t2.dnsList = `${t2.routerWanIP} ${t1.routerWanIP} ${t3.routerWanIP} ${t4.routerWanIP}`;
             t3.dnsList = `${t3.routerWanIP} ${t1.routerWanIP} ${t2.routerWanIP} ${t4.routerWanIP}`;
@@ -885,7 +870,6 @@
                     </ul>`;
             }
 
-            // Render tables with dynamic SenecaID titles
             document.getElementById('userA-Title').textContent = `${t1.senecaId} & ${t2.senecaId} VRRP Paths`;
             document.getElementById('partnerB-Title').textContent = `${t3.senecaId} & ${t4.senecaId} VRRP Paths`;
 
@@ -904,7 +888,7 @@
         function populatePrepSheet(tbodyId, branchA, branchB) {
             const tbody = document.getElementById(tbodyId);
             tbody.innerHTML = `
-                <tr class="bg-slate-900/40"><td class="py-2 px-3 font-bold text-brand-amber uppercase" colspan="3">VLAN ${branchA.uid} (${branchA.senecaId}) Parameters</td></tr>
+                <tr class="bg-slate-900/40"><td class="py-2 px-3 font-bold text-brand-amber" colspan="3">${branchA.senecaId} - (VLAN ${branchA.uid}) PARAMETERS</td></tr>
                 <tr><td class="py-2 px-3 theme-text-muted font-medium whitespace-nowrap">LAN Subnet</td><td class="py-2 px-3 text-right font-mono theme-text-main whitespace-nowrap" colspan="2">${branchA.lanNetworkID}/26</td></tr>
                 <tr><td class="py-2 px-3 theme-text-muted font-medium whitespace-nowrap">Virtual VIP Gateway</td><td class="py-2 px-3 text-right text-emerald-400 font-bold font-mono whitespace-nowrap" colspan="2">${branchA.virtualGateway}</td></tr>
                 <tr><td class="py-2 px-3 theme-text-muted font-medium whitespace-nowrap">Core 1 SVI IP (Master)</td><td class="py-2 px-3 text-right font-mono theme-text-main whitespace-nowrap" colspan="2">${branchA.core1IP}</td></tr>
@@ -912,9 +896,13 @@
                 <tr><td class="py-2 px-3 theme-text-muted font-medium whitespace-nowrap">Server Static Bound IP</td><td class="py-2 px-3 text-right font-mono text-cyan-400 whitespace-nowrap" colspan="2">${branchA.serverStaticIP}</td></tr>
                 <tr><td class="py-2 px-3 theme-text-muted font-medium whitespace-nowrap">Point-to-Point WAN Subnet</td><td class="py-2 px-3 text-right font-mono theme-text-muted whitespace-nowrap" colspan="2">${branchA.wanNetworkID}/30</td></tr>
                 <tr><td class="py-2 px-3 theme-text-muted font-medium whitespace-nowrap">Router WAN Port IP</td><td class="py-2 px-3 text-right font-mono theme-text-muted whitespace-nowrap" colspan="2">${branchA.routerWanIP}</td></tr>
-                <tr><td class="py-2 px-3 theme-text-muted font-medium whitespace-nowrap">Primary &amp; Redundant DNS</td><td class="py-2 px-3 text-right font-mono text-emerald-500 text-[10px] whitespace-nowrap" colspan="2">${branchA.routerWanIP}</td></tr>
+                <tr><td class="py-2 px-3 theme-text-muted font-medium whitespace-nowrap">Primary DNS</td><td class="py-2 px-3 text-right font-mono text-emerald-500 whitespace-nowrap" colspan="2">${branchA.routerWanIP}</td></tr>
 
-                <tr class="bg-slate-900/40"><td class="py-2 px-3 font-bold text-brand-violet uppercase" colspan="3">VLAN ${branchB.uid} (${branchB.senecaId}) Parameters</td></tr>
+                <td>
+                <hr width="300%" />
+                <hr width="300%" />
+
+                <tr class="bg-slate-900/40"><td class="py-2 px-3 font-bold text-brand-violet" colspan="3">${branchB.senecaId} - (VLAN ${branchB.uid}) PARAMETERS</td></tr>
                 <tr><td class="py-2 px-3 theme-text-muted font-medium whitespace-nowrap">LAN Subnet</td><td class="py-2 px-3 text-right font-mono theme-text-main whitespace-nowrap" colspan="2">${branchB.lanNetworkID}/26</td></tr>
                 <tr><td class="py-2 px-3 theme-text-muted font-medium whitespace-nowrap">Virtual VIP Gateway</td><td class="py-2 px-3 text-right text-emerald-400 font-bold font-mono whitespace-nowrap" colspan="2">${branchB.virtualGateway}</td></tr>
                 <tr><td class="py-2 px-3 theme-text-muted font-medium whitespace-nowrap">Core 1 SVI IP (Master)</td><td class="py-2 px-3 text-right font-mono theme-text-main whitespace-nowrap" colspan="2">${branchB.core1IP}</td></tr>
@@ -922,7 +910,7 @@
                 <tr><td class="py-2.5 px-3 theme-text-muted font-medium whitespace-nowrap">Server Static Bound IP</td><td class="py-2 px-3 text-right font-mono text-cyan-400 whitespace-nowrap" colspan="2">${branchB.serverStaticIP}</td></tr>
                 <tr><td class="py-2 px-3 theme-text-muted font-medium whitespace-nowrap">Point-to-Point WAN Subnet</td><td class="py-2 px-3 text-right font-mono theme-text-muted whitespace-nowrap" colspan="2">${branchB.wanNetworkID}/30</td></tr>
                 <tr><td class="py-2 px-3 theme-text-muted font-medium whitespace-nowrap">Router WAN Port IP</td><td class="py-2 px-3 text-right font-mono theme-text-muted whitespace-nowrap" colspan="2">${branchB.routerWanIP}</td></tr>
-                <tr><td class="py-2 px-3 theme-text-muted font-medium whitespace-nowrap">Primary &amp; Redundant DNS</td><td class="py-2 px-3 text-right font-mono text-emerald-500 text-[10px] whitespace-nowrap" colspan="2">${branchB.routerWanIP}</td></tr>
+                <tr><td class="py-2 px-3 theme-text-muted font-medium whitespace-nowrap">Primary DNS</td><td class="py-2 px-3 text-right font-mono text-emerald-500 whitespace-nowrap" colspan="2">${branchB.routerWanIP}</td></tr>
             `;
         }
 
@@ -978,42 +966,42 @@
                 </tr>
                 <tr>
                     <td class="py-2 px-3 font-bold theme-text-main">Aruba 2530 Access 1</td>
-                    <td class="py-2 px-3 font-mono text-sky-400">Port 1</td>
+                    <td class="py-2 px-3 font-mono text-sky-400">Port 1 <span class="text-[10px] text-slate-400 font-sans block">(6300: 1/1/3)</span></td>
                     <td class="py-2 px-3 font-bold theme-text-main">${t1.senecaId} Client/Server</td>
                     <td class="py-2 px-3 font-mono text-sky-400">ens33</td>
                     <td class="py-2 px-3 theme-text-muted">Private LAN Untagged VLAN ${t1.uid} | Gateway: ${t1.virtualGateway}</td>
                 </tr>
                 <tr>
                     <td class="py-2 px-3 font-bold theme-text-main">Aruba 2530 Access 1</td>
-                    <td class="py-2 px-3 font-mono text-sky-400">Port 2</td>
+                    <td class="py-2 px-3 font-mono text-sky-400">Port 2 <span class="text-[10px] text-slate-400 font-sans block">(6300: 1/1/4)</span></td>
                     <td class="py-2 px-3 font-bold theme-text-main">${t2.senecaId} Client/Server</td>
                     <td class="py-2 px-3 font-mono text-sky-400">ens33</td>
                     <td class="py-2 px-3 theme-text-muted">Private LAN Untagged VLAN ${t2.uid} | Gateway: ${t2.virtualGateway}</td>
                 </tr>
                 <tr>
                     <td class="py-2 px-3 font-bold theme-text-main">Aruba 2530 Access 2</td>
-                    <td class="py-2 px-3 font-mono text-sky-400">Port 1</td>
+                    <td class="py-2 px-3 font-mono text-sky-400">Port 1 <span class="text-[10px] text-slate-400 font-sans block">(6300: 1/1/3)</span></td>
                     <td class="py-2 px-3 font-bold theme-text-main">${t3.senecaId} Client/Server</td>
                     <td class="py-2 px-3 font-mono text-sky-400">ens33</td>
                     <td class="py-2 px-3 theme-text-muted">Private LAN Untagged VLAN ${t3.uid} | Gateway: ${t3.virtualGateway}</td>
                 </tr>
                 <tr>
                     <td class="py-2 px-3 font-bold theme-text-main">Aruba 2530 Access 2</td>
-                    <td class="py-2 px-3 font-mono text-sky-400">Port 2</td>
+                    <td class="py-2 px-3 font-mono text-sky-400">Port 2 <span class="text-[10px] text-slate-400 font-sans block">(6300: 1/1/4)</span></td>
                     <td class="py-2 px-3 font-bold theme-text-main">${t4.senecaId} Client/Server</td>
                     <td class="py-2 px-3 font-mono text-sky-400">ens33</td>
                     <td class="py-2 px-3 theme-text-muted">Private LAN Untagged VLAN ${t4.uid} | Gateway: ${t4.virtualGateway}</td>
                 </tr>
                 <tr>
                     <td class="py-2 px-3 font-bold theme-text-main">Aruba 2530 Access 1</td>
-                    <td class="py-2 px-3 font-mono text-pink-500">Port 3</td>
+                    <td class="py-2 px-3 font-mono text-pink-500">Port 3 <span class="text-[10px] text-slate-400 font-sans block">(6300: 1/1/5)</span></td>
                     <td class="py-2 px-3 font-bold theme-text-main">Aruba 6300 Core 1</td>
                     <td class="py-2 px-3 font-mono text-pink-500">1/1/11</td>
                     <td class="py-2 px-3 theme-text-muted">Uplink 802.1Q trunk carrying Tagged VLANs (${t1.uid}, ${t2.uid}, ${t3.uid}, ${t4.uid})</td>
                 </tr>
                 <tr>
                     <td class="py-2 px-3 font-bold theme-text-main">Aruba 2530 Access 2</td>
-                    <td class="py-2 px-3 font-mono text-pink-500">Port 3</td>
+                    <td class="py-2 px-3 font-mono text-pink-500">Port 3 <span class="text-[10px] text-slate-400 font-sans block">(6300: 1/1/5)</span></td>
                     <td class="py-2 px-3 font-bold theme-text-main">Aruba 6300 Core 2</td>
                     <td class="py-2 px-3 font-mono text-pink-500">1/1/11</td>
                     <td class="py-2 px-3 theme-text-muted">Uplink 802.1Q trunk carrying Tagged VLANs (${t1.uid}, ${t2.uid}, ${t3.uid}, ${t4.uid})</td>
@@ -1047,7 +1035,7 @@
             }
 
             diagnostics.forEach(item => {
-                const icon = item.type === 'success' ? 'fa-circle-check text-emerald-400' : (item.type === 'warning' ? 'fa-triangle-exclamation text-amber-500' : 'fa-circle-xmark text-rose-500');
+                const icon = item.type === 'success' ? 'fa-circle-check text-emerald-400' : (item.type === 'warning' ? 'fa-triangle-exclamation text-amber-500' : 'fa-circle-xmark text-red-500');
                 const div = document.createElement('div');
                 div.className = "flex items-start gap-2 theme-text-muted leading-normal";
                 div.innerHTML = `<i class="fa-solid ${icon} mt-0.5 text-sm"></i><span>${item.text}</span>`;
@@ -1159,6 +1147,7 @@ ip ospf 1 area 0
 exit
 
 dhcp-server vrf default
+
 pool ${t1.uid}
 range ${t1.dhcpStart} ${t1.dhcpEnd} prefix-len 26
 default-router ${t1.virtualGateway}
@@ -1336,6 +1325,7 @@ router vrrp enable
             const t4 = userCalculatedData.t4;
 
             if (mode === 'access1_2530') {
+                // Aruba 2530/2540 Access Switch 1 (ProCurve OS Syntax)
                 codeBox.textContent = `enable
 configure terminal
 hostname Pod-Access-2530-1
@@ -1366,6 +1356,7 @@ exit
 
 write memory`;
             } else if (mode === 'access2_2530') {
+                // Aruba 2530/2540 Access Switch 2 (ProCurve OS Syntax)
                 codeBox.textContent = `enable
 configure terminal
 hostname Pod-Access-2530-2
@@ -1396,9 +1387,10 @@ exit
 
 write memory`;
             } else if (mode === 'access1_6300') {
-                codeBox.textContent = `enable
-configure terminal
-hostname Pod-Access-6300-1
+                // Aruba 6300 Access Switch 1 (ArubaOS-CX Syntax)
+                codeBox.textContent = `en
+conf t
+hostname ${t1.senecaId}-6300-1
 vlan 1,${t1.uid},${t2.uid},${t3.uid},${t4.uid}
 spanning-tree
 
@@ -1406,40 +1398,48 @@ vlan ${t1.uid}
 name ${t1.senecaId}-vlan
 vlan ${t2.uid}
 name ${t2.senecaId}-vlan
+exit
+
 vlan ${t3.uid}
 name ${t3.senecaId}-vlan
 vlan ${t4.uid}
 name ${t4.senecaId}-vlan
+exit
 
 interface 1/1/1
-no shutdown
 no routing
-
-vlan access ${t1.uid}
-interface 1/1/2
 no shutdown
-no routing
-
-vlan access ${t2.uid}
-interface 1/1/3
-no shutdown
-no routing
-
-vlan trunk native 1
 vlan trunk allowed ${t1.uid},${t2.uid},${t3.uid},${t4.uid}
+exit
+
+interface 1/1/2
+no routing
+no shutdown
+vlan trunk allowed ${t1.uid},${t2.uid},${t3.uid},${t4.uid}
+exit
+
+interface 1/1/3
+no routing
+no shutdown
+vlan access ${t1.uid}
+
+interface 1/1/4
+no routing
+no shutdown
+vlan access ${t2.uid}
 
 interface 1/1/5
-no shutdown
 no routing
-
-vlan trunk native 1
+no shutdown
 vlan trunk allowed ${t1.uid},${t2.uid},${t3.uid},${t4.uid}
+exit
 
 write memory`;
             } else if (mode === 'access2_6300') {
-                codeBox.textContent = `enable
-configure terminal
-hostname Pod-Access-6300-2
+                // Aruba 6300 Access Switch 2 (ArubaOS-CX Syntax)
+                codeBox.textContent = `en
+conf t
+hostname ${t3.senecaId}-6300-2
 vlan 1,${t1.uid},${t2.uid},${t3.uid},${t4.uid}
 spanning-tree
 
@@ -1447,33 +1447,41 @@ vlan ${t1.uid}
 name ${t1.senecaId}-vlan
 vlan ${t2.uid}
 name ${t2.senecaId}-vlan
+exit
+
 vlan ${t3.uid}
 name ${t3.senecaId}-vlan
 vlan ${t4.uid}
 name ${t4.senecaId}-vlan
+exit
 
 interface 1/1/1
-no shutdown
 no routing
-vlan access ${t3.uid}
+no shutdown
+vlan trunk allowed ${t1.uid},${t2.uid},${t3.uid},${t4.uid}
+exit
 
 interface 1/1/2
-no shutdown
 no routing
+no shutdown
+vlan trunk allowed ${t1.uid},${t2.uid},${t3.uid},${t4.uid}
+exit
 
-vlan access ${t4.uid}
 interface 1/1/3
-no shutdown
 no routing
+no shutdown
+vlan access ${t3.uid}
 
-vlan trunk native 1
-vlan trunk allowed ${t1.uid},${t2.uid},${t3.uid},${t4.uid}
+interface 1/1/4
+no routing
+no shutdown
+vlan access ${t4.uid}
+
 interface 1/1/5
-no shutdown
 no routing
-
-vlan trunk native 1
+no shutdown
 vlan trunk allowed ${t1.uid},${t2.uid},${t3.uid},${t4.uid}
+exit
 
 write memory`;
             }
@@ -1524,18 +1532,18 @@ network:
             } 
             
             else if (fileType === 'frrRouterConfig') {
-                codeBox.textContent = `! Target host: ${u.senecaId}-Router VM
-! Command tool: sudo vtysh
-! Ensure 'ospfd=yes' is turned on inside /etc/frr/daemons before applying.
+                codeBox.textContent = `# Target host: ${u.senecaId}-Router VM
+# Command tool: sudo vtysh
+# Ensure 'ospfd=yes' is turned on inside /etc/frr/daemons before applying.
 
 router ospf
  ospf router-id ${u.ospfRouterID}
  network 10.33.0.0/16 area 0.0.0.0
  network ${u.wanNetworkID}/30 area 0.0.0.0
  default-information originate
-!
+
 line vty
-!
+
 end
 write memory`;
             } 
@@ -1570,7 +1578,6 @@ table inet filter {
 table ip nat {
   chain prerouting {
     type nat hook prerouting priority -100; policy accept;
-    # Forward DNS requests seamlessly to school DNS server
     iifname "ens37" udp dport 53 dnat to 10.101.100.21
     iifname "ens37" tcp dport 53 dnat to 10.101.100.21
   }
@@ -1586,8 +1593,9 @@ table ip nat {
   chain postrouting {
     type nat hook postrouting priority 100; policy accept;
     oifname "ens33" masquerade
-  }
-}`;
+    }
+}
+`;
             }
         }
 
@@ -1609,9 +1617,13 @@ table ip nat {
 
         function downloadAccessFile() {
             const mode = document.getElementById('accessSwitchSelector').value;
-            let filename = "Aruba2530-1.txt";
-            if (mode.includes('access2')) {
-                filename = "Aruba2530-2.txt";
+            let filename = "Access-Switch-1.txt";
+            if (mode === 'access2_2530') {
+                filename = "Access-Switch-2.txt";
+            } else if (mode === 'access1_6300') {
+                filename = "Aruba6300-Access-Switch1.txt";
+            } else if (mode === 'access2_6300') {
+                filename = "Aruba6300-Access-Switch2.txt";
             }
             const codeText = document.getElementById('access-code').textContent;
             const fileBlob = new Blob([codeText], { type: 'text/plain' });
@@ -1647,7 +1659,7 @@ table ip nat {
             }
 
             const codeText = document.getElementById('vm-code').textContent;
-            const fileBlob = new Blob([codeText], { type: 'text/plain' });
+            const fileBlob = newBlob([codeText], { type: 'text/plain' });
             const element = document.createElement('a');
             element.href = URL.createObjectURL(fileBlob);
             element.download = filename;
