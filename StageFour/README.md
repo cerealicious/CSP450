@@ -17,6 +17,7 @@ In Stage 3, each tenant relied on a single core switch and single router. In Sta
 
 - **Goal:** Map out unique IP addresses, Virtual Gateways (VRRP), and `/30` point-to-point router links for all 4 pod members.
 - **Key Tasks:**
+  - Keep each member's `/26` host/server network subnet derived from their Unique IDs.
   - Define Master Priority (`priority 10`) on Switch 1 vs Backup Priority (`priority 5`) on Switch 2 for all VLANs.
   - Establish the Virtual Primary IP  as the active gateway for all client/server devices across the pod.
   - Assign dedicated core IPs for Switch 1 and for Switch 2 per VLAN.
