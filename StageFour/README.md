@@ -70,7 +70,7 @@ In Stage 3, each tenant relied on a single core switch and single router. In Sta
 ----
 ### 🔹 Submission & Documentation
 
-- **Goal:** Collect required proof screenshots and script files for GitHub submission.
+- **Goal:** Collect required proof screenshots and script files for BlacBoard submission.
 - **Key Tasks:**
   - Capture `show vrrp` output on Switch 1 & 2 **BEFORE** power cut (2 Screenshots).
   - Capture `show vrrp` output on Switch 1 & 2 **AFTER** power cut (2 Screenshots).
