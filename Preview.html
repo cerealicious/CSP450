@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSP450 Stage Four - Preview</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        brand: {
+                            dark: 'var(--brand-dark)',
+                            indigo: 'var(--brand-indigo)',
+                            violet: 'var(--brand-violet)',
+                            amber: 'var(--brand-amber)',
+                            slate: 'var(--brand-slate)',
+                            accent: 'var(--brand-accent)'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        :root {
+            --bg-base: #121212;
+            --bg-card: #1E1E1E;
+            --bg-input: #1E1E1E;
+            --border-color: #2D2D2D;
+            --border-input: #383838;
+            --text-main: #E0E0E0;
+            --text-muted: #A0AAB2;
+            --text-input: #E0E0E0;
+            --brand-indigo: #3D8BFD;
+            --brand-violet: #3D8BFD;
+            --brand-amber: #2ECC71;
+            --brand-dark: #121212;
+            --brand-slate: #1E1E1E;
+            --brand-accent: #3D8BFD;
+
+            --tab-active-bg: linear-gradient(135deg, #3D8BFD, #2B73DD);
+            --tab-active-text: #121212;
+            --tab-inactive-text: #A0AAB2;
+            --tab-inactive-hover: #E0E0E0;
+            --tab-inactive-hover-bg: rgba(255, 255, 255, 0.05);
+        }
+
+        body {
+            background-color: var(--bg-base);
+            color: var(--text-main);
+        }
+
+        .theme-card {
+            background-color: var(--bg-card);
+            border-color: var(--border-color);
+        }
+
+        .theme-border {
+            border-color: var(--border-color);
+        }
+
+        .theme-text-main {
+            color: var(--text-main);
+        }
+
+        .theme-text-muted {
+            color: var(--text-muted);
+        }
+
+        .theme-input {
+            background-color: var(--bg-input);
+            border-color: var(--border-input);
+            color: var(--text-input);
+        }
+
+        .tab-btn {
+            transition: all 0.2s ease;
+        }
+
+        .tab-btn-active {
+            background: var(--tab-active-bg) !important;
+            color: var(--tab-active-text) !important;
+            box-shadow: 0 4px 14px -2px rgba(0, 0, 0, 0.25);
+            font-weight: 800;
+        }
+
+        .tab-btn-inactive {
+            background: transparent !important;
+            color: var(--tab-inactive-text) !important;
+        }
+
+        .tab-btn-inactive:hover {
+            color: var(--tab-inactive-hover) !important;
+            background: var(--tab-inactive-hover-bg) !important;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: var(--brand-dark);
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: var(--brand-slate);
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased flex flex-col min-h-screen custom-scrollbar">
+
+    <header class="bg-brand-dark border-b theme-border text-white shadow-xl">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-col md:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-3">
+                <div class="bg-gradient-to-tr from-brand-indigo to-brand-violet p-2.5 rounded-lg text-white shadow-lg flex items-center justify-center">
+                    <i class="fa-solid fa-shield-halved text-2xl animate-pulse"></i>
+                </div>
+                <div>
+                    <h1 class="text-xl font-extrabold tracking-tight bg-gradient-to-r from-brand-indigo via-brand-accent to-brand-amber bg-clip-text text-transparent">CSP450 Stage Four Preview</h1>
+                    <p class="text-xs theme-text-muted font-medium tracking-wide">High-Availability VRRP(Static Preview)</p>
+                </div>
+            </div>
+
+            <div class="text-xs font-semibold theme-text-main">
+                <a href="https://github.com/cerealicious" target="_blank" class="hover:text-brand-indigo transition-colors hover:underline flex items-center gap-2">
+                    <span>Made by Cerealicious</span>
+                    <img src="https://avatars.githubusercontent.com/u/5056960?v=4" alt="cerealicious profile" class="w-12 h-12 rounded-full border theme-border shadow-inner">
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col lg:flex-row gap-8">
+        
+        <!-- Left Side: Static Parameter Inputs Panel -->
+        <section class="w-full lg:w-1/3 flex flex-col gap-6">
+            <div class="theme-card rounded-2xl border shadow-lg p-6">
+                <div class="flex items-center gap-2.5 border-b theme-border pb-4 mb-5">
+                    <i class="fa-solid fa-sliders text-brand-amber text-lg"></i>
+                    <h2 class="text-base font-bold theme-text-main">1. Tenant Parameter Inputs</h2>
+                </div>
+
+                <div class="space-y-4">
+                    <!-- Branch 1 -->
+                    <div class="bg-brand-slate p-4 rounded-xl border theme-border space-y-3">
+                        <label class="block text-[12px] font-bold text-brand-indigo uppercase tracking-wider">Tenant 1</label>
+                        <div class="grid grid-cols-2 gap-3">
+                            <div>
+                                <label class="block text-[9px] font-semibold theme-text-muted mb-1">SenecaID</label>
+                                <input type="text" value="catalan" readonly class="w-full px-3 py-1.5 text-xs rounded-lg border font-medium font-mono theme-input">
+                            </div>
+                            <div>
+                                <label class="block text-[9px] font-semibold theme-text-muted mb-1">UID</label>
+                                <input type="number" value="231" readonly class="w-full px-3 py-1.5 text-xs rounded-lg border font-mono theme-input">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-[9px] font-semibold theme-text-muted mb-1">Server-VM MAC Address</label>
+                            <input type="text" value="00:0C:29:05:00:B6" readonly class="w-full px-3 py-1.5 text-xs rounded-lg border font-mono text-center theme-input">
+                        </div>
+                    </div>
+
+                    <!-- Branch 2 -->
+                    <div class="bg-brand-slate p-4 rounded-xl border theme-border space-y-3">
+                        <label class="block text-[12px] font-bold text-brand-indigo uppercase tracking-wider">Tenant 2</label>
+                        <div class="grid grid-cols-2 gap-3">
+                            <div>
+                                <label class="block text-[9px] font-semibold theme-text-muted mb-1">SenecaID</label>
+                                <input type="text" value="jmalaqui" readonly class="w-full px-3 py-1.5 text-xs rounded-lg border font-medium font-mono theme-input">
+                            </div>
+                            <div>
+                                <label class="block text-[9px] font-semibold theme-text-muted mb-1">UID</label>
+                                <input type="number" value="217" readonly class="w-full px-3 py-1.5 text-xs rounded-lg border font-mono theme-input">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-[9px] font-semibold theme-text-muted mb-1">Server-VM MAC Address</label>
+                            <input type="text" value="00:0C:29:47:FE:85" readonly class="w-full px-3 py-1.5 text-xs rounded-lg border font-mono text-center theme-input">
+                        </div>
+                    </div>
+
+                    <!-- Branch 3 -->
+                    <div class="bg-brand-slate p-4 rounded-xl border theme-border space-y-3">
+                        <label class="block text-[12px] font-bold text-brand-indigo uppercase tracking-wider">Tenant 3</label>
+                        <div class="grid grid-cols-2 gap-3">
+                            <div>
+                                <label class="block text-[9px] font-semibold theme-text-muted mb-1">SenecaID</label>
+                                <input type="text" value="akarki5" readonly class="w-full px-3 py-1.5 text-xs rounded-lg border font-medium font-mono theme-input">
+                            </div>
+                            <div>
+                                <label class="block text-[9px] font-semibold theme-text-muted mb-1">UID</label>
+                                <input type="number" value="214" readonly class="w-full px-3 py-1.5 text-xs rounded-lg border font-mono theme-input">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-[9px] font-semibold theme-text-muted mb-1">Server-VM MAC Address</label>
+                            <input type="text" value="00:50:56:20:37:EB" readonly class="w-full px-3 py-1.5 text-xs rounded-lg border font-mono text-center theme-input">
+                        </div>
+                    </div>
+
+                    <!-- Branch 4 -->
+                    <div class="bg-brand-slate p-4 rounded-xl border theme-border space-y-3">
+                        <label class="block text-[12px] font-bold text-brand-indigo uppercase tracking-wider">Tenant 4</label>
+                        <div class="grid grid-cols-2 gap-3">
+                            <div>
+                                <label class="block text-[9px] font-semibold theme-text-muted mb-1">SenecaID</label>
+                                <input type="text" value="caemmanuel" readonly class="w-full px-3 py-1.5 text-xs rounded-lg border font-medium font-mono theme-input">
+                            </div>
+                            <div>
+                                <label class="block text-[9px] font-semibold theme-text-muted mb-1">UID</label>
+                                <input type="number" value="206" readonly class="w-full px-3 py-1.5 text-xs rounded-lg border font-mono theme-input">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-[9px] font-semibold theme-text-muted mb-1">Server-VM MAC Address</label>
+                            <input type="text" value="00:50:56:2E:34:2C" readonly class="w-full px-3 py-1.5 text-xs rounded-lg border font-mono text-center theme-input">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pre-Flight Diagnostics Check Panel -->
+            <div class="theme-card rounded-2xl border shadow-lg p-6">
+                <div class="flex items-center gap-2.5 border-b theme-border pb-4 mb-4">
+                    <i class="fa-solid fa-microscope text-brand-amber text-lg"></i>
+                    <h2 class="text-base font-bold theme-text-main">2. Redundancy Audits</h2>
+                </div>
+                <div class="space-y-3 text-xs theme-text-muted">
+                    <div class="flex items-start gap-2 theme-text-muted leading-normal">
+                        <i class="fa-solid fa-circle-check text-emerald-400 mt-0.5 text-sm"></i>
+                        <span>Redundant cluster boundaries are 100% syntactically verified. Ready to apply physical scripts.</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="w-full lg:w-2/3 flex flex-col gap-6">
+            
+            <!-- Tab Controller Buttons -->
+            <div class="bg-brand-slate p-1.5 rounded-xl flex flex-wrap sm:flex-nowrap gap-1.5 border theme-border shadow-md w-full">
+                <button onclick="switchTab('tab-prepsheets')" id="btn-prepsheets" class="tab-btn tab-btn-active flex-1 py-2.5 px-3 text-xs font-bold rounded-lg flex items-center justify-center gap-1.5 cursor-pointer">
+                    <i class="fa-solid fa-clipboard-list text-brand-amber"></i>
+                    <span>SVI/VRRP Prep Sheets</span>
+                </button>
+                <button onclick="switchTab('tab-core-scripts')" id="btn-core-scripts" class="tab-btn tab-btn-inactive flex-1 py-2.5 px-3 text-xs font-bold rounded-lg flex items-center justify-center gap-1.5 cursor-pointer">
+                    <i class="fa-solid fa-layer-group"></i>
+                    <span>Core Switch Scripts</span>
+                </button>
+                <button onclick="switchTab('tab-access-scripts')" id="btn-access-scripts" class="tab-btn tab-btn-inactive flex-1 py-2.5 px-3 text-xs font-bold rounded-lg flex items-center justify-center gap-1.5 cursor-pointer">
+                    <i class="fa-solid fa-network-wired"></i>
+                    <span>Access Switch Scripts</span>
+                </button>
+                <button onclick="switchTab('tab-vm-configs')" id="btn-vm-configs" class="tab-btn tab-btn-inactive flex-1 py-2.5 px-3 text-xs font-bold rounded-lg flex items-center justify-center gap-1.5 cursor-pointer">
+                    <i class="fa-solid fa-desktop"></i>
+                    <span>Router/Server VM Files</span>
+                </button>
+                <button onclick="switchTab('tab-inspection-guide')" id="btn-inspection-guide" class="tab-btn tab-btn-inactive flex-1 py-2.5 px-3 text-xs font-bold rounded-lg flex items-center justify-center gap-1.5 cursor-pointer">
+                    <i class="fa-solid fa-clipboard-check text-emerald-400"></i>
+                    <span>Visual Inspection Guide</span>
+                </button>
+            </div>
+
+            <div id="tab-prepsheets" class="tab-content space-y-6">
+                <div class="theme-card border p-5 rounded-2xl flex flex-col gap-3 shadow-md">
+                    <div class="flex items-center gap-4">
+                        <div class="text-brand-amber text-2xl bg-brand-slate p-3 rounded-xl border theme-border">
+                            <i class="fa-solid fa-calculator"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-bold theme-text-main mb-0.5">Stage Four VRRP Multi-Branch Gateway Metrics</h4>
+                            <p class="text-xs theme-text-muted leading-normal">
+                                All LAN boundaries use a 64-block multiplier (Offset = UID x 64). Core 1 SVI is Master (Priority 10) for ALL Tenants, and Core 2 SVI is Standby Backup (Priority 5) across all subnets in alignment with the instructor's template.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="pt-2 border-t theme-border">
+                        <div class="text-[11px] font-bold theme-text-main mb-1">Calculated Redundant Gateways (Core 1 / Core 2 / Shared VRRP VIP):</div>
+                        <ul class="list-none grid grid-cols-1 md:grid-cols-2 gap-2 font-mono text-[10px] theme-text-muted">
+                            <li class="bg-brand-slate p-2 rounded-lg border theme-border">
+                                <span class="font-bold text-[var(--brand-indigo)]">catalan (VLAN 231):</span> VIP at <span class="font-bold text-[var(--brand-accent)]">.193</span>, Core 1 SVI at .194, Core 2 SVI at .195
+                            </li>
+                            <li class="bg-brand-slate p-2 rounded-lg border theme-border">
+                                <span class="font-bold text-[var(--brand-indigo)]">jmalaqui (VLAN 217):</span> VIP at <span class="font-bold text-[var(--brand-accent)]">.65</span>, Core 1 SVI at .66, Core 2 SVI at .67
+                            </li>
+                            <li class="bg-brand-slate p-2 rounded-lg border theme-border">
+                                <span class="font-bold text-[var(--brand-indigo)]">akarki5 (VLAN 214):</span> VIP at <span class="font-bold text-[var(--brand-accent)]">.129</span>, Core 1 SVI at .130, Core 2 SVI at .131
+                            </li>
+                            <li class="bg-brand-slate p-2 rounded-lg border theme-border">
+                                <span class="font-bold text-[var(--brand-indigo)]">caemmanuel (VLAN 206):</span> VIP at <span class="font-bold text-[var(--brand-accent)]">.129</span>, Core 1 SVI at .130, Core 2 SVI at .131
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Branch 1 & 2 Prep Card -->
+                    <div class="theme-card rounded-2xl border shadow-sm p-6 flex flex-col">
+                        <div class="flex items-center justify-between border-b theme-border pb-3 mb-4">
+                            <span class="flex items-center gap-2 font-bold theme-text-main">
+                                <i class="fa-solid fa-network-wired text-brand-indigo"></i>
+                                <span class="text-[13px]">catalan &amp; jmalaqui VRRP Paths</span>
+                            </span>
+                            <span class="px-2.5 py-0.5 bg-brand-slate text-brand-indigo border theme-border rounded text-[8px] font-bold tracking-wider">CORE 1 PRIMARY</span>
+                        </div>
+                        <div class="flex-grow">
+                            <table class="w-full text-xs text-left theme-text-main border-collapse table-fixed font-sans">
+                                <tbody class="divide-y theme-border divide-solid">
+                                    <tr class="bg-brand-slate"><td class="py-2 px-3 font-bold text-brand-amber" colspan="3">catalan - (VLAN 231) PARAMETERS</td></tr>
+                                    <tr><td class="py-2 px-3 theme-text-muted font-medium whitespace-nowrap">LAN Subnet</td><td class="py-2 px-3 text-right font-mono theme-text-main whitespace-nowrap" colspan="2">172.16.57.192/26</td></tr>
+                                    <tr><td class="py-2 px-3 theme-text-muted font-medium whitespace-nowrap">Virtual VIP Gateway</td><td class="py-2 px-3 text-right text-emerald-400 font-bold font-mono whitespace-nowrap" colspan="2">172.16.57.193</td></tr>
+                                    <tr><td class="py-2 px-3 theme-text-muted font-medium whitespace-nowrap">Core 1 SVI IP (Master)</td><td class="py-2 px-3 text-right font-mono theme-text-main whitespace-nowrap" colspan="2">172.16.57.194</td></tr>
+                                    <tr><td class="py-2 px-3 theme-text-muted font-medium whitespace-nowrap">Core 2 SVI IP (Backup)</td><td class="py-2 px-3 text-right font-mono theme-text-main whitespace-nowrap" colspan="2">172.16.57.195</td></tr>
+                                    <tr><td class="py-2 px-3 theme-text-muted font-medium whitespace-nowrap">Server Static Bound IP</td><td class="py-2 px-3 text-right font-mono text-cyan-400 whitespace-nowrap" colspan="2">172.16.57.254</td></tr>
+                                    <tr><td class="py-2 px-3 theme-text-muted font-medium whitespace-nowrap">Point-to-Point WAN Subnet</td><td class="py-2 px-3 text-right font-mono theme-text-muted whitespace-nowrap" colspan="2">192.168.3.156/30</td></tr>
+                                    <tr><td class="py-2 px-3 theme-text-muted font-medium whitespace-nowrap">Router WAN Port IP</td><td class="py-2 px-3 text-right font-mono theme-text-muted whitespace-nowrap" colspan="2">192.168.3.158</td></tr>
+                                    <tr><td class="py-2 px-3 theme-text-muted font-medium whitespace-nowrap">Primary DNS</td><td class="py-2 px-3 text-right font-mono text-emerald-500 whitespace-nowrap" colspan="2">192.168.3.158</td></tr>
+
+                                    <tr><td colspan="3"><hr class="border-t theme-border my-1"/></td></tr>
+
+                                    <tr class="bg-brand-slate"><td class="py-2 px-3 font-bold text-brand-violet" colspan="3">jmalaqui - (VLAN 217) PARAMETERS</td></tr>
+                                    <tr><td class="py-2 px-3 theme-text-muted font-medium whitespace-nowrap">LAN Subnet</td><td class="py-2 px-3 text-right font-mono theme-text-main whitespace-nowrap" colspan="2">172.16.54.64/26</td></tr>
+                                    <tr><td class="py-2 px-3 theme-text-muted font-medium whitespace-nowrap">Virtual VIP Gateway</td><td class="py-2 px-3 text-right text-emerald-400 font-bold font-mono whitespace-nowrap" colspan="2">172.16.54.65</td></tr>
+                                    <tr><td class="py-2 px-3 theme-text-muted font-medium whitespace-nowrap">Core 1 SVI IP (Master)</td><td class="py-2 px-3 text-right font-mono theme-text-main whitespace-nowrap" colspan="2">172.16.54.66</td></tr>
+                                    <tr><td class="py-2 px-3 theme-text-muted font-medium whitespace-nowrap">Core 2 SVI IP (Backup)</td><td class="py-2 px-3 text-right font-mono theme-text-main whitespace-nowrap" colspan="2">172.16.54.67</td></tr>
+                                    <tr><td class="py-2 px-3 theme-text-muted font-medium whitespace-nowrap">Server Static Bound IP</td><td class="py-2 px-3 text-right font-mono text-cyan-400 whitespace-nowrap" colspan="2">172.16.54.126</td></tr>
+                                    <tr><td class="py-2 px-3 theme-text-muted font-medium whitespace-nowrap">Point-to-Point WAN Subnet</td><td class="py-2 px-3 text-right font-mono theme-text-muted whitespace-nowrap" colspan="2">192.168.3.100/30</td></tr>
+                                    <tr><td class="py-2 px-3 theme-text-muted font-medium whitespace-nowrap">Router WAN Port IP</td><td class="py-2 px-3 text-right font-mono theme-text-muted whitespace-nowrap" colspan="2">192.168.3.102</td></tr>
+                                    <tr><td class="py-2 px-3 theme-text-muted font-medium whitespace-nowrap">Primary DNS</td><td class="py-2 px-3 text-right font-mono text-emerald-500 whitespace-nowrap" colspan="2">192.168.3.102</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Branch 3 & 4 Prep Card -->
+                    <div class="theme-card rounded-2xl border shadow-sm p-6 flex flex-col">
+                        <div class="flex items-center justify-between border-b theme-border pb-3 mb-4">
+                            <span class="flex items-center gap-2 font-bold theme-text-main">
+                                <i class="fa-solid fa-network-wired text-brand-violet"></i>
+                                <span class="text-[12px]">akarki5 &amp; caemmanuel VRRP Paths</span>
+                            </span>
+                            <span class="px-2.5 py-0.5 bg-brand-slate text-brand-indigo border theme-border rounded text-[8px] font-bold tracking-wider">CORE 1 PRIMARY</span>
+                        </div>
+                        <div class="flex-grow">
+                            <table class="w-full text-xs text-left theme-text-main border-collapse table-fixed font-sans">
+                                <tbody class="divide-y theme-border divide-solid">
+                                    <tr class="bg-brand-slate"><td class="py-2 px-3 font-bold text-brand-amber" colspan="3">akarki5 - (VLAN 214) PARAMETERS</td></tr>
+                                    <tr><td class="py-2 px-3 theme-text-muted font-medium whitespace-nowrap">LAN Subnet</td><td class="py-2 px-3 text-right font-mono theme-text-main whitespace-nowrap" colspan="2">172.16.53.128/26</td></tr>
+                                    <tr><td class="py-2 px-3 theme-text-muted font-medium whitespace-nowrap">Virtual VIP Gateway</td><td class="py-2 px-3 text-right text-emerald-400 font-bold font-mono whitespace-nowrap" colspan="2">172.16.53.129</td></tr>
+                                    <tr><td class="py-2 px-3 theme-text-muted font-medium whitespace-nowrap">Core 1 SVI IP (Master)</td><td class="py-2 px-3 text-right font-mono theme-text-main whitespace-nowrap" colspan="2">172.16.53.130</td></tr>
+                                    <tr><td class="py-2 px-3 theme-text-muted font-medium whitespace-nowrap">Core 2 SVI IP (Backup)</td><td class="py-2 px-3 text-right font-mono theme-text-main whitespace-nowrap" colspan="2">172.16.53.131</td></tr>
+                                    <tr><td class="py-2 px-3 theme-text-muted font-medium whitespace-nowrap">Server Static Bound IP</td><td class="py-2 px-3 text-right font-mono text-cyan-400 whitespace-nowrap" colspan="2">172.16.53.190</td></tr>
+                                    <tr><td class="py-2 px-3 theme-text-muted font-medium whitespace-nowrap">Point-to-Point WAN Subnet</td><td class="py-2 px-3 text-right font-mono theme-text-muted whitespace-nowrap" colspan="2">192.168.3.88/30</td></tr>
+                                    <tr><td class="py-2 px-3 theme-text-muted font-medium whitespace-nowrap">Router WAN Port IP</td><td class="py-2 px-3 text-right font-mono theme-text-muted whitespace-nowrap" colspan="2">192.168.3.90</td></tr>
+                                    <tr><td class="py-2 px-3 theme-text-muted font-medium whitespace-nowrap">Primary DNS</td><td class="py-2 px-3 text-right font-mono text-emerald-500 whitespace-nowrap" colspan="2">192.168.3.90</td></tr>
+
+                                    <tr><td colspan="3"><hr class="border-t theme-border my-1"/></td></tr>
+
+                                    <tr class="bg-brand-slate"><td class="py-2 px-3 font-bold text-brand-violet" colspan="3">caemmanuel - (VLAN 206) PARAMETERS</td></tr>
+                                    <tr><td class="py-2 px-3 theme-text-muted font-medium whitespace-nowrap">LAN Subnet</td><td class="py-2 px-3 text-right font-mono theme-text-main whitespace-nowrap" colspan="2">172.16.51.128/26</td></tr>
+                                    <tr><td class="py-2 px-3 theme-text-muted font-medium whitespace-nowrap">Virtual VIP Gateway</td><td class="py-2 px-3 text-right text-emerald-400 font-bold font-mono whitespace-nowrap" colspan="2">172.16.51.129</td></tr>
+                                    <tr><td class="py-2 px-3 theme-text-muted font-medium whitespace-nowrap">Core 1 SVI IP (Master)</td><td class="py-2 px-3 text-right font-mono theme-text-main whitespace-nowrap" colspan="2">172.16.51.130</td></tr>
+                                    <tr><td class="py-2 px-3 theme-text-muted font-medium whitespace-nowrap">Core 2 SVI IP (Backup)</td><td class="py-2 px-3 text-right font-mono theme-text-main whitespace-nowrap" colspan="2">172.16.51.131</td></tr>
+                                    <tr><td class="py-2.5 px-3 theme-text-muted font-medium whitespace-nowrap">Server Static Bound IP</td><td class="py-2 px-3 text-right font-mono text-cyan-400 whitespace-nowrap" colspan="2">172.16.51.190</td></tr>
+                                    <tr><td class="py-2 px-3 theme-text-muted font-medium whitespace-nowrap">Point-to-Point WAN Subnet</td><td class="py-2 px-3 text-right font-mono theme-text-muted whitespace-nowrap" colspan="2">192.168.3.56/30</td></tr>
+                                    <tr><td class="py-2 px-3 theme-text-muted font-medium whitespace-nowrap">Router WAN Port IP</td><td class="py-2 px-3 text-right font-mono theme-text-muted whitespace-nowrap" colspan="2">192.168.3.58</td></tr>
+                                    <tr><td class="py-2 px-3 theme-text-muted font-medium whitespace-nowrap">Primary DNS</td><td class="py-2 px-3 text-right font-mono text-emerald-500 whitespace-nowrap" colspan="2">192.168.3.58</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Physical Cable Connection Matrix Table -->
+                <div class="theme-card rounded-2xl border shadow-sm p-6">
+                    <div class="flex items-center gap-2.5 border-b theme-border pb-3 mb-4">
+                        <i class="fa-solid fa-circle-nodes text-brand-amber text-lg"></i>
+                        <h3 class="text-sm font-bold theme-text-main">3. Physical Cable Connection Matrix</h3>
+                    </div>
+        
+                    <div class="w-full overflow-hidden">
+                        <table class="w-full text-xs text-left theme-text-main border-collapse table-fixed">
+                            <thead>
+                                <tr class="border-b theme-border font-bold uppercase tracking-wider text-[11px]">
+                                    <th class="py-2.5 px-2 w-[20%]">From Device</th>
+                                    <th class="py-2.5 px-2 w-[10%]">Port</th>
+                                    <th class="py-2.5 px-2 w-[20%]">To Device</th>
+                                    <th class="py-2.5 px-2 w-[12%]">Port</th>
+                                    <th class="py-2.5 px-2 w-[35%]">Purpose / Reference</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y theme-border">
+                                <tr>
+                                    <td class="py-2 px-3 font-bold">Aruba 6300 Core 1</td>
+                                    <td class="py-2 px-3 font-mono text-cyan-400">1/1/1</td>
+                                    <td class="py-2 px-3 font-bold">Aruba 6300 Core 2</td>
+                                    <td class="py-2 px-3 font-mono text-cyan-400">1/1/1</td>
+                                    <td class="py-2 px-3 theme-text-muted">Inter-Core Backbone Redundancy Trunk (Allows VLANs 231, 217, 214, 206)</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2 px-3 font-bold">Aruba 6300 Core 1</td>
+                                    <td class="py-2 px-3 font-mono text-amber-400">1/1/2</td>
+                                    <td class="py-2 px-3 font-bold">Aruba 6300 Core 2</td>
+                                    <td class="py-2 px-3 font-mono text-amber-400">1/1/2</td>
+                                    <td class="py-2 px-3 theme-text-muted">Inter-Core Secondary High-Availability Interconnect</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2 px-3 font-bold">Aruba 6300 Core 1</td>
+                                    <td class="py-2 px-3 font-mono text-emerald-400">1/1/3</td>
+                                    <td class="py-2 px-3 font-bold">catalan-Router VM</td>
+                                    <td class="py-2 px-3 font-mono text-emerald-400">ens37</td>
+                                    <td class="py-2 px-3 theme-text-muted">catalan WAN link (192.168.3.156/30) | Switch: 192.168.3.157 / Router: 192.168.3.158</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2 px-3 font-bold">Aruba 6300 Core 1</td>
+                                    <td class="py-2 px-3 font-mono text-emerald-400">1/1/4</td>
+                                    <td class="py-2 px-3 font-bold">jmalaqui-Router VM</td>
+                                    <td class="py-2 px-3 font-mono text-emerald-400">ens37</td>
+                                    <td class="py-2 px-3 theme-text-muted">jmalaqui WAN link (192.168.3.100/30) | Switch: 192.168.3.101 / Router: 192.168.3.102</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2 px-3 font-bold">Aruba 6300 Core 2</td>
+                                    <td class="py-2 px-3 font-mono text-emerald-400">1/1/3</td>
+                                    <td class="py-2 px-3 font-bold">akarki5-Router VM</td>
+                                    <td class="py-2 px-3 font-mono text-emerald-400">ens37</td>
+                                    <td class="py-2 px-3 theme-text-muted">akarki5 WAN link (192.168.3.88/30) | Switch: 192.168.3.89 / Router: 192.168.3.90</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2 px-3 font-bold">Aruba 6300 Core 2</td>
+                                    <td class="py-2 px-3 font-mono text-emerald-400">1/1/4</td>
+                                    <td class="py-2 px-3 font-bold">caemmanuel-Router VM</td>
+                                    <td class="py-2 px-3 font-mono text-emerald-400">ens37</td>
+                                    <td class="py-2 px-3 theme-text-muted">caemmanuel WAN link (192.168.3.56/30) | Switch: 192.168.3.57 / Router: 192.168.3.58</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div id="tab-core-scripts" class="tab-content hidden space-y-6">
+                <div class="theme-card rounded-2xl border p-6">
+                    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b theme-border pb-4 mb-4">
+                        <div>
+                            <h3 class="text-sm font-bold theme-text-main">ArubaOS-CX 6300 Core Configuration Panel</h3>
+                            <p class="text-xs theme-text-muted">Deploy these setups across both of your active Layer 3 Core physical hosts</p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="border-b theme-border pb-2 font-bold text-xs theme-text-main">Core Switch 1 (Primary Master)</div>
+                        <pre class="bg-brand-card theme-text-main p-5 rounded-xl text-xs font-mono overflow-x-auto custom-scrollbar border theme-border"><code class="block whitespace-pre">en
+conf t
+hostname ababamahmoudi-6300-1
+vlan 1,23,43,63,83
+spanning-tree
+vlan 23
+name ababamahmoudi-vlan
+vlan 43
+name server2-client2-vlan
+vlan 63
+name server3-client3-vlan
+vlan 83
+name server4-client4-vlan
+interface vlan 23
+no shutdown
+ip address 172.16.5.194/26
+vrrp 23 address-family ipv4
+address 172.16.5.193 primary
+priority 10
+no shutdown
+exit
+ip ospf 1 area 0
+y
+y
+exit
+
+
+
+exit
+router ospf 1
+router-id 1.1.1.1
+exit
+router vrrp enable</code></pre>
+
+                        <div class="border-b theme-border pb-2 font-bold text-xs theme-text-main pt-4">Core Switch 2 (Backup Standby)</div>
+                        <pre class="bg-brand-card theme-text-main p-5 rounded-xl text-xs font-mono overflow-x-auto custom-scrollbar border theme-border"><code class="block whitespace-pre">en
+conf t
+hostname ababamahmoudi-6300-2
+vlan 1,23,43,63,83
+spanning-tree
+
+
+router ospf 1
+router-id 2.2.2.2
+exit
+
+router vrrp enable</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <div id="tab-access-scripts" class="tab-content hidden space-y-6">
+                <div class="theme-card rounded-2xl border p-6">
+                    <div class="border-b theme-border pb-4 mb-4">
+                        <h3 class="text-sm font-bold theme-text-main">Access Switch Configuration Panel</h3>
+                        <p class="text-xs theme-text-muted">Deploy these setups across your physical client-facing edge access nodes</p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="border-b theme-border pb-2 font-bold text-xs theme-text-main">Access Switch 1 (Aruba 2530 - ProCurve Syntax)</div>
+                        <pre class="bg-brand-card theme-text-main p-5 rounded-xl text-xs font-mono overflow-x-auto custom-scrollbar border theme-border"><code class="block whitespace-pre">en
+conf t
+hostname ababamahmoudi-2540-1
+vlan 1,23,43,63,83
+spanning-tree
+vlan 23
+name ababamahmoudi-vlan
+vlan 43
+name server2-client2-vlan
+exit
+vlan 63
+name server3-client3-vlan
+vlan 83
+name server4-client4-vlan
+exit
+interface 1/1/1
+no routing
+no shutdown
+vlan trunk allowed 23,43,63,83
+exit
+interface 1/1/2
+no routing
+no shutdown
+vlan trunk allowed 23,43,63,83
+exit
+interface 1/1/3
+no routing
+no shutdown
+vlan access 23
+interface 1/1/4
+no routing
+no shutdown
+vlan access 43
+interface 1/1/5
+no routing
+no shutdown
+vlan trunk allowed 23,43,63,83
+exit</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <div id="tab-vm-configs" class="tab-content hidden space-y-6">
+                <div class="theme-card rounded-2xl border p-6">
+                    <div class="border-b theme-border pb-4 mb-4">
+                        <h3 class="text-sm font-bold theme-text-main">Linux VM Infrastructure Configuration Files</h3>
+                        <p class="text-xs theme-text-muted">Target configurations for catalan (VLAN 231)</p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="border-b theme-border pb-2 font-bold text-xs theme-text-main">Server Netplan (dhcpAssignment.yaml)</div>
+                        <pre class="bg-brand-card theme-text-main p-5 rounded-xl text-xs font-mono overflow-x-auto custom-scrollbar border theme-border"><code class="block whitespace-pre"># Target host: catalan-Server VM
+# Location: /etc/netplan/dhcpAssignment.yaml
+
+network:
+  version: 2
+  renderer: networkd
+  ethernets:
+    ens33:
+      dhcp4: true
+      optional: true</code></pre>
+
+                        <div class="border-b theme-border pb-2 font-bold text-xs theme-text-main pt-2">Router FRR OSPF Config (frrRouterConfig.txt)</div>
+                        <pre class="bg-brand-card theme-text-main p-5 rounded-xl text-xs font-mono overflow-x-auto custom-scrollbar border theme-border"><code class="block whitespace-pre"># Target host: catalan-Router VM
+# Command tool: sudo vtysh
+
+sudo vtysh
+router ospf
+router-id 4.4.4.4
+network 10.33.0.0/16 area 0.0.0.0
+network 192.168.43.0/30 area 0.0.0.0
+default-information originate
+exit
+ip route 0.0.0.0 0.0.0.0 ens33</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <div id="tab-inspection-guide" class="tab-content hidden space-y-6">
+                <div class="theme-card rounded-2xl border p-6">
+                    <div class="border-b theme-border pb-4 mb-4">
+                        <h3 class="text-sm font-bold theme-text-main flex items-center gap-2">
+                            <i class="fa-solid fa-clipboard-check text-emerald-400"></i>
+                            <span>Complete Stage 4 Visual Inspection Runbook — catalan (VLAN 231)</span>
+                        </h3>
+                    </div>
+
+                    <div class="space-y-6 text-xs leading-relaxed">
+                        <!-- Step 1 -->
+                        <div class="bg-brand-slate p-5 rounded-xl border theme-border space-y-4">
+                            <div class="flex items-center gap-2 font-bold theme-text-main text-sm">
+                                <span class="bg-brand-indigo/20 text-brand-indigo px-2 py-0.5 rounded text-sm font-mono">STEP 1</span>
+                                <span>Stage 2 Infrastructure &amp; Networking Verification</span>
+                            </div>
+
+                            <div class="bg-brand-card p-4 rounded-lg border theme-border space-y-2">
+                                <span class="font-bold text-brand-indigo block">1A. Client VM Verification (catalan-Client)</span>
+                                <div class="space-y-2 pl-2 border-l-2 border-brand-indigo/40">
+                                    <div>
+                                        <span class="theme-text-main font-semibold">1. Renew DHCP Lease:</span>
+                                        <code class="block bg-slate-950 text-slate-100 p-2 rounded font-mono text-[12px] my-1">sudo dhclient -r &amp;&amp; sudo dhclient -v</code>
+                                        <span class="text-emerald-400 text-[11px]">Expectation: Pulls dynamic IP in range 172.16.57.196 - 172.16.57.253 with gateway 172.16.57.193.</span>
+                                    </div>
+                                    <div>
+                                        <span class="theme-text-main font-semibold">2. Traceroute to Local Router:</span>
+                                        <code class="block bg-slate-950 text-slate-100 p-2 rounded font-mono text-[12px] my-1">traceroute 192.168.3.158</code>
+                                        <span class="text-emerald-400 text-[11px]">Expectation: Hop 1 is VIP 172.16.57.193, Hop 2 is Router WAN 192.168.3.158.</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Step 2 -->
+                        <div class="bg-brand-slate p-5 rounded-xl border theme-border space-y-4">
+                            <div class="flex items-center gap-2 font-bold theme-text-main text-sm">
+                                <span class="bg-brand-indigo/20 text-brand-indigo px-2 py-0.5 rounded text-sm font-mono">STEP 2</span>
+                                <span>Stage 3 Database Integration &amp; Web Application Checklist</span>
+                            </div>
+
+                            <div class="bg-brand-card p-4 rounded-lg border theme-border space-y-2">
+                                <div>
+                                    <span class="theme-text-main font-semibold block">1. Local MariaDB Read-Only Login (catalan-Server):</span>
+                                    <code class="block bg-slate-950 text-slate-100 p-2 rounded font-mono text-[12px] my-1">mariadb -u csp450ro -pcsp450ro -h 172.16.57.254</code>
+                                    <span class="text-emerald-400 text-[11px]">Expectation: Connects successfully. Terminal prompt reads: MariaDB [(none)].</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Step 3 -->
+                        <div class="bg-brand-slate p-5 rounded-xl border theme-border space-y-3">
+                            <div class="flex items-center gap-2 font-bold theme-text-main text-sm">
+                                <span class="bg-brand-indigo/20 text-brand-indigo px-2 py-0.5 rounded text-sm font-mono">STEP 3</span>
+                                <span>VRRP High-Availability Master Failover Test</span>
+                            </div>
+                            <div class="bg-brand-card p-3 rounded-lg border theme-border space-y-1">
+                                <span class="font-bold text-amber-400 block text-[12px]">3A. Check Primary Master Status</span>
+                                <code class="block bg-slate-950 text-slate-100 p-2 rounded font-mono text-[12px]">ssh student@172.16.57.194</code>
+                                <code class="block bg-slate-950 text-slate-100 p-2 rounded font-mono text-[12px] my-1">show vrrp</code>
+                                <span class="text-emerald-400 text-[11px] font-semibold block">Expectation: VLAN 231 state displays as MASTER (Priority 10).</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <footer class="bg-brand-dark border-t theme-border theme-text-muted py-6 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs">
+            <div class="theme-text-muted">
+                STAGE FOUR PREVIEW!
+            </div>
+            <div class="flex items-center gap-1.5 bg-brand-slate border theme-border px-3.5 py-1 rounded-full theme-text-main">
+                <i class="fa-brands fa-github text-brand-indigo"></i>
+                <a href="https://github.com/cerealicious" target="_blank" class="font-bold hover:underline theme-text-main">cerealicious</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.tab-btn').forEach(el => {
+                el.classList.remove('tab-btn-active');
+                el.classList.add('tab-btn-inactive');
+            });
+
+            const contentEl = document.getElementById(tabId);
+            if (contentEl) {
+                contentEl.classList.remove('hidden');
+            }
+            
+            const targetBtnId = tabId.replace('tab-', 'btn-');
+            const activeBtn = document.getElementById(targetBtnId);
+            if (activeBtn) {
+                activeBtn.classList.remove('tab-btn-inactive');
+                activeBtn.classList.add('tab-btn-active');
+            }
+        }
+    </script>
+</body>
+</html>
