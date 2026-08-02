@@ -1,7 +1,7 @@
 > [!NOTE]
 > **Stage Four is currently under active development.**
 
-🔗 **Live Preview:** [View the progress live here](https://cerealicious.github.io/CSP450/Preview.html).
+## [📌View the PREVIEW here!](https://cerealicious.github.io/CSP450/Preview.html)
 
 ### 🚀 Upcoming Features
 * **Automated Generation:** A dedicated web interface is in progress to streamline and automate all Stage Four setup processes.
@@ -20,7 +20,7 @@ In Stage 3, each tenant relied on a single core switch and single router. In Sta
 - **4x Ubuntu FRR Routers** providing redundant default route origination back to SenecaNet/Internet.
 ---
 
-## 🗺️ Execution Phases
+## 📒 Execution Phases
 
 ### 🔹 Phase 1: Subnet & VRRP Gateway Calculation
 
