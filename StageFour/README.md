@@ -75,3 +75,6 @@ In Stage 3, each tenant relied on a single core switch and single router. In Sta
   - Capture `show vrrp` output on Switch 1 & 2 **BEFORE** power cut (2 Screenshots).
   - Capture `show vrrp` output on Switch 1 & 2 **AFTER** power cut (2 Screenshots).
   - Collate final customized configuration scripts for all 4 Aruba switches and FRR routers.
+---
+
+*📅 Last Updated: July 31, 2026*
