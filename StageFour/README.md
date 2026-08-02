@@ -10,7 +10,11 @@
 Feel free to **⭐Star** or **👁️Watch** this repository for upcoming releases and updates.
 ---
 ---
-<img width="813" height="572" alt="StageFour-Diagram" src="https://github.com/user-attachments/assets/474bb795-a2e3-4fd4-86d4-c4f1ba84efbe" />
+### Stage Four Diagram
+<img width="813" height="572" alt="StageFour-Diagram" src="assets/StageFour-Diagram.png" />
+
+
+---
 
 ## 📋 Overview of Stage 4 Architecture Changes
 In Stage 3, each tenant relied on a single core switch and single router. In Stage 4, all 4 group members (a full Pod) combine physical resources:
