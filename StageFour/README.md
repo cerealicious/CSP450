@@ -7,7 +7,7 @@
 * **Automated Generation:** A dedicated web interface is in progress to streamline and automate all Stage Four setup processes.
 * **Documentation & Updates:** Detailed instructions and release notes will be published here soon.
 
-Feel free to **⭐Star** or **Watch** this repository for upcoming releases and updates.
+Feel free to **⭐Star** or **👁️Watch** this repository for upcoming releases and updates.
 ---
 ---
 <img width="813" height="572" alt="StageFour-Diagram" src="https://github.com/user-attachments/assets/474bb795-a2e3-4fd4-86d4-c4f1ba84efbe" />
