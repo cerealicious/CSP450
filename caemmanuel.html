@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Visual Inspection Guide - jmalaqui (VLAN 217)</title>
+    <title>Visual Inspection Guide - caemmanuel (VLAN 206)</title>
     <link rel="icon" type="image/png" href="https://avatars.githubusercontent.com/u/5056960?s=96&v=4">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -156,9 +156,9 @@
                 </div>
                 <div>
                     <h1 class="text-xl font-extrabold tracking-tight bg-gradient-to-r from-brand-indigo via-brand-accent to-brand-amber bg-clip-text text-transparent">
-                        Visual Inspection Guide — jmalaqui
+                        Visual Inspection Guide — caemmanuel
                     </h1>
-                    <p class="text-xs theme-text-muted font-medium tracking-wide">Stage Four Standalone Runbook for Tenant 2 (VLAN 217)</p>
+                    <p class="text-xs theme-text-muted font-medium tracking-wide">Stage Four Standalone Runbook for Tenant 4 (VLAN 206)</p>
                 </div>
             </div>
 
@@ -194,9 +194,9 @@
             <div class="flex flex-wrap items-center justify-between border-b theme-border pb-4 mb-4 gap-4">
                 <div class="flex items-center gap-3">
                     <span class="px-3 py-1 bg-brand-indigo/20 text-brand-indigo border border-brand-indigo/30 rounded-lg text-xs font-mono font-bold">
-                        Tenant 2 Profile
+                        Tenant 4 Profile
                     </span>
-                    <h2 class="text-base font-bold theme-text-main">jmalaqui (UID 217) Infrastructure Parameters</h2>
+                    <h2 class="text-base font-bold theme-text-main">caemmanuel (UID 206) Infrastructure Parameters</h2>
                 </div>
                 <span class="text-xs font-mono px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 font-semibold">
                     <i class="fa-solid fa-circle-check mr-1.5"></i>Primary Master: Core 1
@@ -207,27 +207,27 @@
             <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 text-xs font-mono">
                 <div class="bg-brand-slate p-3 rounded-xl border theme-border">
                     <span class="text-[10px] theme-text-muted block font-sans">LAN Subnet</span>
-                    <span class="font-bold text-amber-400">172.16.54.64/26</span>
+                    <span class="font-bold text-amber-400">172.16.51.128/26</span>
                 </div>
                 <div class="bg-brand-slate p-3 rounded-xl border theme-border">
                     <span class="text-[10px] theme-text-muted block font-sans">Virtual VIP Gateway</span>
-                    <span class="font-bold text-emerald-400">172.16.54.65</span>
+                    <span class="font-bold text-emerald-400">172.16.51.129</span>
                 </div>
                 <div class="bg-brand-slate p-3 rounded-xl border theme-border">
                     <span class="text-[10px] theme-text-muted block font-sans">Core 1 SVI (Master)</span>
-                    <span class="font-bold theme-text-main">172.16.54.66</span>
+                    <span class="font-bold theme-text-main">172.16.51.130</span>
                 </div>
                 <div class="bg-brand-slate p-3 rounded-xl border theme-border">
                     <span class="text-[10px] theme-text-muted block font-sans">Core 2 SVI (Backup)</span>
-                    <span class="font-bold theme-text-main">172.16.54.67</span>
+                    <span class="font-bold theme-text-main">172.16.51.131</span>
                 </div>
                 <div class="bg-brand-slate p-3 rounded-xl border theme-border">
                     <span class="text-[10px] theme-text-muted block font-sans">Server Static IP</span>
-                    <span class="font-bold text-cyan-400">172.16.54.126</span>
+                    <span class="font-bold text-cyan-400">172.16.51.190</span>
                 </div>
                 <div class="bg-brand-slate p-3 rounded-xl border theme-border">
                     <span class="text-[10px] theme-text-muted block font-sans">Router WAN IP</span>
-                    <span class="font-bold text-brand-indigo">192.168.3.102</span>
+                    <span class="font-bold text-brand-indigo">192.168.3.58</span>
                 </div>
             </div>
         </section>
@@ -243,7 +243,7 @@
 
                 <!-- Client VM -->
                 <div class="bg-brand-card p-4 rounded-lg border theme-border space-y-2">
-                    <span class="font-bold text-brand-indigo block">1A. Client VM Verification (jmalaqui-Client)</span>
+                    <span class="font-bold text-brand-indigo block">1A. Client VM Verification (caemmanuel-Client)</span>
                     <div class="space-y-3 pl-2 border-l-2 border-brand-indigo/40">
                         <div>
                             <div class="flex items-center justify-between">
@@ -251,7 +251,7 @@
                                 <button onclick="copyText('sudo dhclient -r &amp;&amp; sudo dhclient -v')" class="text-[10px] bg-brand-slate px-2 py-0.5 rounded border theme-border hover:bg-brand-indigo hover:text-white transition-all cursor-pointer flex items-center gap-1"><i class="fa-solid fa-copy text-[9px]"></i>Copy</button>
                             </div>
                             <code class="block bg-slate-950 text-slate-100 p-2 rounded font-mono text-[12px] my-1">sudo dhclient -r &amp;&amp; sudo dhclient -v</code>
-                            <span class="text-emerald-400 text-[11px]">Expectation: Pulls dynamic IP in range 172.16.54.68 - 172.16.54.125 with gateway 172.16.54.65.</span>
+                            <span class="text-emerald-400 text-[11px]">Expectation: Pulls dynamic IP in range 172.16.51.132 - 172.16.51.189 with gateway 172.16.51.129.</span>
                         </div>
                         <div>
                             <span class="theme-text-main font-semibold">2. Internet Access by FQDN:</span>
@@ -261,10 +261,10 @@
                         <div>
                             <div class="flex items-center justify-between">
                                 <span class="theme-text-main font-semibold">3. Traceroute to Local Router:</span>
-                                <button onclick="copyText('traceroute 192.168.3.102')" class="text-[10px] bg-brand-slate px-2 py-0.5 rounded border theme-border hover:bg-brand-indigo hover:text-white transition-all cursor-pointer flex items-center gap-1"><i class="fa-solid fa-copy text-[9px]"></i>Copy</button>
+                                <button onclick="copyText('traceroute 192.168.3.58')" class="text-[10px] bg-brand-slate px-2 py-0.5 rounded border theme-border hover:bg-brand-indigo hover:text-white transition-all cursor-pointer flex items-center gap-1"><i class="fa-solid fa-copy text-[9px]"></i>Copy</button>
                             </div>
-                            <code class="block bg-slate-950 text-slate-100 p-2 rounded font-mono text-[12px] my-1">traceroute 192.168.3.102</code>
-                            <span class="text-emerald-400 text-[11px]">Expectation: Hop 1 is VIP 172.16.54.65, Hop 2 is Router WAN address 192.168.3.102.</span>
+                            <code class="block bg-slate-950 text-slate-100 p-2 rounded font-mono text-[12px] my-1">traceroute 192.168.3.58</code>
+                            <span class="text-emerald-400 text-[11px]">Expectation: Hop 1 is VIP 172.16.51.129, Hop 2 is Router WAN address 192.168.3.58.</span>
                         </div>
                         <div>
                             <div class="flex items-center justify-between">
@@ -272,14 +272,14 @@
                                 <button onclick="copyText('traceroute youtube.com')" class="text-[10px] bg-brand-slate px-2 py-0.5 rounded border theme-border hover:bg-brand-indigo hover:text-white transition-all cursor-pointer flex items-center gap-1"><i class="fa-solid fa-copy text-[9px]"></i>Copy</button>
                             </div>
                             <code class="block bg-slate-950 text-slate-100 p-2 rounded font-mono text-[12px] my-1">traceroute youtube.com</code>
-                            <span class="text-emerald-400 text-[11px]">Expectation: Hop 1 is VIP 172.16.54.65, Hop 2 is Router 192.168.3.102, then exits out SenecaNet.</span>
+                            <span class="text-emerald-400 text-[11px]">Expectation: Hop 1 is VIP 172.16.51.129, Hop 2 is Router 192.168.3.58, then exits out SenecaNet.</span>
                         </div>
                     </div>
                 </div>
 
                 <!-- Server VM -->
                 <div class="bg-brand-card p-4 rounded-lg border theme-border space-y-2">
-                    <span class="font-bold text-brand-indigo block">1B. Server VM Verification (jmalaqui-Server @ 172.16.54.126)</span>
+                    <span class="font-bold text-brand-indigo block">1B. Server VM Verification (caemmanuel-Server @ 172.16.51.190)</span>
                     <div class="space-y-3 pl-2 border-l-2 border-brand-indigo/40">
                         <div>
                             <div class="flex items-center justify-between">
@@ -287,15 +287,15 @@
                                 <button onclick="copyText('sudo dhclient -r &amp;&amp; sudo dhclient -v')" class="text-[10px] bg-brand-slate px-2 py-0.5 rounded border theme-border hover:bg-brand-indigo hover:text-white transition-all cursor-pointer flex items-center gap-1"><i class="fa-solid fa-copy text-[9px]"></i>Copy</button>
                             </div>
                             <code class="block bg-slate-950 text-slate-100 p-2 rounded font-mono text-[12px] my-1">sudo dhclient -r &amp;&amp; sudo dhclient -v</code>
-                            <span class="text-emerald-400 text-[11px]">Expectation: Core Switch DHCP static-bind locks Server IP exactly to 172.16.54.126 (MAC: 00:0C:29:47:FE:85).</span>
+                            <span class="text-emerald-400 text-[11px]">Expectation: Core Switch DHCP static-bind locks Server IP exactly to 172.16.51.190 (MAC: 00:50:56:2E:34:2C).</span>
                         </div>
                         <div>
                             <div class="flex items-center justify-between">
                                 <span class="theme-text-main font-semibold">2. SSHtest Password Disabled Test:</span>
-                                <button onclick="copyText('ssh SSHtest@172.16.54.126')" class="text-[10px] bg-brand-slate px-2 py-0.5 rounded border theme-border hover:bg-brand-indigo hover:text-white transition-all cursor-pointer flex items-center gap-1"><i class="fa-solid fa-copy text-[9px]"></i>Copy SSH</button>
+                                <button onclick="copyText('ssh SSHtest@172.16.51.190')" class="text-[10px] bg-brand-slate px-2 py-0.5 rounded border theme-border hover:bg-brand-indigo hover:text-white transition-all cursor-pointer flex items-center gap-1"><i class="fa-solid fa-copy text-[9px]"></i>Copy SSH</button>
                             </div>
-                            <span class="theme-text-muted block text-[12px]">From <strong>jmalaqui-Client VM</strong>, attempt SSH:</span>
-                            <code class="block bg-slate-950 text-slate-100 p-2 rounded font-mono text-[12px] my-1">ssh SSHtest@172.16.54.126</code>
+                            <span class="theme-text-muted block text-[12px]">From <strong>caemmanuel-Client VM</strong>, attempt SSH:</span>
+                            <code class="block bg-slate-950 text-slate-100 p-2 rounded font-mono text-[12px] my-1">ssh SSHtest@172.16.51.190</code>
                             <span class="text-emerald-400 text-[11px]">Expectation: Returns "Permission denied (publickey)" proving password authentication is strictly disabled in sshd_config.</span>
                         </div>
                         <div>
@@ -311,7 +311,7 @@
 
                 <!-- Router VM -->
                 <div class="bg-brand-card p-4 rounded-lg border theme-border space-y-2">
-                    <span class="font-bold text-brand-indigo block">1C. Router VM Verification (jmalaqui-Router @ WAN IP 192.168.3.102)</span>
+                    <span class="font-bold text-brand-indigo block">1C. Router VM Verification (caemmanuel-Router @ WAN IP 192.168.3.58)</span>
                     <div class="space-y-3 pl-2 border-l-2 border-brand-indigo/40">
                         <div>
                             <div class="flex items-center justify-between">
@@ -329,7 +329,7 @@
                             <code class="block bg-slate-950 text-slate-100 p-2 rounded font-mono text-[12px] my-1 whitespace-pre-line">sudo vtysh
 show ip ospf
 show ip route</code>
-                            <span class="text-emerald-400 text-[11px]">Expectation: OSPF Process ID 217.1.1.2 active in Area 0; routing table lists routes marked with "O" code.</span>
+                            <span class="text-emerald-400 text-[11px]">Expectation: OSPF Process ID 206.1.1.2 active in Area 0; routing table lists routes marked with "O" code.</span>
                         </div>
                     </div>
                 </div>
@@ -342,9 +342,9 @@ show ip route</code>
                             <div class="bg-slate-950/50 p-2.5 rounded border theme-border">
                                 <div class="flex items-center justify-between mb-1">
                                     <span class="font-bold text-amber-400 text-[11px]">Aruba 6300 Core 1 Switch Commands:</span>
-                                    <button onclick="copyText('ssh student@172.16.54.66')" class="text-[10px] bg-brand-slate px-2 py-0.5 rounded border theme-border hover:bg-brand-indigo hover:text-white transition-all cursor-pointer flex items-center gap-1"><i class="fa-solid fa-copy text-[9px]"></i>Copy SSH</button>
+                                    <button onclick="copyText('ssh student@172.16.51.130')" class="text-[10px] bg-brand-slate px-2 py-0.5 rounded border theme-border hover:bg-brand-indigo hover:text-white transition-all cursor-pointer flex items-center gap-1"><i class="fa-solid fa-copy text-[9px]"></i>Copy SSH</button>
                                 </div>
-                                <code class="block text-slate-200 text-[12px] font-mono whitespace-pre">ssh student@172.16.54.66
+                                <code class="block text-slate-200 text-[12px] font-mono whitespace-pre">ssh student@172.16.51.130
 
 sh vlan
 sh ip route
@@ -355,10 +355,10 @@ sh run</code>
 
                             <div class="bg-slate-950/50 p-2.5 rounded border theme-border">
                                 <div class="flex items-center justify-between mb-1">
-                                    <span class="font-bold text-amber-400 text-[11px]">Aruba Access Switch 1 Commands:</span>
-                                    <button onclick="copyText('ssh student@172.16.54.68')" class="text-[10px] bg-brand-slate px-2 py-0.5 rounded border theme-border hover:bg-brand-indigo hover:text-white transition-all cursor-pointer flex items-center gap-1"><i class="fa-solid fa-copy text-[9px]"></i>Copy SSH</button>
+                                    <span class="font-bold text-amber-400 text-[11px]">Aruba Access Switch 2 Commands:</span>
+                                    <button onclick="copyText('ssh student@172.16.51.132')" class="text-[10px] bg-brand-slate px-2 py-0.5 rounded border theme-border hover:bg-brand-indigo hover:text-white transition-all cursor-pointer flex items-center gap-1"><i class="fa-solid fa-copy text-[9px]"></i>Copy SSH</button>
                                 </div>
-                                <code class="block text-slate-200 text-[12px] font-mono whitespace-pre">ssh student@172.16.54.68
+                                <code class="block text-slate-200 text-[12px] font-mono whitespace-pre">ssh student@172.16.51.132
 
 sh vlan
 sh vlans ports 3</code>
@@ -379,10 +379,10 @@ sh vlans ports 3</code>
                 <div class="bg-brand-card p-4 rounded-lg border theme-border space-y-3">
                     <div>
                         <div class="flex items-center justify-between">
-                            <span class="theme-text-main font-semibold block">1. Local MariaDB Read-Only Login (jmalaqui-Server):</span>
-                            <button onclick="copyText('mariadb -u csp450ro -pcsp450ro -h 172.16.54.126')" class="text-[10px] bg-brand-slate px-2 py-0.5 rounded border theme-border hover:bg-brand-indigo hover:text-white transition-all cursor-pointer flex items-center gap-1"><i class="fa-solid fa-copy text-[9px]"></i>Copy Login</button>
+                            <span class="theme-text-main font-semibold block">1. Local MariaDB Read-Only Login (caemmanuel-Server):</span>
+                            <button onclick="copyText('mariadb -u csp450ro -pcsp450ro -h 172.16.51.190')" class="text-[10px] bg-brand-slate px-2 py-0.5 rounded border theme-border hover:bg-brand-indigo hover:text-white transition-all cursor-pointer flex items-center gap-1"><i class="fa-solid fa-copy text-[9px]"></i>Copy Login</button>
                         </div>
-                        <code class="block bg-slate-950 text-slate-100 p-2 rounded font-mono text-[12px] my-1">mariadb -u csp450ro -pcsp450ro -h 172.16.54.126</code>
+                        <code class="block bg-slate-950 text-slate-100 p-2 rounded font-mono text-[12px] my-1">mariadb -u csp450ro -pcsp450ro -h 172.16.51.190</code>
                         <span class="text-emerald-400 text-[11px]">Expectation: Connects successfully to local database engine via network host binding. Prompt reads: MariaDB [(none)].</span>
                         <div class="flex items-center justify-end mt-1">
                             <button onclick="copyText('EXIT;')" class="text-[10px] bg-brand-slate px-2 py-0.5 rounded border theme-border hover:bg-brand-indigo hover:text-white transition-all cursor-pointer flex items-center gap-1"><i class="fa-solid fa-copy text-[9px]"></i>Copy Exit</button>
@@ -392,11 +392,11 @@ sh vlans ports 3</code>
 
                     <div>
                         <div class="flex items-center justify-between">
-                            <span class="theme-text-main font-semibold block">2. Peer MariaDB Read-Only Login (catalan-Server @ 172.16.57.254):</span>
-                            <button onclick="copyText('mariadb -u csp450ro -pcsp450ro -h 172.16.57.254')" class="text-[10px] bg-brand-slate px-2 py-0.5 rounded border theme-border hover:bg-brand-indigo hover:text-white transition-all cursor-pointer flex items-center gap-1"><i class="fa-solid fa-copy text-[9px]"></i>Copy Login</button>
+                            <span class="theme-text-main font-semibold block">2. Peer MariaDB Read-Only Login (akarki5-Server @ 172.16.53.190):</span>
+                            <button onclick="copyText('mariadb -u csp450ro -pcsp450ro -h 172.16.53.190')" class="text-[10px] bg-brand-slate px-2 py-0.5 rounded border theme-border hover:bg-brand-indigo hover:text-white transition-all cursor-pointer flex items-center gap-1"><i class="fa-solid fa-copy text-[9px]"></i>Copy Login</button>
                         </div>
-                        <code class="block bg-slate-950 text-slate-100 p-2 rounded font-mono text-[12px] my-1">mariadb -u csp450ro -pcsp450ro -h 172.16.57.254</code>
-                        <span class="text-emerald-400 text-[11px]">Expectation: Cross-branch query establishes connection to peer Server 172.16.57.254.</span>
+                        <code class="block bg-slate-950 text-slate-100 p-2 rounded font-mono text-[12px] my-1">mariadb -u csp450ro -pcsp450ro -h 172.16.53.190</code>
+                        <span class="text-emerald-400 text-[11px]">Expectation: Cross-branch query establishes connection to peer Server 172.16.53.190.</span>
                         <div class="flex items-center justify-end mt-1">
                             <button onclick="copyText('EXIT;')" class="text-[10px] bg-brand-slate px-2 py-0.5 rounded border theme-border hover:bg-brand-indigo hover:text-white transition-all cursor-pointer flex items-center gap-1"><i class="fa-solid fa-copy text-[9px]"></i>Copy Exit</button>
                         </div>
@@ -435,15 +435,15 @@ sh vlans ports 3</code>
 
                     <div>
                         <span class="theme-text-main font-semibold block">4. Apache Web Browser Query ($1500 New Guitar Search):</span>
-                        <span class="theme-text-muted block text-[12px]">Open Firefox on Client VM and navigate to <strong>http://172.16.54.126/</strong></span>
+                        <span class="theme-text-muted block text-[12px]">Open Firefox on Client VM and navigate to <strong>http://172.16.51.190/</strong></span>
                         <span class="theme-text-muted block text-[12px]">Search for new guitars priced &lt;= $1500.</span>
                         <span class="text-emerald-400 text-[11px]">Expectation: Renders PHP search result table listing guitars priced at or under $1500.</span>
                     </div>
 
                     <div>
-                        <span class="theme-text-main font-semibold block">5. Unique Peer (catalan's) Instrument Search:</span>
-                        <span class="theme-text-muted block text-[12px]">In Firefox, search catalan's IP <strong>172.16.57.254</strong>.</span>
-                        <span class="text-emerald-400 text-[11px]">Expectation: Displays catalan's full inventory.</span>
+                        <span class="theme-text-main font-semibold block">5. Unique Peer (akarki5's) Instrument Search:</span>
+                        <span class="theme-text-muted block text-[12px]">In Firefox, search akarki5's IP <strong>172.16.53.190</strong>.</span>
+                        <span class="text-emerald-400 text-[11px]">Expectation: Displays akarki5's full inventory.</span>
                     </div>
                 </div>
             </div>
@@ -455,24 +455,24 @@ sh vlans ports 3</code>
                     <span>VRRP High-Availability Master Failover Test</span>
                 </div>
                 <p class="theme-text-muted text-xs">
-                    Demonstrate that VRRP actively manages VIP gateway <span class="font-mono text-emerald-400 font-bold">172.16.54.65</span> across both Core switches.
+                    Demonstrate that VRRP actively manages VIP gateway <span class="font-mono text-emerald-400 font-bold">172.16.51.129</span> across both Core switches.
                 </p>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
                     <div class="bg-brand-card p-3 rounded-lg border theme-border space-y-1">
                         <span class="font-bold text-amber-400 block text-[12px]">3A. Check Primary Master Status</span>
-                        <span class="theme-text-muted block text-[11px]">On <strong>jmalaqui-Client VM</strong>, SSH into Core 1:</span>
+                        <span class="theme-text-muted block text-[11px]">On <strong>caemmanuel-Client VM</strong>, SSH into Core 1:</span>
                         <div class="flex items-center justify-between">
                             <span class="text-[10px] theme-text-muted">SSH to Core 1:</span>
-                            <button onclick="copyText('ssh student@172.16.54.66')" class="text-[10px] bg-brand-slate px-2 py-0.5 rounded border theme-border hover:bg-brand-indigo hover:text-white transition-all cursor-pointer flex items-center gap-1"><i class="fa-solid fa-copy text-[9px]"></i>Copy</button>
+                            <button onclick="copyText('ssh student@172.16.51.130')" class="text-[10px] bg-brand-slate px-2 py-0.5 rounded border theme-border hover:bg-brand-indigo hover:text-white transition-all cursor-pointer flex items-center gap-1"><i class="fa-solid fa-copy text-[9px]"></i>Copy</button>
                         </div>
-                        <code class="block bg-slate-950 text-slate-100 p-2 rounded font-mono text-[12px]">ssh student@172.16.54.66</code>
+                        <code class="block bg-slate-950 text-slate-100 p-2 rounded font-mono text-[12px]">ssh student@172.16.51.130</code>
                         
                         <div class="flex items-center justify-between pt-1">
                             <span class="text-[10px] theme-text-muted">Check VRRP Status:</span>
                             <button onclick="copyText('show vrrp')" class="text-[10px] bg-brand-slate px-2 py-0.5 rounded border theme-border hover:bg-brand-indigo hover:text-white transition-all cursor-pointer flex items-center gap-1"><i class="fa-solid fa-copy text-[9px]"></i>Copy</button>
                         </div>
                         <code class="block bg-slate-950 text-slate-100 p-2 rounded font-mono text-[12px]">show vrrp</code>
-                        <span class="text-emerald-400 text-[11px] font-semibold block">Expectation: VLAN 217 state displays as MASTER (Priority 10).</span>
+                        <span class="text-emerald-400 text-[11px] font-semibold block">Expectation: VLAN 206 state displays as MASTER (Priority 10).</span>
                     </div>
 
                     <div class="bg-brand-card p-3 rounded-lg border theme-border space-y-1">
@@ -480,9 +480,9 @@ sh vlans ports 3</code>
                         <span class="theme-text-muted text-[11px]">SSH into Core 2:</span>
                         <div class="flex items-center justify-between">
                             <span class="text-[10px] theme-text-muted">SSH to Core 2:</span>
-                            <button onclick="copyText('ssh student@172.16.54.67')" class="text-[10px] bg-brand-slate px-2 py-0.5 rounded border theme-border hover:bg-brand-indigo hover:text-white transition-all cursor-pointer flex items-center gap-1"><i class="fa-solid fa-copy text-[9px]"></i>Copy</button>
+                            <button onclick="copyText('ssh student@172.16.51.131')" class="text-[10px] bg-brand-slate px-2 py-0.5 rounded border theme-border hover:bg-brand-indigo hover:text-white transition-all cursor-pointer flex items-center gap-1"><i class="fa-solid fa-copy text-[9px]"></i>Copy</button>
                         </div>
-                        <code class="block bg-slate-950 text-slate-100 p-2 rounded font-mono text-[12px]">ssh student@172.16.54.67</code>
+                        <code class="block bg-slate-950 text-slate-100 p-2 rounded font-mono text-[12px]">ssh student@172.16.51.131</code>
                         
                         <div class="flex items-center justify-between pt-1">
                             <span class="text-[10px] theme-text-muted">Check VRRP Status:</span>
@@ -503,9 +503,9 @@ sh vlans ports 3</code>
                     <span class="theme-text-muted text-[11px]">Then SSH into Core 2:</span>
                     <div class="flex items-center justify-between">
                         <span class="text-[10px] theme-text-muted">SSH to Core 2:</span>
-                        <button onclick="copyText('ssh student@172.16.54.67')" class="text-[10px] bg-brand-slate px-2 py-0.5 rounded border theme-border hover:bg-brand-indigo hover:text-white transition-all cursor-pointer flex items-center gap-1"><i class="fa-solid fa-copy text-[9px]"></i>Copy</button>
+                        <button onclick="copyText('ssh student@172.16.51.131')" class="text-[10px] bg-brand-slate px-2 py-0.5 rounded border theme-border hover:bg-brand-indigo hover:text-white transition-all cursor-pointer flex items-center gap-1"><i class="fa-solid fa-copy text-[9px]"></i>Copy</button>
                     </div>
-                    <code class="block bg-slate-950 text-slate-100 p-2 rounded font-mono text-[12px]">ssh student@172.16.54.67</code>
+                    <code class="block bg-slate-950 text-slate-100 p-2 rounded font-mono text-[12px]">ssh student@172.16.51.131</code>
                     
                     <div class="flex items-center justify-between pt-1">
                         <span class="text-[10px] theme-text-muted">Check VRRP Status:</span>
@@ -534,10 +534,10 @@ sh vlans ports 3</code>
 
                     <div>
                         <div class="flex items-center justify-between">
-                            <span class="theme-text-main font-semibold block">1. Local MariaDB Read-Only Login (jmalaqui-Server):</span>
-                            <button onclick="copyText('mariadb -u csp450ro -pcsp450ro -h 172.16.54.126')" class="text-[10px] bg-brand-slate px-2 py-0.5 rounded border theme-border hover:bg-brand-indigo hover:text-white transition-all cursor-pointer flex items-center gap-1"><i class="fa-solid fa-copy text-[9px]"></i>Copy Login</button>
+                            <span class="theme-text-main font-semibold block">1. Local MariaDB Read-Only Login (caemmanuel-Server):</span>
+                            <button onclick="copyText('mariadb -u csp450ro -pcsp450ro -h 172.16.51.190')" class="text-[10px] bg-brand-slate px-2 py-0.5 rounded border theme-border hover:bg-brand-indigo hover:text-white transition-all cursor-pointer flex items-center gap-1"><i class="fa-solid fa-copy text-[9px]"></i>Copy Login</button>
                         </div>
-                        <code class="block bg-slate-950 text-slate-100 p-2 rounded font-mono text-[12px] my-1">mariadb -u csp450ro -pcsp450ro -h 172.16.54.126</code>
+                        <code class="block bg-slate-950 text-slate-100 p-2 rounded font-mono text-[12px] my-1">mariadb -u csp450ro -pcsp450ro -h 172.16.51.190</code>
                         <span class="text-emerald-400 text-[11px]">Expectation: Connects successfully despite Core 1 link drop via Core 2 standby pathway.</span>
                         <div class="flex items-center justify-end mt-1">
                             <button onclick="copyText('EXIT;')" class="text-[10px] bg-brand-slate px-2 py-0.5 rounded border theme-border hover:bg-brand-indigo hover:text-white transition-all cursor-pointer flex items-center gap-1"><i class="fa-solid fa-copy text-[9px]"></i>Copy Exit</button>
@@ -547,11 +547,11 @@ sh vlans ports 3</code>
 
                     <div>
                         <div class="flex items-center justify-between">
-                            <span class="theme-text-main font-semibold block">2. Peer MariaDB Read-Only Login (catalan-Server):</span>
-                            <button onclick="copyText('mariadb -u csp450ro -pcsp450ro -h 172.16.57.254')" class="text-[10px] bg-brand-slate px-2 py-0.5 rounded border theme-border hover:bg-brand-indigo hover:text-white transition-all cursor-pointer flex items-center gap-1"><i class="fa-solid fa-copy text-[9px]"></i>Copy Login</button>
+                            <span class="theme-text-main font-semibold block">2. Peer MariaDB Read-Only Login (akarki5-Server):</span>
+                            <button onclick="copyText('mariadb -u csp450ro -pcsp450ro -h 172.16.53.190')" class="text-[10px] bg-brand-slate px-2 py-0.5 rounded border theme-border hover:bg-brand-indigo hover:text-white transition-all cursor-pointer flex items-center gap-1"><i class="fa-solid fa-copy text-[9px]"></i>Copy Login</button>
                         </div>
-                        <code class="block bg-slate-950 text-slate-100 p-2 rounded font-mono text-[12px] my-1">mariadb -u csp450ro -pcsp450ro -h 172.16.57.254</code>
-                        <span class="text-emerald-400 text-[11px]">Expectation: Cross-branch query establishes connection to peer Server 172.16.57.254.</span>
+                        <code class="block bg-slate-950 text-slate-100 p-2 rounded font-mono text-[12px] my-1">mariadb -u csp450ro -pcsp450ro -h 172.16.53.190</code>
+                        <span class="text-emerald-400 text-[11px]">Expectation: Cross-branch query establishes connection to peer Server 172.16.53.190.</span>
                         <div class="flex items-center justify-end mt-1">
                             <button onclick="copyText('EXIT;')" class="text-[10px] bg-brand-slate px-2 py-0.5 rounded border theme-border hover:bg-brand-indigo hover:text-white transition-all cursor-pointer flex items-center gap-1"><i class="fa-solid fa-copy text-[9px]"></i>Copy Exit</button>
                         </div>
@@ -590,7 +590,7 @@ sh vlans ports 3</code>
 
                     <div>
                         <span class="theme-text-main font-semibold block">4. Apache Web Browser Query ($1500 New Guitar Search):</span>
-                        <span class="theme-text-muted block text-[12px]">Open Firefox on Client VM and navigate to <strong>http://172.16.54.126/</strong></span>
+                        <span class="theme-text-muted block text-[12px]">Open Firefox on Client VM and navigate to <strong>http://172.16.51.190/</strong></span>
                         <span class="theme-text-muted block text-[12px]">Search for new guitars priced &lt;= $1500.</span>
                         <span class="text-emerald-400 text-[11px]">Expectation: Renders PHP search result table smoothly over failover path.</span>
                     </div>
@@ -600,9 +600,9 @@ sh vlans ports 3</code>
                         <div class="space-y-1">
                             <div class="flex items-center justify-between">
                                 <span class="text-[11px] theme-text-muted">A. Connect to MariaDB:</span>
-                                <button onclick="copyText('mariadb -u csp450ro -pcsp450ro -h 172.16.54.126')" class="text-[10px] bg-brand-slate px-2 py-0.5 rounded border theme-border hover:bg-brand-indigo hover:text-white transition-all cursor-pointer flex items-center gap-1"><i class="fa-solid fa-copy text-[9px]"></i>Copy Login</button>
+                                <button onclick="copyText('mariadb -u csp450ro -pcsp450ro -h 172.16.51.190')" class="text-[10px] bg-brand-slate px-2 py-0.5 rounded border theme-border hover:bg-brand-indigo hover:text-white transition-all cursor-pointer flex items-center gap-1"><i class="fa-solid fa-copy text-[9px]"></i>Copy Login</button>
                             </div>
-                            <code class="block bg-slate-950 text-slate-100 p-2 rounded font-mono text-[12px]">mariadb -u csp450ro -pcsp450ro -h 172.16.54.126</code>
+                            <code class="block bg-slate-950 text-slate-100 p-2 rounded font-mono text-[12px]">mariadb -u csp450ro -pcsp450ro -h 172.16.51.190</code>
 
                             <div class="flex items-center justify-between pt-1">
                                 <span class="text-[11px] theme-text-muted">B. Use Database:</span>
@@ -625,9 +625,9 @@ AND price &lt;= 1500.00;</code>
                     </div>
 
                     <div>
-                        <span class="theme-text-main font-semibold block">6. Unique Peer (catalan's) Instrument Search:</span>
-                        <span class="theme-text-muted block text-[12px]">In Firefox, search catalan's IP <strong>172.16.57.254</strong>.</span>
-                        <span class="text-emerald-400 text-[11px]">Expectation: Displays catalan's full inventory.</span>
+                        <span class="theme-text-main font-semibold block">6. Unique Peer (akarki5's) Instrument Search:</span>
+                        <span class="theme-text-muted block text-[12px]">In Firefox, search akarki5's IP <strong>172.16.53.190</strong>.</span>
+                        <span class="text-emerald-400 text-[11px]">Expectation: Displays akarki5's full inventory.</span>
                     </div>
                 </div>
             </div>
@@ -643,13 +643,13 @@ AND price &lt;= 1500.00;</code>
                         <i class="fa-solid fa-plug mr-1.5"></i>Action: Reconnect the trunk cables on Ports <strong>1/1/1</strong> and <strong>1/1/2</strong> on Core 1.
                     </div>
                     <span class="theme-text-main font-semibold block">Check Primary Master Preemption Status</span>
-                    <span class="theme-text-muted block text-[12px]">On <strong>jmalaqui-Client VM</strong>, SSH into Core 1:</span>
+                    <span class="theme-text-muted block text-[12px]">On <strong>caemmanuel-Client VM</strong>, SSH into Core 1:</span>
                     
                     <div class="flex items-center justify-between">
                         <span class="text-[10px] theme-text-muted">SSH to Core 1:</span>
-                        <button onclick="copyText('ssh student@172.16.54.66')" class="text-[10px] bg-brand-slate px-2 py-0.5 rounded border theme-border hover:bg-brand-indigo hover:text-white transition-all cursor-pointer flex items-center gap-1"><i class="fa-solid fa-copy text-[9px]"></i>Copy SSH</button>
+                        <button onclick="copyText('ssh student@172.16.51.130')" class="text-[10px] bg-brand-slate px-2 py-0.5 rounded border theme-border hover:bg-brand-indigo hover:text-white transition-all cursor-pointer flex items-center gap-1"><i class="fa-solid fa-copy text-[9px]"></i>Copy SSH</button>
                     </div>
-                    <code class="block bg-slate-950 text-slate-100 p-2 rounded font-mono text-[12px]">ssh student@172.16.54.66</code>
+                    <code class="block bg-slate-950 text-slate-100 p-2 rounded font-mono text-[12px]">ssh student@172.16.51.130</code>
                     
                     <div class="flex items-center justify-between pt-1">
                         <span class="text-[10px] theme-text-muted">Check VRRP Status:</span>
@@ -671,7 +671,7 @@ AND price &lt;= 1500.00;</code>
     <footer class="bg-brand-dark border-t theme-border theme-text-muted py-6 mt-auto">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs">
             <div class="flex items-center gap-1.5 theme-text-muted">
-                <span>Visual Inspection Runbook for <strong>jmalaqui</strong> (VLAN 217)</span>
+                <span>Visual Inspection Runbook for <strong>caemmanuel</strong> (VLAN 206)</span>
             </div>
             <div class="flex items-center gap-1.5 bg-brand-slate border theme-border px-3 py-1 rounded-full theme-text-main">
                 <i class="fa-brands fa-github text-brand-indigo"></i>
