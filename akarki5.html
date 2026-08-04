@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Visual Inspection Guide - akarki5 (VLAN 214)</title>
+    <link rel="icon" type="image/png" href="https://avatars.githubusercontent.com/u/5056960?s=96&v=4">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -407,7 +408,7 @@ sh vlans ports 3</code>
                         <div class="space-y-1">
                             <div class="flex items-center justify-between">
                                 <span class="text-[11px] theme-text-muted">A. Login as root:</span>
-                                <button onclick="copyText('sudo mariadb -u root')" class="text-[10px] bg-brand-slate px-2 py-0.5 rounded border theme-border hover:bg-brand-indigo hover:text-white transition-all cursor-pointer flex items-center gap-1"><i class="fa-solid fa-copy text-[9px]"></i>Copy Login</button>
+                                <button onclick="copyText('sudo mariadb -u root')" class="text-[10px] bg-brand-slate px-2 py-0.5 rounded border theme-border hover:bg-brand-indigo hover:text-white transition-all cursor-pointer flex items-center gap-1"><i class="fa-solid fa-copy text-[9px]"></i>Copy</button>
                             </div>
                             <code class="block bg-slate-950 text-slate-100 p-2 rounded font-mono text-[12px]">sudo mariadb -u root</code>
                             
@@ -419,10 +420,10 @@ sh vlans ports 3</code>
 
                             <div class="flex items-center justify-between pt-1">
                                 <span class="text-[11px] theme-text-muted">C. Query Last 10 Instruments:</span>
-                                <button onclick="copyText('SELECT * FROM instruments ORDER BY id DESC LIMIT 10;')" class="text-[10px] bg-brand-slate px-2 py-0.5 rounded border theme-border hover:bg-brand-indigo hover:text-white transition-all cursor-pointer flex items-center gap-1"><i class="fa-solid fa-copy text-[9px]"></i>Copy Query</button>
+                                <button onclick="copyText('SELECT * FROM instruments ORDER BY id DESC LIMIT 10;')" class="text-[10px] bg-brand-slate px-2 py-0.5 rounded border theme-border hover:bg-brand-indigo hover:text-white transition-all cursor-pointer flex items-center gap-1"><i class="fa-solid fa-copy text-[9px]"></i>Copy</button>
                             </div>
                             <code class="block bg-slate-950 text-slate-100 p-2 rounded font-mono text-[12px]">SELECT * FROM instruments ORDER BY id DESC LIMIT 10;</code>
-                            <span class="text-emerald-400 text-[11px] block">Expectation: Displays your unique 10 instrument additions appended to the baseline inventory.</span>
+                            <span class="text-emerald-400 text-[11px] block">Expectation: Displays your unique 10 instrument additions.</span>
 
                             <div class="flex items-center justify-between pt-1">
                                 <span class="text-[11px] theme-text-muted">D. Exit MariaDB:</span>
@@ -435,16 +436,14 @@ sh vlans ports 3</code>
                     <div>
                         <span class="theme-text-main font-semibold block">4. Apache Web Browser Query ($1500 New Guitar Search):</span>
                         <span class="theme-text-muted block text-[12px]">Open Firefox on Client VM and navigate to <strong>http://172.16.53.190/</strong></span>
-                        <span class="theme-text-muted block text-[12px]">Enter Server IP: <strong>172.16.53.190</strong> | Type: <strong>guitar</strong> | Condition: <strong>new</strong> | Max Price: <strong>1500</strong></span>
+                        <span class="theme-text-muted block text-[12px]">Search for new guitars priced &lt;= $1500.</span>
                         <span class="text-emerald-400 text-[11px]">Expectation: Renders PHP search result table listing guitars priced at or under $1500.</span>
                     </div>
 
                     <div>
                         <span class="theme-text-main font-semibold block">5. Unique Peer (caemmanuel's) Instrument Search:</span>
-                        <span class="theme-text-muted block text-[12px]">Open Firefox on Client VM and navigate to <strong>http://172.16.53.190/</strong></span>
-                        <span class="theme-text-muted block text-[12px]">Enter Peer's IP: <strong>172.16.51.190</strong></span>
-                        <span class="theme-text-muted block text-[12px]">Clear all other instrument parameters and click <strong>Search Inventory</strong>.</span>
-                        <span class="text-emerald-400 text-[11px]">Expectation: Displays caemmanuel's inventory along with their 10 unique music instruments.</span>
+                        <span class="theme-text-muted block text-[12px]">In Firefox, search caemmanuel's IP <strong>172.16.51.190</strong>.</span>
+                        <span class="text-emerald-400 text-[11px]">Expectation: Displays caemmanuel's full inventory.</span>
                     </div>
                 </div>
             </div>
@@ -494,13 +493,13 @@ sh vlans ports 3</code>
                     </div>
                 </div>
 
-                <div class="p-3 bg-rose-500/10 border border-rose-500/30 rounded-lg text-rose-400 text-xs font-mono">
+                <div class="w-fit p-3 bg-rose-500/10 border border-rose-500/30 rounded-lg text-rose-400 text-xs font-mono">
                     <i class="fa-solid fa-camera mr-1.5"></i>Screenshot #1 and #2: 'Show vrrp' output on Switch 1 & 2 BEFORE power cut.
                 </div>
 
                 <div class="bg-brand-card p-3 rounded-lg border theme-border space-y-1">
-                    <span class="font-bold text-amber-400 block text-[12px]">3C. Physical Unplug &amp; Failover Verification</span>
-                    <span class="theme-text-muted block text-[11px]"><strong>Unplug the trunk cable on Port 1/1/11 on Core 1</strong>.</span>
+                    <span class="font-bold text-amber-400 block text-[13px]">3C. Physical Unplug &amp; Failover Verification</span>
+                    <span class="theme-text-main block text-[12px]"><strong>Note: Disconnect ports 1/1/11 and 1/1/12 from Core 1.</strong></span>
                     <span class="theme-text-muted text-[11px]">Then SSH into Core 2:</span>
                     <div class="flex items-center justify-between">
                         <span class="text-[10px] theme-text-muted">SSH to Core 2:</span>
@@ -515,7 +514,7 @@ sh vlans ports 3</code>
                     <code class="block bg-slate-950 text-slate-100 p-2 rounded font-mono text-[12px]">show vrrp</code>
                     <span class="text-emerald-400 text-[11px] font-semibold block">Expectation: Core 2 automatically promotes from BACKUP to MASTER.</span>
 
-                    <div class="p-3 bg-rose-500/10 border border-rose-500/30 rounded-lg text-rose-400 text-xs font-mono mt-2">
+                    <div class="w-fit p-3 bg-rose-500/10 border border-rose-500/30 rounded-lg text-rose-400 text-xs font-mono mt-2">
                         <i class="fa-solid fa-camera mr-1.5"></i>Screenshot #3: 'Show vrrp' output on Switch 2 AFTER unplugging the master switch.
                     </div>
                 </div>
@@ -529,8 +528,8 @@ sh vlans ports 3</code>
                 </div>
 
                 <div class="bg-brand-card p-4 rounded-lg border theme-border space-y-3">
-                    <div class="p-3 bg-amber-500/10 border border-amber-500/30 rounded-lg text-amber-400 text-xs font-mono">
-                        <i class="fa-solid fa-triangle-exclamation mr-1.5"></i>Note: Keep trunk cable on <strong>Port 1/1/11</strong> on Core 1 disconnected during these tests!
+                    <div class="w-fit p-3 bg-amber-500/10 border border-amber-500/30 rounded-lg text-amber-400 text-xs font-mono">
+                        <i class="fa-solid fa-triangle-exclamation mr-1.5"></i>Note: Make sure that trunk Ports <strong>1/1/11</strong> and <strong>1/1/12</strong> on Core 1 are disconnected during these tests!
                     </div>
 
                     <div>
@@ -640,8 +639,8 @@ AND price &lt;= 1500.00;</code>
                     <span>Power Restoration &amp; Preemption Back to Primary Master</span>
                 </div>
                 <div class="bg-brand-card p-4 rounded-lg border theme-border space-y-2">
-                    <div class="p-3 bg-emerald-500/10 border border-emerald-500/30 rounded-lg text-emerald-400 text-xs font-mono mb-2">
-                        <i class="fa-solid fa-plug mr-1.5"></i>Action: Reconnect the trunk cable on <strong>Port 1/1/11</strong> on Core 1.
+                    <div class="w-fit p-3 bg-amber-500/10 border border-amber-500/30 rounded-lg text-amber-400 text-xs font-mono mb-2">
+                        <i class="fa-solid fa-plug mr-1.5"></i>Action: Reconnect the trunk cables on Ports <strong>1/1/1</strong> and <strong>1/1/2</strong> on Core 1.
                     </div>
                     <span class="theme-text-main font-semibold block">Check Primary Master Preemption Status</span>
                     <span class="theme-text-muted block text-[12px]">On <strong>akarki5-Client VM</strong>, SSH into Core 1:</span>
@@ -659,13 +658,10 @@ AND price &lt;= 1500.00;</code>
                     <code class="block bg-slate-950 text-slate-100 p-2 rounded font-mono text-[12px]">show vrrp</code>
                     <span class="text-emerald-400 text-[11px] font-semibold block">Expectation: Because Core 1 higher priority (Priority 10 vs Priority 5) causes it to preempt Core 2 and take back MASTER status automatically!</span>
 
-                    <div class="p-3 bg-rose-500/10 border border-rose-500/30 rounded-lg text-rose-400 text-xs font-mono mt-2">
+                    <div class="w-fit p-3 bg-rose-500/10 border border-rose-500/30 rounded-lg text-rose-400 text-xs font-mono mt-2">
                         <i class="fa-solid fa-camera mr-1.5"></i>Screenshot #4: 'Show vrrp' output on Switch 1 AFTER restoring the master switch.
                     </div>
                 </div>
-
-                
-
             </div>
 
         </section>
