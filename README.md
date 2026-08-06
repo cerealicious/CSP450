@@ -1,5 +1,14 @@
-# 🌐 CSP450 Project: Network & Infrastructure Blueprint
-  
+# 🌐 CSP450 Project – **Archived Project**
+
+## This repository was used during **Summer 2026** for **CSP450**. Since the term is now over, all previous documentation and notes have been removed, and the repo is officially retired.
+
+## Feel free to browse or fork the code if you need a reference, but there won't be any new updates or active maintenance moving forward. 
+
+---
+---
+---
+
+
 > A comprehensive architectural guide and implementation blueprint for the CSP450 Capstone Challenge. This repository systematically documents the progression of network infrastructure, database integration, and application deployment.
 
 ---
@@ -56,8 +65,9 @@ This guide bridges the gap between theory and practice by providing:
 
 | Stage | Status | Description |
 | :--- | :---: | :--- |
-| **[Stage Two](./StageTwo/)** | ✅ Completed | Build the network infrastructure layer (OSPF, routing pools, VLAN segmentation, and edge NAT firewalls). |
-| **[Stage Three](./StageThree/)** | ✅ Completed | Enterprise MariaDB integration, schema deployment, and PHP frontend connectivity. |
+| **Stage Two** | ✅ Completed | Build the network infrastructure layer (OSPF, routing pools, VLAN segmentation, and edge NAT firewalls). |
+| **Stage Three** | ✅ Completed | Enterprise MariaDB integration, schema deployment, and PHP frontend connectivity. |
+| **Stage Four** | ✅ Completed | Deploy active-passive high availability (VRRP), inter-core trunking, and fault-tolerant gateway redundancy across dual Aruba 6300 Core switches. |
 
 ---
 
@@ -66,15 +76,15 @@ This guide bridges the gap between theory and practice by providing:
 For detailed, step-by-step instructions, refer to the specific stage documentation folders:
 
 ### 📁 Stage Two: Infrastructure Layer
-- **[Stage Two README](./StageTwo/README.md)**: Full matrix, infrastructure prerequisite packages, and physical topology blueprints.
-- **[Stage Two Templates](./StageTwo/Templates/)**: Switch configs, firewall rules, and network diagrams.
+- ~~**Stage Two README**~~: Full matrix, infrastructure prerequisite packages, and physical topology blueprints.
+- ~~**Stage Two Templates**~~: Switch configs, firewall rules, and network diagrams.
 
 ### 📁 Stage Three: Application Layer
-- **[Stage Three Templates](./StageThree/Templates/)**: SQL scripts, PHP source code, and server configuration files.
+- ~~**Stage Three Templates**~~: SQL scripts, PHP source code, and server configuration files.
 
 ### 📸 Additional Resources
 - ~~**Personal Screenshots**: Visual metric captures and packet verification logs used for laboratory report compliance.~~
 
 ---
 
-*📅 Last Updated: July 19, 2026*
+*📅 Last Updated: August 05, 2026*
