@@ -6,7 +6,7 @@
 
 ---
 
-> 🚀 **Live Interactive Preview Available:** You can explore the live interactive preview of the tool and configuration templates at **[ceriltalan.me/csp450-Preview](https://ceriltalan.me/csp450-Preview)**. Professional engineering consulting and custom tooling inquiries are welcome!
+> 🚀 **Live Interactive Preview Available:** You can explore the live interactive preview of the tool and configuration templates at **[csp450.netlify.app](https://csp450.netlify.app)**. Professional engineering consulting and custom tooling inquiries are welcome!
 
 ---
 ---
